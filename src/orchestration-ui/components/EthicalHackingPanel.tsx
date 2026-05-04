@@ -48,11 +48,7 @@ export const EthicalHackingPanel: React.FC = () => {
     setShowNewEngagementForm(false);
   };
 
-<<<<<<< HEAD
-  const _getRoeSeverityColor = (severity: string) => {
-=======
   const getRoeSeverityColor = (severity: string) => {
->>>>>>> c855fc4 (Integrate SyncPulse with orchestration and scaffold ethical hacking framework)
     const colors: Record<string, string> = {
       critical: '#dc2626',
       high: '#ea580c',
