@@ -185,3 +185,15 @@ config.local.json
 # MCP Tool Registry
 registry/*.tmp
 registry/*.log
+
+# Security & Sensitive Files (GPG Keys, Private Keys, Passphrases)
+gpg-private-key.asc
+*.gpg
+*.key
+*.pem
+*.p12
+*.pfx
+.gnupg/
+.ssh/
+credentials.json
+secrets.json

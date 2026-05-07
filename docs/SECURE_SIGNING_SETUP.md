@@ -30,6 +30,7 @@ GitHub secrets are stored securely and never displayed in logs or chat. You need
 5. Click "Add secret"
 
 > **Security:** GitHub displays `***` for secret values. Never paste the actual content in chat, comments, or logs.
+> **Safety net:** `.gitignore` is pre-configured to exclude `gpg-private-key.asc`, `*.gpg`, and `*.key` files from version control.
 
 ### Secret 2: `GPG_PASSPHRASE`
 **What it is:** The passphrase protecting your GPG private key  
@@ -185,13 +186,15 @@ npm run build
 - Use GitHub CLI for local secret management when possible
 - Rotate npm tokens regularly (quarterly)
 - Enable 2FA on npm account
+- Rely on `.gitignore` patterns (already configured) to catch accidental key commits
 
 ❌ **DON'T:**
 - Paste secrets in chat, PR comments, or logs
-- Commit `.gpg` or `.key` files to version control
+- Commit `.gpg` or `.key` files to version control (`.gitignore` prevents this)
 - Reuse keys across different services
 - Share passphrases in plain text
 - Log secret values in build output
+- Run `git add -A` without reviewing untracked files first
 
 ## Version Release Checklist
 
