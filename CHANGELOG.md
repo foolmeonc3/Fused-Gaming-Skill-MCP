@@ -8,22 +8,99 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Added `docs/process/GITHUB_MCP_AGENTS_ORIENTATION.md` with blockers, current steps, immediate next actions, PR-context triage, and agent directives for the `feat/github-agents` branch.
-- Added `docs/process/VERCEL_PROJECT_SETUP.md` with explicit Vercel project directory and framework preset guidance for `skills.vln.gg` (skills API) and `sync.vln.gg` (augmented agents app).
-- Added one-command SyncPulse panel launcher commands to the CLI: `fused-gaming-mcp panel` and `fused-gaming-mcp syncpulse` (alias).
-- Added `@h4shed/skill-agentic-flow-devkit` workspace with `visualize-agentic-flow` and `plan-trailer-rolls` tools to support orchestration GUI planning and trailer A/B-roll sourcing.
-- Added `docs/process/GITHUB_MCP_AGENTS_ORIENTATION.md` with blockers, current steps, immediate next actions, PR-context triage, and agent directives for the `feat/github-agents` branch.
-- Added `docs/process/PR_51_MERGE_CHECKLIST.md` with explicit PR #51 deliverables, success metrics, blockers, execution order, and next-agent handoff directives.
-- Added `scripts/auto-bump-publish-versions.js` to automatically patch-bump root/workspace package versions until npm reports they are publishable.
-- Added `scripts/preflight-publish-check.js` and wired it into publish CI to fail fast when any workspace package version is already published on npm.
-- Added a documentation index (`docs/README.md`) and reorganized root-level docs into categorized directories (`docs/getting-started`, `docs/process`, `docs/releases`, `docs/archive`).
-- Added a dedicated GitHub release workflow (`.github/workflows/github-release.yml`) that triggers on release tags (`v*`, `skill-*`) and can also be started manually.
-- Added a roadmap document (`docs/ROADMAP.md`) with published/missing/planned skill inventories, blockers, and immediate next steps.
-- Added scaffold packages for upcoming skills: mermaid-terminal, ux-journeymapper, svg-generator, project-manager, project-status-tool, daily-review, multi-account-session-tracking, and linkedin-master-journalist.
+- **SyncPulse Email Workflow Templates (v0.2.0)** — 9 production-ready email automation workflows
+  - **Authentication & Security**: Magic link login, MFA verification, password reset, security alerts
+  - **Business Operations**: Invoice delivery, newsletter distribution
+  - **System Operations**: Outage notices, maintenance announcements, ticket updates
+  - All templates feature professional HTML/text, variable interpolation, and security best practices
+  - Full TypeScript support with MCP tool definitions
+  - Comprehensive documentation: SECURE_EMAIL_SETUP.md, AGENT_INTEGRATION.md, EMAIL_WORKFLOWS.md
+- **9 New Scaffolded Development Tool Skills** — Complete package structure and Skill interface implementations
+  - Vite Module Bundler (`@h4shed/skill-vite-module-bundler`)
+  - TypeScript Toolchain (`@h4shed/skill-typescript-toolchain`)
+  - Tailwind CSS Style Builder (`@h4shed/skill-tailwindcss-style-builder`)
+  - Storybook Component Library (`@h4shed/skill-storybook-component-library`)
+  - Playwright Test Automation (`@h4shed/skill-playwright-test-automation`)
+  - Vercel Next.js Deployment (`@h4shed/skill-vercel-nextjs-deployment`)
+  - Style Dictionary System (`@h4shed/skill-style-dictionary-system`)
+  - NFT Generative Art (`@h4shed/skill-nft-generative-art`)
+  - Smart Contract Tools (`@h4shed/skill-smart-contract-tools`)
+  - Each implements the Skill interface with proper name, version, description, and initialize method
+- **27 Tool Wrapper Packages** — Scaffolding for open-source tool integrations under `@h4shed/tool-*` namespace
+  - Design & Style Systems (6): Style Dictionary, Tailwind CSS, PostCSS, cssnano, Sass, Less
+  - Component Systems (5): Storybook, TypeDoc, Docusaurus, VitePress, Markdown-it
+  - Testing & Quality (8): Axe Core, Pa11y, Jest, Cypress, Playwright, Vitest, Istanbul, Husky
+  - Build & Bundling (5): Vite, tsup, Rollup, Webpack, esbuild
+  - CLI & Automation (3): Commander, Inquirer, Ora
+- **Comprehensive Documentation Hub** — VitePress-based site at `packages/docs/`
+  - Home page with hero section, features grid, and quick installation
+  - Quick Start guide (5-minute setup)
+  - Full Installation guide with phase-by-phase approach
+  - Documentation configuration with local search provider
+  - Proper navigation structure preventing 404 errors
+- **Security & Orchestration Documentation**
+  - Tool Integrations Orchestration Guide with security-first approach
+  - Complete Tools Registry tracking 50+ packages across 5 tiers
+  - Installation Manifest with phased rollout plan (5 phases through May 15)
+  - Agent coordination patterns for 13+ specialized agents
+
+### Fixed
+- Fixed TypeScript monorepo type resolution by adding `types: ["node"]` to root tsconfig.json
+- Fixed TypeScript configuration compatibility by updating `ignoreDeprecations` from "6.0" to "5.0" (21 files)
+- Fixed VitePress navigation configuration to prevent 404 errors on missing documentation pages
+- Implemented proper Skill interface exports in all 9 new skill packages (resolves Codex P1 review)
+
+## [1.0.5] - 2026-04-27
+
+### Added
+- **Claude Code Terminal Livestream Component** — Real-time terminal output visualization for MCP setup and skill registry generation in Claude Code's web interface
+  - Interactive toggle widget with smooth animations (Framer Motion)
+  - Live log streaming with color-coded output (info, success, warning, error, command)
+  - Copy, download, and clear functionality for logs
+  - WebSocket support for real-time log streaming from backend
+  - Educational-use-only licensing enforcement with UI badge
+  - WCAG AA accessibility compliance and keyboard navigation
+  - Responsive mobile design (works on narrow screens)
+  - Controlled component mode for external log management
+  - Live/pause toggle to freeze log snapshots by ID (preserves true snapshot on parent array rotation)
+- **Complete MCP Core Initialization System** with automated setup and skill discovery
+  - `scripts/init-mcp-core.sh` — Bash initialization script with comprehensive validation
+  - `scripts/generate-skill-registry.js` — Automatic skill discovery with registry generation (JSON, TypeScript, CommonJS, Markdown, HTML formats)
+  - `scripts/interactive-install.js` — Interactive setup wizard with Fused Gaming branding
+  - `.github/workflows/validate-registry.yml` — CI/CD validation workflow
+  - `.mcp/config.json` — Default MCP configuration with dev/prod environment support
+- **Comprehensive integration and deployment documentation**
+  - `docs/CLAUDE_CODE_INTEGRATION.md` (420 lines) — Complete integration guide for developers
+  - `docs/TERMINAL_LIVESTREAM_DEPLOYMENT.md` (520 lines) — Deployment instructions for Vercel, Docker, AWS, and WebSocket servers
+  - `packages/web/CLAUDE_CODE_LICENSE.md` — Educational licensing terms and restrictions
+  - `packages/web/examples/TerminalLivestream.example.tsx` — 10 complete working examples
+- Added a 2026-04-27 PR/milestone triage snapshot in `README.md` covering PR #118 (Terminal Livestream integration)
+- Added Terminal Livestream section to root README with quick integration guide
+- Updated release metadata to `1.0.5` with `releaseDate` set to 2026-04-27
 
 ### Changed
-- Updated CLI and root README command references to document the new one-command SyncPulse panel launcher.
-- Bumped root release metadata to `1.0.4` to capture the new agentic-flow-devkit delivery and session-orientation updates.
+- Updated `README.md` to document Terminal Livestream component features and deployment options
+- Updated version badge and release date in README footer to reflect 1.0.5
+- Updated `VERSION.json` `releaseDate` from 2026-04-24 to 2026-04-27
+- Moved PR #118 to top of open PR queue as "READY TO MERGE"
+- Updated roadmap notes to include Terminal Livestream component status and MCP Core initialization system
+
+### Fixed
+- Fixed Terminal Livestream freeze logic to use log ID snapshots instead of array length (preserves view when parent array is rotated/trimmed)
+- Fixed FastAPI WebSocket route from `/ws/logs` to `/logs` to match client default configuration
+- Fixed 29+ Codex P1/P2 quality issues including:
+  - Prevented duplicate WebSocket connections and stale closures
+  - Fixed React hook dependency arrays and effect cleanup
+  - Made component responsive for mobile devices (max-w-[calc(100vw-3rem)])
+  - Added payload validation and type coercion for WebSocket messages
+  - Implemented controlled component mode with external log management
+  - Corrected documentation references to non-existent npm packages and build commands
+  - Fixed example code to demonstrate actual working patterns
+
+## [1.0.4] - 2026-04-24
+
+### Changed
+- Updated roadmap summary messaging in `README.md` to align with live GitHub open PR and milestone inventory instead of stale branch assumptions.
 - Added a validated update standard to `docs/NPM_PUBLISHING.md` requiring typecheck/lint/build/tests/publish-prepare before version bumps or release tagging.
 - Updated `.github/workflows/test.yml` Node matrix from `20.x`/`24.x` to active LTS lanes `20.x`/`22.x` to resolve Actions Node-version failures in CI testing.
 - Updated `.github/workflows/github-release.yml` to `actions/checkout@v5` and added an explicit `actions/setup-node@v5` (`22.x`) runtime step for consistent release-job Node behavior.
@@ -49,7 +126,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated publish version bump automation to only consider changed workspace packages when checking for already-published npm versions, preventing unrelated packages from being patch-bumped without source changes.
 - Aligned workflow runtime expectations and release docs around Node.js LTS lanes (`20.x`, `22.x`) to prevent test matrix Node-version mismatches.
 - Replaced placeholder Jest test commands in `mermaid-terminal`, `svg-generator`, and `ux-journeymapper` workspace packages with shell no-op test scripts so CI does not fail with `jest: command not found` during PR merge checks.
-- Resolved Node `24.x` CI workspace discovery failure (`EDUPLICATEWORKSPACE`) by assigning the legacy Mermaid package a unique workspace name (`@h4shed/skill-mermaid-terminal-legacy`) after the production `mermaid-terminal` merge.
+- Resolved Node `24.x` CI workspace discovery failure (`EDUPLICATEWORKSPACE`) by assigning the legacy Mermaid package a unique workspace name (`@fused-gaming/skill-mermaid-terminal-legacy`) after the production `mermaid-terminal` merge.
 - Publish workflow now runs workspace version preparation and lockfile synchronization before `npm ci`/publish to prevent merge-order CI publish conflicts.
 - Updated GitHub Actions references to Node 24-compatible major versions (`actions/checkout@v5`, `actions/setup-node@v5`) across workflow docs and execution guides to prevent deprecation drift.
 - Regenerated `package-lock.json` to include newly scaffolded workspace packages so `npm ci` no longer fails after development→main merges.
