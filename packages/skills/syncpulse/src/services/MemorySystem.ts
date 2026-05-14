@@ -1,4 +1,5 @@
 import { MemoryEntry, VectorSearchResult, MemoryStats } from "../types/index.js";
+import { VectorIndex } from "./VectorIndex.js";
 
 export interface RateLimitConfig {
   queriesPerSecond: number;
@@ -7,6 +8,7 @@ export interface RateLimitConfig {
 
 export class MemorySystem {
   private entries = new Map<string, MemoryEntry>();
+  private vectorIndex = new VectorIndex();
   private stats: MemoryStats = {
     totalEntries: 0,
     cacheHits: 0,
@@ -56,6 +58,7 @@ export class MemorySystem {
       accessCount: 0,
       lastAccessed: Date.now(),
     });
+    this.vectorIndex.add(key);
     this.stats.totalEntries += 1;
   }
 
@@ -101,19 +104,11 @@ export class MemorySystem {
       return [];
     }
 
-    const queryLower = query.toLowerCase();
-    const results: VectorSearchResult[] = [];
-
-    for (const entry of this.entries.values()) {
-      const keyLower = entry.key.toLowerCase();
-      const similarity = this.calculateSimilarity(queryLower, keyLower);
-
-      if (similarity > 0.3) {
-        results.push({ entry, similarity });
-      }
-    }
-
-    return results.sort((a, b) => b.similarity - a.similarity).slice(0, limit);
+    const indexResults = this.vectorIndex.search(query, limit, 0.3);
+    return indexResults.map((result) => ({
+      entry: this.entries.get(result.key)!,
+      similarity: result.similarity,
+    }));
   }
 
   private calculateSimilarity(a: string, b: string): number {
