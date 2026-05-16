@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@h4shed/mcp-core": "^1.0.4",
-    "@h4shed/skill-syncpulse": "^0.2.0",
+    "@h4shed/skill-syncpulse": "^0.2.2",
     "@h4shed/skill-pre-deploy-validator": "^1.0.4"
   },
   "devDependencies": {
