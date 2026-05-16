@@ -66,11 +66,11 @@ Historical documentation and session artifacts:
 
 | Looking For... | Location |
 |---|---|
-| How to get started quickly | Root `README.md` or `docs/guides/QUICKSTART.md` |
+| How to get started quickly | Root `README.md` or `docs/getting-started/QUICKSTART.md` |
 | How to build a new skill | `docs/SKILLS_GUIDE.md` |
 | API documentation | `docs/API_REFERENCE.md` |
 | Release procedures | `docs/releases/NPM_PUBLICATION_CHECKLIST.md` |
-| System architecture | `docs/architecture/ARCHITECTURE.md` |
+| System architecture | `docs/ARCHITECTURE.md` |
 | Performance optimization | `docs/SCALING_GUIDE.md` |
 | Contribution rules | Root `CONTRIBUTING.md` |
 | Security policies | Root `SECURITY.md` |
