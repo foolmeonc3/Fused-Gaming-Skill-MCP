@@ -1,0 +1,51 @@
+{
+  "name": "@syncpulse/design-tokens",
+  "version": "1.0.0",
+  "description": "Design tokens and icon system for SyncPulse",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./icons": {
+      "import": "./dist/icons/index.js",
+      "types": "./dist/icons/index.d.ts"
+    },
+    "./icons/react": {
+      "import": "./dist/icons/Icon.js",
+      "types": "./dist/icons/Icon.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "echo 'No tests yet'",
+    "lint": "eslint src --ext .ts,.tsx"
+  },
+  "keywords": [
+    "design-tokens",
+    "icons",
+    "syncpulse",
+    "react"
+  ],
+  "author": "Fused Gaming",
+  "license": "Apache-2.0",
+  "peerDependencies": {
+    "react": "^18.0.0"
+  },
+  "peerDependenciesOptional": {
+    "react": "^18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "typescript": "^5.3.2"
+  }
+}
