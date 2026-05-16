@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle } from 'lucide-react';
+import Icon from '@/components/Icon';
 import PricingPlans from '@/components/PricingPlans';
 import FeatureGrid from '@/components/FeatureGrid';
 import FeaturedSection from '@/components/FeaturedSection';
@@ -20,8 +21,9 @@ export default function SalesPage() {
       <header className="border-b border-swarm-accent/20 sticky top-0 z-40 glass">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-3xl font-bold glow-accent">⚡ SyncPulse</h1>
+            <div className="flex items-center gap-2">
+              <Icon name="pulse" size={28} color="#A855F7" />
+              <h1 className="text-3xl font-bold glow-accent">SyncPulse</h1>
             </div>
             <nav className="hidden md:flex items-center gap-8">
               <a
@@ -168,9 +170,8 @@ export default function SalesPage() {
                 <motion.div
                   animate={{ scale: [1, 1.1, 1] }}
                   transition={{ duration: 3, repeat: Infinity }}
-                  className="text-7xl"
                 >
-                  🎬
+                  <Icon name="play" size={64} color="#A855F7" />
                 </motion.div>
               </div>
             </div>

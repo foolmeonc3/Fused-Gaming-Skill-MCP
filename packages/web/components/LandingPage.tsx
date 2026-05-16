@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import VersionBadge from './VersionBadge';
+import Icon from './Icon';
+import GlassmorphCard from './GlassmorphCard';
 
 export default function LandingPage() {
   const router = useRouter();
@@ -41,9 +43,9 @@ export default function LandingPage() {
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-            className="text-4xl mb-4"
+            className="mb-4"
           >
-            ⚡
+            <Icon name="pulse" size={48} color="#A855F7" />
           </motion.div>
           <p className="text-swarm-tertiary">Loading...</p>
         </div>
@@ -69,7 +71,10 @@ export default function LandingPage() {
               transition={{ delay: 0.2, duration: 0.8 }}
               className="mb-8"
             >
-              <div className="text-6xl font-bold glow-accent mb-4">⚡ SyncPulse</div>
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <Icon name="pulse" size={56} color="#A855F7" />
+                <div className="text-6xl font-bold glow-accent">SyncPulse</div>
+              </div>
               <p className="text-2xl text-swarm-tertiary font-light">
                 Agent Swarm Intelligence Platform
               </p>
@@ -94,29 +99,35 @@ export default function LandingPage() {
               transition={{ delay: 0.6, duration: 0.8 }}
               className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
             >
-              <div className="glass p-6 rounded-lg border border-swarm-accent/20 hover:border-swarm-accent/50 transition-colors">
-                <div className="text-3xl mb-3">🎯</div>
+              <GlassmorphCard>
+                <div className="mb-3">
+                  <Icon name="zap" size={32} color="#A855F7" />
+                </div>
                 <h3 className="text-lg font-semibold text-white mb-2">Real-time Control</h3>
                 <p className="text-swarm-tertiary">
                   Monitor and control your agent swarms with live dashboards
                 </p>
-              </div>
+              </GlassmorphCard>
 
-              <div className="glass p-6 rounded-lg border border-swarm-accent/20 hover:border-swarm-accent/50 transition-colors">
-                <div className="text-3xl mb-3">📊</div>
+              <GlassmorphCard>
+                <div className="mb-3">
+                  <Icon name="chart" size={32} color="#A855F7" />
+                </div>
                 <h3 className="text-lg font-semibold text-white mb-2">Advanced Analytics</h3>
                 <p className="text-swarm-tertiary">
                   Track performance metrics and swarm behavior in real-time
                 </p>
-              </div>
+              </GlassmorphCard>
 
-              <div className="glass p-6 rounded-lg border border-swarm-accent/20 hover:border-swarm-accent/50 transition-colors">
-                <div className="text-3xl mb-3">🔐</div>
+              <GlassmorphCard>
+                <div className="mb-3">
+                  <Icon name="shield" size={32} color="#A855F7" />
+                </div>
                 <h3 className="text-lg font-semibold text-white mb-2">Secure & Scalable</h3>
                 <p className="text-swarm-tertiary">
                   Enterprise-grade security for managing distributed systems
                 </p>
-              </div>
+              </GlassmorphCard>
             </motion.div>
 
             {/* CTA Buttons */}
@@ -179,14 +190,15 @@ export default function LandingPage() {
                 initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.8 }}
-                className="glass p-8 rounded-lg border border-swarm-accent/20"
               >
-                <h3 className="text-2xl font-semibold text-white mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-slate-400">
-                  {feature.description}
-                </p>
+                <GlassmorphCard>
+                  <h3 className="text-2xl font-semibold text-white mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-slate-400">
+                    {feature.description}
+                  </p>
+                </GlassmorphCard>
               </motion.div>
             ))}
           </div>
@@ -199,21 +211,23 @@ export default function LandingPage() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto text-center glass p-12 rounded-lg border border-swarm-accent/20"
+          className="max-w-4xl mx-auto text-center"
         >
-          <h2 className="text-4xl font-bold mb-6 glow-accent">
-            Ready to Control Your Swarms?
-          </h2>
-          <p className="text-xl text-slate-300 mb-8">
-            Join the revolution in distributed agent intelligence. Start building powerful
-            swarm applications today.
-          </p>
-          <button
-            onClick={() => router.push('/auth/signup')}
-            className="px-12 py-4 rounded-lg bg-swarm-accent/20 hover:bg-swarm-accent/30 text-swarm-accent hover:text-white transition-all duration-300 font-semibold border border-swarm-accent/50 hover:border-swarm-accent text-lg"
-          >
-            Start Your Free Trial
-          </button>
+          <GlassmorphCard>
+            <h2 className="text-4xl font-bold mb-6 glow-accent">
+              Ready to Control Your Swarms?
+            </h2>
+            <p className="text-xl text-slate-300 mb-8">
+              Join the revolution in distributed agent intelligence. Start building powerful
+              swarm applications today.
+            </p>
+            <button
+              onClick={() => router.push('/auth/signup')}
+              className="px-12 py-4 rounded-lg bg-swarm-accent/20 hover:bg-swarm-accent/30 text-swarm-accent hover:text-white transition-all duration-300 font-semibold border border-swarm-accent/50 hover:border-swarm-accent text-lg"
+            >
+              Start Your Free Trial
+            </button>
+          </GlassmorphCard>
         </motion.div>
       </section>
 

@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Icon from '@/components/Icon';
 import SwarmVisualizer from '@/components/SwarmVisualizer';
 import RoadmapEditor from '@/components/RoadmapEditor';
 import TaskMonitor from '@/components/TaskMonitor';
@@ -27,9 +28,12 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             className="flex items-center justify-between"
           >
-            <div>
-              <h1 className="text-4xl font-bold glow-accent">⚡ SyncPulse</h1>
-              <p className="text-swarm-tertiary text-sm mt-1">Agent Swarm Commander</p>
+            <div className="flex items-center gap-3">
+              <Icon name="pulse" size={40} color="#A855F7" />
+              <div>
+                <h1 className="text-4xl font-bold glow-accent">SyncPulse</h1>
+                <p className="text-swarm-tertiary text-sm mt-1">Agent Swarm Commander</p>
+              </div>
             </div>
             <div className="text-right flex flex-col items-end gap-2">
               <VersionBadge variant="normal" showBuildNumber={false} />

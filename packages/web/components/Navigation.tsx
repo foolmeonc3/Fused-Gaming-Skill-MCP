@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter, usePathname } from 'next/navigation';
 import { Menu, X, ChevronDown, LogOut, LayoutDashboard } from 'lucide-react';
 import VersionBadge from './VersionBadge';
+import Icon from './Icon';
 
 interface NavigationProps {
   isAuthenticated?: boolean;
@@ -76,7 +77,7 @@ export default function Navigation({
             className="flex cursor-pointer items-center gap-2"
             onClick={() => router.push('/')}
           >
-            <div className="text-2xl font-bold glow-accent">⚡</div>
+            <Icon name="pulse" size={28} color="#A855F7" />
             <div>
               <div className="text-lg font-bold text-white">SyncPulse</div>
               {isDashboard && (
