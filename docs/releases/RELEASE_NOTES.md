@@ -1,258 +1,122 @@
-# Release Notes - LIMJ Skill Launch 2026-04-18
+# Release Notes - v1.0.6
 
-## 1.0.4 - 2026-04-18 (LinkedIn Master Journalist Launch)
-
-### Overview
-This release introduces the LinkedIn Master Journalist (LIMJ) skill v1.0, enabling autonomous generation of publication-ready LinkedIn articles, dual social posts, and branded cover images.
-
-### What's New
-
-#### 🚀 LinkedIn Master Journalist (LIMJ) Skill
-- **Article Generation**: 1,200–1,800 word articles (7-section structure: Hook → Problem → Conventional → Alternative → Nuance → ROI → CTA)
-- **Social Posts**: Dual variants (personal profile + company page) with hashtag strategy and engagement framework
-- **Cover Images**: Self-contained HTML covers (1200×627px) with PNG export via html2canvas
-- **Autonomous Operation**: Asks clarifying questions, never assumes context
-- **Quality Gates**: Vocabulary enforcement, source validation, voice authenticity checks
-
-#### 📚 Documentation
-- `LIMJ/LIMJ_System_Prompt.md` — Full executable system prompt (~8,500 words)
-- `LIMJ/README.md` — Skill overview and features
-- `LIMJ/quickstart.md` — Step-by-step usage guide
-- `LIMJ/CHANGELOG.md` — Version history
-- `LIMJ/guidelines/` — 4 reference docs (vocabulary, colors, typography, hashtags)
-- `LIMJ/templates/` — 5 template files (examples + blanks)
-- `docs/skills/LIMJ.md` — Comprehensive skills documentation
-- Updated main README with LIMJ section and quick start
-
-#### 🔧 Technical Updates
-- Fixed npm scope from `@fused-gaming/` to `@h4shed/` across all packages (98 files)
-- Added LIMJ generated output rules to `.gitignore`
-- Updated roadmap and release communication templates
-- `@h4shed/skill-linkedin-master-journalist` ready for publish
-
-### Testing
-- ✅ Tested with real content brief (remote-first engineering article)
-- ✅ Generated publication-ready Article.md (1,189 words, all quality gates passed)
-- ✅ Generated dual Posts.md variants with hashtag research
-- ✅ Generated functional Cover.html with PNG export
-- ✅ All vocabulary rules enforced (no banned words)
-- ✅ All sources cited and claims defensible
-
-### Known Limitations
-- Cover.html uses html2canvas (client-side rendering—may have CORS issues with external images)
-- Hashtag volume data requires live LinkedIn search (not automated)
-- Web search for article stats requires Claude with web access
-
-### Migration Notes
-- All `@fused-gaming/*` package references have been corrected to `@h4shed/*`
-- Rebuild and reinstall dependencies to resolve module resolution errors
-- LIMJ documentation is separate from the TypeScript skill package but references the same system prompt
-
-### Next Steps
-- Publish `@h4shed/skill-linkedin-master-journalist` to npm
-- Gather user feedback on LIMJ quality and feature gaps
-- Plan serverless PNG generation (Playwright) for more reliable cover export
-- Add LinkedIn analytics integration for post performance monitoring
-
----
+**Release Date**: May 16, 2026
 
 ## Overview
-This patch release (`v1.0.3`) stabilizes GitHub Actions Node.js runtime usage for testing and release automation documentation consistency.
 
-## Highlights
-- Updated test workflow matrix from `20.x/24.x` to `20.x/22.x` for active LTS compatibility.
-- Updated GitHub release workflow to `actions/checkout@v5` and added explicit Node setup (`actions/setup-node@v5`, `22.x`).
-- Synchronized release-facing docs and metadata with `v1.0.3`.
+This release adds enhanced authentication and security features, including JWT-based session management for serverless deployments, improved form wiring for contact and signup pages, and public route accessibility for marketing pages.
 
-## Overview
-This patch release (`v1.0.3`) stabilizes GitHub Actions Node.js runtime usage for testing and release automation documentation consistency.
+## Features
 
-## Highlights
-- Updated test workflow matrix from `20.x/24.x` to `20.x/22.x` for active LTS compatibility.
-- Updated GitHub release workflow to `actions/checkout@v5` and added explicit Node setup (`actions/setup-node@v5`, `22.x`).
-- Synchronized release-facing docs and metadata with `v1.0.3`.
+### Authentication & Security
+- **JWT-Based Sessions**: Implemented serverless-compatible JWT session tokens with signature verification and expiration handling
+- **Rate Limiting**: Added rate limiting middleware for API endpoints (`/api/contact-sales`, `/api/auth/signup`)
+- **Cryptographic Randomness**: Enhanced token generation using secure crypto randomness via `crypto.getRandomValues()`
+- **Session Store**: Improved in-memory session management with user creation and authentication capabilities
 
-## 1.0.3 - 2026-04-16 (Lockfile + Issue Specification Sync)
+### Forms & Public Routes
+- **Contact Sales Form**: Wire form submission to `/api/contact-sales` endpoint with name, email, company, message, and agent count fields
+- **Signup Form**: Fully wired signup page that creates user accounts and redirects to login on success
+- **Public Routes**: Added `/sales`, `/contact-sales` to accessible marketing pages without authentication
+- **API Accessibility**: Public endpoints for contact inquiries and user signup
 
-### Overview
-This patch release aligns planning/specification docs with active milestone issues and refreshes repository version metadata.
+### API Endpoints
+- **POST /api/contact-sales**: Accepts contact inquiries with validation and in-memory storage
+- **POST /api/auth/signup**: Creates new user accounts with password validation and JWT session token generation
+- **Middleware Protection**: Updated `middleware.ts` with proper route allowlisting for public pages and APIs
 
-### Included in this update
-- Added issue-level specification criteria to roadmap milestone issue buckets.
-- Updated PR #51 checklist with explicit completion checkboxes and required evidence fields.
-- Synchronized version references to `1.0.3` across release metadata and README badges.
-- Re-ran lockfile metadata synchronization (`npm install --package-lock-only --ignore-scripts`).
+## Migration Guide
 
-### Known limitations
-- Full `npm ci` install validation remains runtime-dependent; this environment can stall under proxy/network constraints.
+### For Users
+1. No breaking changes to existing functionality
+2. Session tokens now work across serverless deployments
+3. Marketing pages (`/sales`, `/contact-sales`) are now publicly accessible
 
----
+### For Developers
+1. **Session Management**: Use JWT tokens stored in `sessionToken` cookie (httpOnly recommended in production)
+2. **Rate Limiting**: Check `@/lib/rate-limiter` for configuring rate limits by endpoint
+3. **Auth Flows**: 
+   - Signup: POST to `/api/auth/signup` with `name`, `email`, `password`
+   - Login: Existing `/api/auth/login` endpoint
+   - Session Verification: Middleware validates JWT signature and expiration
 
-## 1.0.3 - 2026-04-16 (Lockfile + Issue Specification Sync)
-
-### Overview
-This patch release aligns planning/specification docs with active milestone issues and refreshes repository version metadata.
-
-### Included in this update
-- Added issue-level specification criteria to roadmap milestone issue buckets.
-- Updated PR #51 checklist with explicit completion checkboxes and required evidence fields.
-- Synchronized version references to `1.0.3` across release metadata and README badges.
-- Re-ran lockfile metadata synchronization (`npm install --package-lock-only --ignore-scripts`).
-
-### Known limitations
-- Full `npm ci` install validation remains runtime-dependent; this environment can stall under proxy/network constraints.
-
----
-
-## 1.0.1 - 2026-04-16 (PR #51 Merge-Readiness Update)
-
-### Overview
-This maintenance release prepares the repository for PR #51 merge approval by synchronizing version metadata and release-planning documentation.
-## Overview
-This patch release (`v1.0.3`) stabilizes GitHub Actions Node.js runtime usage for testing and release automation documentation consistency.
-
-## Highlights
-- Updated test workflow matrix from `20.x/24.x` to `20.x/22.x` for active LTS compatibility.
-- Updated GitHub release workflow to `actions/checkout@v5` and added explicit Node setup (`actions/setup-node@v5`, `22.x`).
-- Synchronized release-facing docs and metadata with `v1.0.3`.
-
-## Validation Steps
-1. Re-run Test workflow matrix jobs for Node 20 and 22.
-2. Re-run release workflow dispatch to ensure the updated action/runtime path executes cleanly.
-
----
-
-# Release Notes - Production Deployment 2026-04-02
-
-## Overview
-This release represents the complete production deployment of the Fused Gaming MCP with comprehensive dependency updates, security hardening, and build verification.
-
-## Major Changes
-
-### 🔐 Security Hardening
-- **Fixed 7 high-severity vulnerabilities**
-  - Resolved ReDoS vulnerability in minimatch
-  - Updated @modelcontextprotocol/sdk to 1.29.0
-  - Upgraded @typescript-eslint from 6.x to 8.58.0
-  - Upgraded eslint from 8.x to 10.1.0
-- **Current Security Status: 0 vulnerabilities**
-
-### 📦 Dependency Management
-- Generated `package-lock.json` for reproducible builds
-- Converted pnpm workspace:* protocol to npm-compatible format
-- All 11 workspace packages verified and resolved
-- Node.js requirement: >=20.0.0
-- npm requirement: >=8.0.0
-
-### ✅ Build & Verification
-- **All builds passing** - 0 compilation errors
-- Fixed TypeScript errors in CLI and core server
-- Corrected yargs terminal width handling
-- Fixed MCP Server constructor parameters
-- Verified all 8 skill packages build successfully
-
-### 📚 Documentation
-- Comprehensive API reference (API_REFERENCE.md)
-- Architecture overview (ARCHITECTURE.md)
-- Usage examples (EXAMPLES.md)
-- Skills guide (SKILLS_GUIDE.md)
-- Contributing guidelines (CONTRIBUTING.md)
-- Branching strategy documentation (docs/process/BRANCHING_STRATEGY.md)
-
-### 🧪 Testing
-- Test framework prepared across all packages
-- CI/CD workflows configured
-- Pre-deployment validator skill available
+### Environment Setup
+- Ensure `JWT_SECRET` environment variable is set (uses `dev-secret-change-in-production` as fallback)
+- For production, set strong JWT secret and use secure cookie flags
+- Rate limiter uses memory storage; consider Redis for distributed deployments
 
 ## Technical Details
 
-### Commit Highlights
-- `981fea2` - chore: Fix dependencies, security vulnerabilities, and build issues
-- `a3b602d` - docs: add comprehensive session summary and completion report
-- `b5a2528` - Merge: Complete all 3 priority deliverables
+### JWT Implementation
+- **Algorithm**: HMAC-SHA256 for token signing
+- **Structure**: Header.Payload.Signature (standard JWT format)
+- **Validation**: Signature verification + expiration time check
+- **Payload**: User ID, email, and standard JWT claims (iat, exp)
 
-### Package Updates
-```
-@typescript-eslint/eslint-plugin: ^8.58.0
-@typescript-eslint/parser: ^8.58.0
-eslint: ^10.1.0
-@modelcontextprotocol/sdk: latest
-```
+### Session Token Lifecycle
+1. User signs up or logs in
+2. Server generates JWT with 1-hour expiration
+3. Token stored in `sessionToken` cookie
+4. Middleware verifies token on each request
+5. Expired tokens redirect to login
 
-### Verification Checklist
-- ✅ Dependencies installed
-- ✅ Package-lock generated
-- ✅ All builds verified
-- ✅ Security audit: 0 vulnerabilities
-- ✅ Documentation reviewed
-- ✅ Changes committed to main
-- ✅ Changes pushed to origin/main
+### Rate Limiting
+- **Contact Sales**: Limited per IP/user to prevent abuse
+- **Signup**: Limited per IP to prevent account enumeration
+- **Configuration**: Adjustable per endpoint in `lib/rate-limiter.ts`
 
-## Skills Included
-1. **Algorithmic Art** - Generate creative algorithmic visualizations
-2. **ASCII Mockup** - Create ASCII-based UI mockups
-3. **Canvas Design** - Generate SVG designs
-4. **Frontend Design** - Create React components
-5. **MCP Builder** - Scaffold new MCP skills
-6. **Pre-Deploy Validator** - Validate deployments
-7. **Skill Creator** - Create new skills dynamically
-8. **Theme Factory** - Generate UI themes
+## Files Modified
 
-## Deployment Instructions
+- `VERSION.json` - Updated to v1.0.6
+- `package.json` - Updated to v1.0.6
+- `packages/web/middleware.ts` - Enhanced PUBLIC_ROUTES configuration
+- `packages/web/components/ContactForm.tsx` - Added form submission to API
+- `packages/web/app/auth/signup/page.tsx` - Wired signup form to `/api/auth/signup`
+- `packages/web/app/api/contact-sales/route.ts` - Enhanced with rate limiting
+- `packages/web/app/api/auth/signup/route.ts` - Complete implementation with JWT
 
-### Prerequisites
-- Node.js 20.0.0 or higher
-- npm 8.0.0 or higher
+## Security Considerations
 
-### Installation
-```bash
-npm install
-```
+- All sessions use secure JWT signatures
+- Rate limiting prevents brute force and enumeration attacks
+- Middleware enforces authentication on protected routes
+- Public routes explicitly allowlisted for clarity
+- CORS and security headers configured for API endpoints
 
-### Build
-```bash
-npm run build
-```
+## Performance Improvements
 
-### Development
-```bash
-npm run dev
-```
+- Serverless-compatible JWT validation (no database lookup required)
+- In-memory session storage for single-instance deployments
+- Efficient rate limiter using memory-based tracking
 
-### Type Checking
-```bash
-npm run typecheck
-```
+## Known Limitations
 
-### Linting
-```bash
-npm run lint
-```
-
-## Production Readiness
-This release is **production-ready** with:
-- ✅ Zero security vulnerabilities
-- ✅ All dependencies locked and verified
-- ✅ Complete build verification
-- ✅ Comprehensive documentation
-- ✅ CI/CD workflows configured
-
-## Breaking Changes
-None - This is a maintenance and security-focused release.
-
-## Known Issues
-None reported at this time.
+- In-memory storage for contact submissions (not persistent)
+- Rate limiter uses memory (consider Redis for scaled deployments)
+- Default JWT secret in development only
 
 ## Next Steps
-1. Deploy to production environment
-2. Monitor error logs and performance
-3. Gather user feedback on new skills
-4. Plan next feature development cycle
-5. Split and monitor release automation:
-   - npm publishing in `.github/workflows/publish.yml`
-   - GitHub Releases in `.github/workflows/github-release.yml`
+
+1. **Database Integration**: Replace in-memory storage with persistent database
+2. **Email Notifications**: Connect contact form to email service
+3. **Redis Rate Limiter**: Implement distributed rate limiting for multi-instance deployments
+4. **Analytics**: Track signup and contact form conversion metrics
+5. **A/B Testing**: Test marketing page variants and forms
+
+## Contributors
+
+This release includes improvements from the PR #166 auth and security enhancement work.
+
+## Support
+
+For issues or questions:
+- GitHub Issues: https://github.com/fused-gaming/fused-gaming-skill-mcp/issues
+- Documentation: `/docs` directory
+- Security: support@vln.gg
 
 ---
-**Release Date:** April 2, 2026  
-**Status:** Ready for Production  
-**Reviewer:** Automated Deployment Pipeline
+
+**Build Number**: 1007  
+**Node Minimum**: 20.0.0  
+**NPM Minimum**: 8.0.0  
+**TypeScript**: 5.3.2

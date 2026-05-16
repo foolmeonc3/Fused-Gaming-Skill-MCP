@@ -239,17 +239,17 @@ Open your browser to: **http://localhost:3333**
 - Begin reconnaissance phase
 
 ### 4. Configure Deployment
-To deploy to skill.vln.gg, see: [docs/SKILL_VLN_GG_DEPLOYMENT.md](./docs/SKILL_VLN_GG_DEPLOYMENT.md)
+To deploy to skill.vln.gg, see: [docs/SKILL_VLN_GG_DEPLOYMENT.md](../SKILL_VLN_GG_DEPLOYMENT.md)
 
 ---
 
 ## 📖 Documentation
 
 - **Orchestration Setup:** This file
-- **SyncPulse Toolkit:** [docs/syncpulse-toolkit/00_START_HERE.md](./docs/syncpulse-toolkit/00_START_HERE.md)
-- **API Deployment:** [docs/SKILL_VLN_GG_DEPLOYMENT.md](./docs/SKILL_VLN_GG_DEPLOYMENT.md)
-- **Executive Summary:** [docs/syncpulse-toolkit/01_EXECUTIVE_SUMMARY.md](./docs/syncpulse-toolkit/01_EXECUTIVE_SUMMARY.md)
-- **Implementation Roadmap:** [docs/syncpulse-toolkit/03_IMPLEMENTATION_ROADMAP.md](./docs/syncpulse-toolkit/03_IMPLEMENTATION_ROADMAP.md)
+- **SyncPulse Toolkit:** [docs/syncpulse-toolkit/00_START_HERE.md](../syncpulse-toolkit/00_START_HERE.md)
+- **API Deployment:** [docs/SKILL_VLN_GG_DEPLOYMENT.md](../SKILL_VLN_GG_DEPLOYMENT.md)
+- **Executive Summary:** [docs/syncpulse-toolkit/01_EXECUTIVE_SUMMARY.md](../syncpulse-toolkit/01_EXECUTIVE_SUMMARY.md)
+- **Implementation Roadmap:** [docs/syncpulse-toolkit/03_IMPLEMENTATION_ROADMAP.md](../syncpulse-toolkit/03_IMPLEMENTATION_ROADMAP.md)
 
 ---
 

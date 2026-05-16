@@ -49,7 +49,7 @@
 
 **When vulnerabilities reported:**
 - Follow [VULNERABILITY_MANAGEMENT.md](./VULNERABILITY_MANAGEMENT.md) Section 3 (Triage)
-- Coordinate disclosure per [SECURITY_POLICY.md](../SECURITY_POLICY.md) Section 1
+- Coordinate disclosure per [SECURITY_POLICY.md](../SECURITY.md) Section 1
 
 ### 🏗️ Architects
 
@@ -62,7 +62,7 @@
 
 **During releases:**
 - Reference [VULNERABILITY_MANAGEMENT.md](./VULNERABILITY_MANAGEMENT.md) Section 5 (Patch Release Process)
-- Follow disclosure timeline in [SECURITY_POLICY.md](../SECURITY_POLICY.md)
+- Follow disclosure timeline in [SECURITY_POLICY.md](../SECURITY.md)
 
 ---
 
@@ -72,7 +72,7 @@
 → [SECURE_PATTERNS.md](./SECURE_PATTERNS.md) Section 1
 
 ### "I found a potential vulnerability, what do I do?"
-→ [SECURITY_POLICY.md](../SECURITY_POLICY.md) Section 1 (Reporting)
+→ [SECURITY_POLICY.md](../SECURITY.md) Section 1 (Reporting)
 
 ### "How do I authenticate users securely?"
 → [SECURE_PATTERNS.md](./SECURE_PATTERNS.md) Section 3
@@ -207,13 +207,13 @@ Appendix: Severity Guide
 4. Reviewer approves
 
 ### Vulnerability Reported
-1. Security team receives report (follows [SECURITY_POLICY.md](../SECURITY_POLICY.md) Section 1)
+1. Security team receives report (follows [SECURITY_POLICY.md](../SECURITY.md) Section 1)
 2. Team triages using [VULNERABILITY_MANAGEMENT.md](./VULNERABILITY_MANAGEMENT.md) Section 3
 3. Fix is developed
 4. PR created with `[SECURITY]` tag
 5. Fast-track review using [SECURITY_PR_CHECKLIST.md](./SECURITY_PR_CHECKLIST.md)
 6. Fix released per [VULNERABILITY_MANAGEMENT.md](./VULNERABILITY_MANAGEMENT.md) Section 5
-7. Disclosure coordinated per [SECURITY_POLICY.md](../SECURITY_POLICY.md) Section 1.3
+7. Disclosure coordinated per [SECURITY_POLICY.md](../SECURITY.md) Section 1.3
 
 ### Regular Security Audit
 1. Auditor reads [SECURITY_AUDIT_GUIDELINES.md](./SECURITY_AUDIT_GUIDELINES.md)
@@ -268,7 +268,7 @@ Escalate to security team if:
 
 **Security Team**: security@fused-gaming.dev
 
-**Vulnerability Report**: Use responsible disclosure in [SECURITY_POLICY.md](../SECURITY_POLICY.md)
+**Vulnerability Report**: Use responsible disclosure in [SECURITY_POLICY.md](../SECURITY.md)
 
 **Questions**: Open discussion in #security channel (if available)
 

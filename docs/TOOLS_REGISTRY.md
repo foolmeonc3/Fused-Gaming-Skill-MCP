@@ -413,7 +413,7 @@ All upstream tools: Respect original licenses (included in wrapper docs)
 ## 🔗 Related Documentation
 
 - [TOOL_INTEGRATIONS_ORCHESTRATION.md](./TOOL_INTEGRATIONS_ORCHESTRATION.md)
-- [ORCHESTRATION_PANEL.md](../ORCHESTRATION_PANEL.md)
+- [ORCHESTRATION_PANEL.md](./architecture/ORCHESTRATION_PANEL.md)
 - [NPM_PUBLISHING.md](./NPM_PUBLISHING.md)
 - [ARCHITECTURE.md](./ARCHITECTURE.md)
 

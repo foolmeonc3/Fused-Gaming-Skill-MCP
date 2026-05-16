@@ -353,7 +353,7 @@ npm run publish:packages
 
 ### Automated Publishing (CI/CD)
 
-See [NPM_PUBLISHING.md](../NPM_PUBLISHING.md) for GitHub Actions setup.
+See [NPM_PUBLISHING.md](./NPM_PUBLISHING.md) for GitHub Actions setup.
 
 ## Breaking Changes
 
