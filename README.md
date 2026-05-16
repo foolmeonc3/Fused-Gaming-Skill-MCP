@@ -18,36 +18,12 @@
 
 ## 🚀 The Ultimate AI-Powered Skill Ecosystem
 
-**Fused Gaming MCP** is a modular, production-ready Model Context Protocol server with **21 published-ready skills in-repo** plus core infrastructure packages, including enterprise-grade agent orchestration with SyncPulse and ethical hacking frameworks.
+**Fused Gaming MCP** is a modular, production-ready Model Context Protocol server with **61 total packages** organized as:
+- **31 reusable AI skills** (across 11 functional categories)
+- **28 specialized MCP tools**
+- **2 core infrastructure packages**
 
-### 🎯 Your Creative Arsenal Includes:
-
-| Skill | Purpose | Status |
-|-------|---------|--------|
-| **algorithmic-art** | Generative art using p5.js | ✅ |
-| **ascii-mockup** | Mobile-first wireframe designs | ✅ |
-| **canvas-design** | SVG-based visual design | ✅ |
-| **frontend-design** | HTML/CSS component design | ✅ |
-| **theme-factory** | Design system generation | ✅ |
-| **mcp-builder** | MCP server scaffolding | ✅ |
-| **pre-deploy-validator** | Deployment validation | ✅ |
-| **skill-creator** | Custom skill builder | ✅ |
-| **underworld-writer** | Character/world narrative generation | ✅ |
-| **agentic-flow-devkit** | Agentic orchestration GUI + trailer A/B-roll planning | 🆕 |
-| **linkedin-master-journalist** | LinkedIn article + dual posts + branded covers | ✅ |
-| **tailwindcss-style-builder** | Utility-first styling and design system builder | 📋 |
-| **storybook-component-library** | Component documentation and visual testing | 📋 |
-| **playwright-test-automation** | End-to-end testing automation framework | 📋 |
-| **vite-module-bundler** | Next-generation JavaScript module bundler | 📋 |
-| **typescript-toolchain** | Advanced TypeScript configuration and analysis | 📋 |
-| **vercel-nextjs-deployment** | Vercel deployment and Next.js integration | 📋 |
-| **style-dictionary-system** | Design tokens and cross-platform theming | 📋 |
-| **nft-generative-art** | NFT artwork generation and blockchain assets | 📋 |
-| **smart-contract-tools** | Hardhat, Truffle, and Foundry integration | 📋 |
-| **syncpulse** | Multi-agent coordination + 9 email workflow templates | ✅ |
-| **syncpulse-hub** | SyncPulse orchestration dashboard and agent management | ✅ |
-
-**Core skills are production-ready; new tools are in active scaffolding** ✨
+All skills, tools, and infrastructure are documented with individual READMEs in their respective package directories. This root README provides a focused navigation index and quick-start guide.
 
 ### 🐝 SyncPulse Agent Orchestration (v0.2.2)
 **SyncPulse** brings enterprise-grade multi-agent orchestration with:
@@ -62,50 +38,12 @@
 - Task queue management and load visualization
 - Integration with SyncPulse v0.2.2+ for seamless orchestration
 
-### 📦 Publishing now / next wave
+### 📌 Dual Naming Convention
+The ecosystem uses intentional dual naming to separate internal development from published packages:
+- **Internal Workspace Names** (in git): `@fused-gaming/skill-*` or `@fused-gaming/tool-*`
+- **Published NPM Names**: `@h4shed/skill-*` or `@h4shed/tool-*`
 
-**Published now (`@h4shed`)**
-- `mcp-cli`, `mcp-core`,
-- `skill-algorithmic-art`,
-- `skill-ascii-mockup`,
-- `skill-canvas-design`,
-- `skill-frontend-design`,
-- `skill-mcp-builder`,
-- `skill-pre-deploy-validator`,
-- `skill-skill-creator`,
-- `skill-theme-factory`,
-- `skill-underworld-writer`,
-- `skill-linkedin-master-journalist`,
-- `skill-syncpulse` ⭐ (v0.2.0 — 9 email workflow templates)
-- `mcp-cli`, `mcp-core`
-- `skill-algorithmic-art`, `skill-ascii-mockup`, `skill-canvas-design`
-- `skill-frontend-design`, `skill-mcp-builder`, `skill-pre-deploy-validator`
-- `skill-skill-creator`, `skill-theme-factory`, `skill-underworld-writer`
-- `skill-linkedin-master-journalist`
-- `skill-syncpulse` ⭐ (v0.2.2 — 100-500x vector search speedup, LRU cache, work-stealing load balancing)
-- `syncpulse-hub` ⭐ (v0.1.1 — Agent orchestration dashboard and monitoring)
-
-**Scaffolded and queued for publish (`@h4shed`)**
-- `skill-mermaid-terminal`,
-- `skill-ux-journeymapper`,
-- `skill-svg-generator`,
-- `skill-project-manager`,
-- `skill-project-status-tool`,
-- `skill-daily-review`,
-- `multi-account-session-tracking`,
-- `skill-linkedin-master-journalist`,
-- `skill-tailwindcss-style-builder`,
-- `skill-storybook-component-library`,
-- `skill-playwright-test-automation`,
-- `skill-vite-module-bundler`,
-- `skill-typescript-toolchain`,
-- `skill-vercel-nextjs-deployment`,
-- `skill-style-dictionary-system`,
-- `skill-nft-generative-art`,
-- `skill-smart-contract-tools`,
-
-**🛠️ Development Tools (Scaffolded)**
-- `tool-release-manager` ⭐ (v1.0.0 NEW — Automated version bumping, release notes, and git tagging)
+This allows flexible internal development while maintaining a consistent, branded public presence on npm.
 
 ---
 
@@ -120,17 +58,6 @@ Transform your Claude workflow with meticulously crafted tools designed for:
 - ✔️ **AI Automation** — Streamline creative and technical workflows  
 
 **Trusted by:** Fused Gaming • VLN Security • Design Studios • AI Development Teams
-
----
-
-## 🚀 The Ultimate AI-Powered Skill Ecosystem
-
-**Fused Gaming MCP** is a modular, production-ready Model Context Protocol server with **61 total packages** organized as:
-- **29 reusable AI skills** (across 11 functional categories)
-- **24 specialized MCP tools**
-- **8 infrastructure packages**
-
-All skills, tools, and infrastructure are documented with individual READMEs in their respective package directories. This root README provides a focused navigation index and quick-start guide.
 
 ---
 
@@ -178,122 +105,174 @@ npm install \
 
 ---
 
-## 📚 Skills Index (29 Total)
+## 📚 Skills Index (31 Total)
 
 All skills include individual documentation in their respective directories at `packages/skills/<skill>/README.md`.
 
-### 🎨 Design (7 Skills)
+### 🎨 Design & Styling (8 Skills)
 
-| Package | Description | Location |
-|---------|-------------|----------|
-| agentic-flow-devkit | Agentic orchestration GUI + trailer A/B-roll planning | [docs](packages/skills/agentic-flow-devkit/) |
-| canvas-design | SVG-based visual design and asset generation | [docs](packages/skills/canvas-design/) |
-| frontend-design | HTML/CSS component design and prototyping | [docs](packages/skills/frontend-design/) |
-| style-dictionary-system | Design tokens and cross-platform theming | [docs](packages/skills/style-dictionary-system/) |
-| svg-generator | Scalable vector graphics generation | [docs](packages/skills/svg-generator/) |
-| tailwindcss-style-builder | Utility-first styling and design system builder | [docs](packages/skills/tailwindcss-style-builder/) |
-| theme-factory | Design system generation and customization | [docs](packages/skills/theme-factory/) |
+| Package | NPM Name | Description |
+|---------|----------|-------------|
+| agentic-flow-devkit | @h4shed/skill-agentic-flow-devkit | Agentic orchestration GUI + trailer A/B-roll planning |
+| canvas-design | @h4shed/skill-canvas-design | SVG-based visual design and asset generation |
+| frontend-design | @h4shed/skill-frontend-design | HTML/CSS component design and prototyping |
+| style-dictionary-system | @h4shed/skill-style-dictionary-system | Design tokens and cross-platform theming |
+| svg-generator | @h4shed/skill-svg-generator | Scalable vector graphics generation |
+| tailwindcss-style-builder | @h4shed/skill-tailwindcss-style-builder | Utility-first styling and design system builder |
+| theme-factory | @h4shed/skill-theme-factory | Design system generation and customization |
+| ux-journeymapper | @h4shed/skill-ux-journeymapper | User journey mapping and experience design |
 
-### 🎭 Generative Art (3 Skills)
+### 🎭 Generative Art & Blockchain (3 Skills)
 
-| Package | Description | Location |
-|---------|-------------|----------|
-| algorithmic-art | Generative art using p5.js | [docs](packages/skills/algorithmic-art/) |
-| nft-generative-art | NFT artwork generation and blockchain assets | [docs](packages/skills/nft-generative-art/) |
-| smart-contract-tools | Hardhat, Truffle, and Foundry integration | [docs](packages/skills/smart-contract-tools/) |
+| Package | NPM Name | Description |
+|---------|----------|-------------|
+| algorithmic-art | @h4shed/skill-algorithmic-art | Generative art using p5.js and procedural generation |
+| nft-generative-art | @h4shed/skill-nft-generative-art | NFT artwork generation and blockchain assets |
+| smart-contract-tools | @h4shed/skill-smart-contract-tools | Hardhat, Truffle, and Foundry integration |
 
-### 🛠️ General Purpose (7 Skills)
+### 🛠️ Build Tools & Bundling (4 Skills)
 
-| Package | Description | Location |
-|---------|-------------|----------|
-| ascii-mockup | Mobile-first wireframe designs | [docs](packages/skills/ascii-mockup/) |
-| playwright-test-automation | End-to-end testing automation framework | [docs](packages/skills/playwright-test-automation/) |
-| storybook-component-library | Component documentation and visual testing | [docs](packages/skills/storybook-component-library/) |
-| syncpulse | Multi-agent coordination + 9 email workflow templates | [docs](packages/skills/syncpulse/) |
-| syncpulse-hub | SyncPulse ecosystem integration platform | [docs](packages/skills/syncpulse-hub/) |
-| typescript-toolchain | Advanced TypeScript configuration and analysis | [docs](packages/skills/typescript-toolchain/) |
-| vite-module-bundler | Next-generation JavaScript module bundler | [docs](packages/skills/vite-module-bundler/) |
+| Package | NPM Name | Description |
+|---------|----------|-------------|
+| mermaid-terminal | @h4shed/skill-mermaid-terminal | Mermaid diagram generation and terminal rendering |
+| typescript-toolchain | @h4shed/skill-typescript-toolchain | Advanced TypeScript configuration and analysis |
+| vite-module-bundler | @h4shed/skill-vite-module-bundler | Next-generation JavaScript module bundler |
+| vercel-nextjs-deployment | @h4shed/skill-vercel-nextjs-deployment | Vercel deployment and Next.js integration |
 
-### 🔧 MCP Tools (2 Skills)
+### 🧪 Testing & Validation (2 Skills)
 
-| Package | Description | Location |
-|---------|-------------|----------|
-| mcp-builder | MCP server scaffolding and code generation | [docs](packages/skills/mcp-builder/) |
-| skill-creator | Custom skill builder and framework | [docs](packages/skills/skill-creator/) |
+| Package | NPM Name | Description |
+|---------|----------|-------------|
+| playwright-test-automation | @h4shed/skill-playwright-test-automation | End-to-end testing automation framework |
+| pre-deploy-validator | @h4shed/skill-pre-deploy-validator | Deployment validation and safety checks |
+
+### 📚 Documentation & Components (2 Skills)
+
+| Package | NPM Name | Description |
+|---------|----------|-------------|
+| storybook-component-library | @h4shed/skill-storybook-component-library | Component documentation and visual testing |
+| ascii-mockup | @h4shed/skill-ascii-mockup | Mobile-first wireframe designs |
+
+### 🔧 MCP Scaffolding (2 Skills)
+
+| Package | NPM Name | Description |
+|---------|----------|-------------|
+| mcp-builder | @h4shed/skill-mcp-builder | MCP server scaffolding and code generation |
+| skill-creator | @h4shed/skill-skill-creator | Custom skill builder and framework |
 
 ### 📝 Content Creation (2 Skills)
 
-| Package | Description | Location |
-|---------|-------------|----------|
-| linkedin-master-journalist | LinkedIn article + dual posts + branded covers | [docs](packages/skills/linkedin-master-journalist/) |
-| underworld-writer | Character/world narrative generation | [docs](packages/skills/underworld-writer/) |
+| Package | NPM Name | Description |
+|---------|----------|-------------|
+| linkedin-master-journalist | @h4shed/skill-linkedin-master-journalist | LinkedIn article + dual posts + branded covers |
+| underworld-writer-skill | @h4shed/skill-underworld-writer | Character/world narrative generation |
 
-### 📊 Visualization (1 Skill)
+### 🤖 Agent Orchestration (2 Skills)
 
-| Package | Description | Location |
-|---------|-------------|----------|
-| mermaid-terminal | Mermaid diagram generation and terminal rendering | [docs](packages/skills/mermaid-terminal/) |
+| Package | NPM Name | Description |
+|---------|----------|-------------|
+| syncpulse | @h4shed/skill-syncpulse | Multi-agent coordination + 9 email workflow templates |
+| syncpulse-hub | @h4shed/skill-syncpulse-hub | SyncPulse orchestration dashboard and agent management |
 
-### 🎯 Session Management (1 Skill)
+### 📊 Project Management (3 Skills)
 
-| Package | Description | Location |
-|---------|-------------|----------|
-| multi-account-session-tracking | Multi-account session management and persistence | [docs](packages/skills/multi-account-session-tracking/) |
+| Package | NPM Name | Description |
+|---------|----------|-------------|
+| project-manager | @h4shed/skill-project-manager | Project planning and execution orchestration |
+| project-manager-skill | @h4shed/skill-project-manager-skill | Project workflow coordination and automation |
+| project-status-tool | @h4shed/skill-project-status-tool | Project status tracking and reporting |
 
-### 💻 Development (2 Skills)
+### 🎯 Productivity & Session Management (2 Skills)
 
-| Package | Description | Location |
-|---------|-------------|----------|
-| pre-deploy-validator | Deployment validation and safety checks | [docs](packages/skills/pre-deploy-validator/) |
-| vercel-nextjs-deployment | Vercel deployment and Next.js integration | [docs](packages/skills/vercel-nextjs-deployment/) |
-
-### 📋 Project Management (2 Skills)
-
-| Package | Description | Location |
-|---------|-------------|----------|
-| project-manager | Project planning and execution orchestration | [docs](packages/skills/project-manager/) |
-| project-status-tool | Project status tracking and reporting | [docs](packages/skills/project-status-tool/) |
-
-### 👥 User Experience (1 Skill)
-
-| Package | Description | Location |
-|---------|-------------|----------|
-| ux-journeymapper | User journey mapping and experience design | [docs](packages/skills/ux-journeymapper/) |
-
-### ⚡ Productivity (1 Skill)
-
-| Package | Description | Location |
-|---------|-------------|----------|
-| daily-review | Daily review and reflection automation | [docs](packages/skills/daily-review/) |
+| Package | NPM Name | Description |
+|---------|----------|-------------|
+| daily-review-skill | @h4shed/skill-daily-review | Daily review and reflection automation |
+| multi-account-session-tracking | @h4shed/skill-multi-account-session-tracking | Multi-account session management and persistence |
+| multi-account-session-tracking-skill | @h4shed/skill-multi-account-session-tracking-skill | Advanced session tracking across platforms |
 
 ---
 
-## 🛠️ MCP Tools (24 Total)
+## 🛠️ MCP Tools (28 Total)
 
-For complete MCP tools documentation, including features, tool definitions, and agent flows, see [packages/tools/README.md](packages/tools/).
+All tools include individual documentation in their respective directories at `packages/tools/tool-*/README.md`.
 
-**Tool Categories:**
-- API & Integration Tools
-- Code Generation Tools
-- Data Processing Tools
-- Automation Tools
-- Analysis & Validation Tools
-- And more...
+### 📦 Build & Bundling Tools (7 Tools)
+
+| Package | NPM Name | Description |
+|---------|----------|-------------|
+| tool-esbuild | @h4shed/tool-esbuild | Fast JavaScript bundler with TypeScript support |
+| tool-rollup | @h4shed/tool-rollup | Module bundler for JavaScript libraries |
+| tool-tsup | @h4shed/tool-tsup | Minimal TypeScript to JavaScript transpiler |
+| tool-vite | @h4shed/tool-vite | Next-generation frontend build tool |
+| tool-vitepress | @h4shed/tool-vitepress | Static site generator powered by Vite |
+| tool-webpack | @h4shed/tool-webpack | Powerful module bundler for applications |
+| tool-docusaurus | @h4shed/tool-docusaurus | Documentation site generator |
+
+### 🎨 Style & CSS Tools (6 Tools)
+
+| Package | NPM Name | Description |
+|---------|----------|-------------|
+| tool-postcss | @h4shed/tool-postcss | CSS processor with plugin ecosystem |
+| tool-sass | @h4shed/tool-sass | CSS preprocessor with nesting and variables |
+| tool-less | @h4shed/tool-less | Dynamic stylesheet language |
+| tool-cssnano | @h4shed/tool-cssnano | CSS minifier and optimizer |
+| tool-tailwindcss | @h4shed/tool-tailwindcss | Utility-first CSS framework |
+| tool-style-dictionary | @h4shed/tool-style-dictionary | Design token management system |
+
+### 🧪 Testing & QA Tools (6 Tools)
+
+| Package | NPM Name | Description |
+|---------|----------|-------------|
+| tool-jest | @h4shed/tool-jest | JavaScript testing framework |
+| tool-vitest | @h4shed/tool-vitest | Vite-native unit testing framework |
+| tool-cypress | @h4shed/tool-cypress | End-to-end testing platform |
+| tool-playwright | @h4shed/tool-playwright | Cross-browser automation and testing |
+| tool-pa11y | @h4shed/tool-pa11y | Accessibility testing runner |
+| tool-axe-core | @h4shed/tool-axe-core | Accessibility engine and testing |
+
+### 📚 Documentation & Component Tools (4 Tools)
+
+| Package | NPM Name | Description |
+|---------|----------|-------------|
+| tool-storybook | @h4shed/tool-storybook | UI component development and documentation |
+| tool-typedoc | @h4shed/tool-typedoc | TypeScript documentation generator |
+| tool-markdown-it | @h4shed/tool-markdown-it | Markdown parser with plugins |
+| tool-husky | @h4shed/tool-husky | Git hooks framework |
+
+### 🔧 CLI & Automation Tools (3 Tools)
+
+| Package | NPM Name | Description |
+|---------|----------|-------------|
+| tool-commander | @h4shed/tool-commander | CLI framework for Node.js |
+| tool-inquirer | @h4shed/tool-inquirer | Interactive command-line prompts |
+| tool-ora | @h4shed/tool-ora | Elegant terminal spinners |
+
+### 📊 Analysis & Reporting Tools (2 Tools)
+
+| Package | NPM Name | Description |
+|---------|----------|-------------|
+| tool-istanbul | @h4shed/tool-istanbul | Code coverage analysis tool |
+| tool-release-manager | @h4shed/tool-release-manager | Automated version bumping and release notes |
 
 ---
 
-## 📦 Infrastructure Packages (8 Total)
+## 📦 Core Infrastructure Packages (2 Total)
 
-| Package | Purpose | Location |
-|---------|---------|----------|
-| **mcp-cli** | Command-line interface for MCP orchestration | [docs](packages/cli/) |
-| **mcp-core** | Core MCP framework and server runtime | [docs](packages/core/) |
-| **docs** | Comprehensive documentation and guides | [docs](packages/docs/) |
-| **web** | Web-based UI and dashboard components | [docs](packages/web/) |
-| **mermaid-terminal-skill** | Terminal-based Mermaid diagram rendering | [docs](packages/skills/mermaid-terminal-skill/) |
-| **daily-review-skill** | Daily review and reflection skill | [docs](packages/skills/daily-review-skill/) |
-| **underworld-writer-skill** | Underworld writer narrative generation | [docs](packages/skills/underworld-writer-skill/) |
-| **ux-journeymapper-skill** | User journey mapping and analysis | [docs](packages/skills/ux-journeymapper-skill/) |
+| Package | NPM Name | Purpose |
+|---------|----------|---------|
+| **cli** | @h4shed/mcp-cli | Command-line interface for MCP orchestration and skill management |
+| **core** | @h4shed/mcp-core | Core MCP framework, server runtime, and protocol implementation |
+
+### 🌟 New Packages in Development (4 Total)
+
+These packages are actively in development and will be published to npm:
+
+| Package | NPM Name (Target) | Description |
+|---------|----------|-------------|
+| **deploy-wizard** | @h4shed/skill-deploy-wizard | Interactive setup CLI for rapid MCP deployment |
+| **mcp-orchestrator** | @h4shed/skill-mcp-orchestrator | Agentic task coordination and workflow management |
+| **mvp-generator** | @h4shed/skill-mvp-generator | MVP generation service for rapid prototyping |
+| **templates** | @h4shed/templates | Reusable generation templates and scaffolding |
 
 ---
 
@@ -362,22 +341,34 @@ npm run publish:prepare          # Prepare versions for publish
 
 **Current Status:** `1.0.5` (Stable — Released 2026-04-27)
 
-### Published Packages (12)
-- `@h4shed/mcp-cli`, `@h4shed/mcp-core`
-- `@h4shed/skill-algorithmic-art`, `@h4shed/skill-ascii-mockup`, `@h4shed/skill-canvas-design`
-- `@h4shed/skill-frontend-design`, `@h4shed/skill-mcp-builder`, `@h4shed/skill-pre-deploy-validator`
-- `@h4shed/skill-skill-creator`, `@h4shed/skill-theme-factory`, `@h4shed/skill-underworld-writer`
+**Total Packages:** 61 (31 skills + 28 tools + 2 core)
 
-### Publishing Queue (9 Packages)
-- `@h4shed/skill-mermaid-terminal`
-- `@h4shed/skill-ux-journeymapper`
-- `@h4shed/skill-svg-generator`
-- `@h4shed/skill-project-manager`
-- `@h4shed/skill-project-status-tool`
-- `@h4shed/skill-daily-review`
-- `@h4shed/multi-account-session-tracking`
-- `@h4shed/skill-linkedin-master-journalist`
-- `@h4shed/skill-agentic-flow-devkit`
+### Published on npm (12 Packages)
+
+**Core Infrastructure:**
+- `@h4shed/mcp-cli` - Command-line orchestration interface
+- `@h4shed/mcp-core` - Core MCP framework
+
+**Published Skills:**
+- `@h4shed/skill-algorithmic-art` - Generative art using p5.js
+- `@h4shed/skill-ascii-mockup` - Mobile-first wireframe designs
+- `@h4shed/skill-canvas-design` - SVG-based visual design
+- `@h4shed/skill-frontend-design` - HTML/CSS component design
+- `@h4shed/skill-mcp-builder` - MCP server scaffolding
+- `@h4shed/skill-pre-deploy-validator` - Deployment validation
+- `@h4shed/skill-skill-creator` - Custom skill builder
+- `@h4shed/skill-theme-factory` - Design system generation
+- `@h4shed/skill-underworld-writer` - Character/world narrative generation
+- `@h4shed/skill-syncpulse` - Multi-agent orchestration (v0.2.2)
+- `@h4shed/skill-syncpulse-hub` - Agent orchestration dashboard (v0.1.1)
+
+### Scaffolded & Queued for Publishing (47 Packages)
+
+**Skills (19):** mermaid-terminal, ux-journeymapper, svg-generator, project-manager, project-manager-skill, project-status-tool, daily-review, multi-account-session-tracking (x2 variants), linkedin-master-journalist, tailwindcss-style-builder, storybook-component-library, playwright-test-automation, vite-module-bundler, typescript-toolchain, vercel-nextjs-deployment, style-dictionary-system, nft-generative-art, smart-contract-tools, and agentic-flow-devkit.
+
+**Tools (28):** tool-axe-core, tool-commander, tool-cssnano, tool-cypress, tool-docusaurus, tool-esbuild, tool-husky, tool-inquirer, tool-istanbul, tool-jest, tool-less, tool-markdown-it, tool-ora, tool-pa11y, tool-playwright, tool-postcss, tool-release-manager, tool-rollup, tool-sass, tool-storybook, tool-style-dictionary, tool-tailwindcss, tool-tsup, tool-typedoc, tool-vite, tool-vitepress, tool-vitest, and tool-webpack.
+
+**Infrastructure (4 New Packages):** deploy-wizard (skill-deploy-wizard), mcp-orchestrator (skill-mcp-orchestrator), mvp-generator (skill-mvp-generator), and templates.
 
 ### Release Workflow
 
