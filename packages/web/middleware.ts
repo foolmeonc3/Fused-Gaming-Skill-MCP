@@ -33,7 +33,7 @@ const PROTECTED_API_ROUTES = [
 const PROTECTED_PAGE_ROUTES = ['/dashboard'];
 
 // JWT secret for verifying tokens (in production, load from env)
-const JWT_SECRET = process.env.JWT_SECRET || 'dev-secret-change-in-production';
+const _JWT_SECRET = process.env.JWT_SECRET || 'dev-secret-change-in-production';
 
 /**
  * Base64URL decodes a string (for JWT)
