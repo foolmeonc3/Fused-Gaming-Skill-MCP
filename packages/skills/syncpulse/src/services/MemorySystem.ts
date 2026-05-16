@@ -75,6 +75,7 @@ export class MemorySystem {
     // Check TTL
     if (entry.ttl && Date.now() - entry.createdAt > entry.ttl) {
       this.entries.delete(key);
+      this.vectorIndex.remove(key);
       this.stats.cacheMisses += 1;
       this.updateHitRate();
       return null;
@@ -156,6 +157,7 @@ export class MemorySystem {
 
   clear(): void {
     this.entries.clear();
+    this.vectorIndex.clear();
     this.stats = {
       totalEntries: 0,
       cacheHits: 0,

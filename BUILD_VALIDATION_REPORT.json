@@ -1,0 +1,434 @@
+{
+  "reportVersion": "1.0",
+  "generatedAt": "2026-05-16T00:00:00Z",
+  "releaseVersion": "v1.1.1",
+  "environment": {
+    "nodeVersion": "22.22.2",
+    "npmVersion": "10.9.7",
+    "platform": "linux",
+    "os": "Linux 6.18.5",
+    "workdir": "/home/user/Fused-Gaming-Skill-MCP"
+  },
+  "buildValidation": {
+    "typecheck": {
+      "status": "PASS",
+      "command": "npm run typecheck",
+      "timing": {
+        "real": "2.888s",
+        "user": "5.241s",
+        "sys": "0.203s"
+      },
+      "errors": 0,
+      "warnings": 0
+    },
+    "lint": {
+      "status": "FAIL",
+      "command": "npm run lint",
+      "timing": {
+        "real": "3.886s",
+        "user": "6.491s",
+        "sys": "0.658s"
+      },
+      "errors": 5,
+      "warnings": 14,
+      "totalIssues": 19,
+      "errorDetails": [
+        {
+          "file": "packages/skills/project-status-tool/src/tools/create-project.ts",
+          "line": 56,
+          "rule": "@typescript-eslint/no-unused-vars",
+          "message": "'notes' is defined but never used. Allowed unused args must match /^_/u"
+        },
+        {
+          "file": "packages/web/app/api/auth/change-password/route.ts",
+          "line": 47,
+          "rule": "@typescript-eslint/no-unused-vars",
+          "message": "'error' is defined but never used"
+        },
+        {
+          "file": "packages/web/app/sales/page.tsx",
+          "line": 4,
+          "rule": "@typescript-eslint/no-unused-vars",
+          "message": "'Zap' is defined but never used. Allowed unused vars must match /^_/u"
+        },
+        {
+          "file": "packages/web/lib/middleware.ts",
+          "line": 36,
+          "rule": "@typescript-eslint/no-unused-vars",
+          "message": "'JWT_SECRET' is assigned a value but never used. Allowed unused vars must match /^_/u"
+        },
+        {
+          "file": "packages/web/middleware.ts",
+          "line": 80,
+          "rule": "@typescript-eslint/no-unused-vars",
+          "message": "'error' is defined but never used"
+        }
+      ],
+      "warningDetails": [
+        {
+          "file": "packages/skills/project-status-tool/src/tools/create-project.ts",
+          "line": 94,
+          "rule": "@typescript-eslint/no-explicit-any",
+          "message": "Unexpected any. Specify a different type"
+        },
+        {
+          "file": "packages/skills/syncpulse-hub/src/index.ts",
+          "line": 120,
+          "rule": "@typescript-eslint/no-explicit-any",
+          "message": "Unexpected any. Specify a different type"
+        },
+        {
+          "file": "packages/skills/syncpulse-hub/src/orchestration/OrchestrationEngine.ts",
+          "line": 15,
+          "rule": "@typescript-eslint/no-explicit-any",
+          "message": "Unexpected any. Specify a different type"
+        },
+        {
+          "file": "packages/skills/syncpulse-hub/src/orchestration/OrchestrationEngine.ts",
+          "line": 22,
+          "rule": "@typescript-eslint/no-explicit-any",
+          "message": "Unexpected any. Specify a different type"
+        },
+        {
+          "file": "packages/skills/syncpulse-hub/src/setup/SetupOrchestrator.ts",
+          "line": 154,
+          "rule": "@typescript-eslint/no-explicit-any",
+          "message": "Unexpected any. Specify a different type"
+        },
+        {
+          "file": "packages/skills/syncpulse-hub/src/setup/SetupOrchestrator.ts",
+          "line": 185,
+          "rule": "@typescript-eslint/no-explicit-any",
+          "message": "Unexpected any. Specify a different type"
+        },
+        {
+          "file": "packages/web/lib/rate-limiter.ts",
+          "line": 107,
+          "rule": "@typescript-eslint/no-explicit-any",
+          "message": "Unexpected any. Specify a different type"
+        },
+        {
+          "file": "packages/web/lib/rate-limiter.ts",
+          "line": 108,
+          "rule": "@typescript-eslint/no-explicit-any",
+          "message": "Unexpected any. Specify a different type"
+        },
+        {
+          "file": "src/orchestration-api/health.ts",
+          "line": 33,
+          "rule": "@typescript-eslint/no-explicit-any",
+          "message": "Unexpected any. Specify a different type"
+        },
+        {
+          "file": "src/orchestration-api/health.ts",
+          "line": 33,
+          "rule": "@typescript-eslint/no-explicit-any",
+          "message": "Unexpected any. Specify a different type"
+        },
+        {
+          "file": "src/orchestration-ui/Dashboard.tsx",
+          "line": 15,
+          "rule": "@typescript-eslint/no-explicit-any",
+          "message": "Unexpected any. Specify a different type"
+        },
+        {
+          "file": "src/services/syncpulse-orchestration.ts",
+          "line": 35,
+          "rule": "@typescript-eslint/no-explicit-any",
+          "message": "Unexpected any. Specify a different type"
+        },
+        {
+          "file": "src/services/syncpulse-orchestration.ts",
+          "line": 40,
+          "rule": "@typescript-eslint/no-explicit-any",
+          "message": "Unexpected any. Specify a different type"
+        },
+        {
+          "file": "src/services/syncpulse-orchestration.ts",
+          "line": 132,
+          "rule": "@typescript-eslint/no-explicit-any",
+          "message": "Unexpected any. Specify a different type"
+        }
+      ]
+    },
+    "build": {
+      "status": "PASS",
+      "command": "npm run build",
+      "timing": {
+        "real": "33.170s",
+        "user": "50.984s",
+        "sys": "3.891s"
+      },
+      "packagesCompiled": 32,
+      "errors": 0
+    },
+    "test": {
+      "status": "PASS",
+      "command": "npm test --workspaces --if-present",
+      "timing": {
+        "real": "0.426s",
+        "user": "0.324s",
+        "sys": "0.076s"
+      },
+      "note": "All workspace test scripts are placeholder implementations (echo commands). No actual test suites are executed yet."
+    }
+  },
+  "securityAudit": {
+    "status": "FAIL",
+    "command": "npm audit",
+    "vulnerabilities": {
+      "critical": 0,
+      "high": 2,
+      "moderate": 3,
+      "low": 0,
+      "info": 0,
+      "total": 5
+    },
+    "dependencies": {
+      "prod": 243,
+      "dev": 367,
+      "optional": 3,
+      "peer": 1,
+      "peerOptional": 0,
+      "total": 609
+    },
+    "auditDetails": {
+      "high": [
+        {
+          "name": "nodemailer",
+          "severity": "HIGH",
+          "isDirect": true,
+          "title": "Nodemailer: Email to an unintended domain can occur due to Interpretation Conflict",
+          "url": "https://github.com/advisories/GHSA-mm7p-fcc7-pg87",
+          "affectedVersions": "<=6.9.16"
+        },
+        {
+          "name": "fast-uri",
+          "severity": "HIGH",
+          "isDirect": false,
+          "issues": [
+            "fast-uri vulnerable to path traversal via percent-encoded dot segments",
+            "fast-uri vulnerable to host confusion via percent-encoded authority delimiters"
+          ],
+          "url": "https://github.com/advisories/GHSA-q3j6-qgpj-74h6",
+          "affectedVersions": "<=3.1.1",
+          "cvss": 7.5
+        }
+      ],
+      "moderate": [
+        {
+          "name": "express-rate-limit",
+          "severity": "MODERATE",
+          "isDirect": false,
+          "via": "ip-address",
+          "fixAvailable": true
+        },
+        {
+          "name": "hono",
+          "severity": "MODERATE",
+          "isDirect": false,
+          "issues": [
+            "CSS Declaration Injection via Style Object Values in JSX SSR",
+            "improper validation of NumericDate claims (exp, nbf, iat) in JWT verify()",
+            "Cache Middleware ignores Vary: Authorization / Vary: Cookie leading to cross-user cache leakage",
+            "bodyLimit() can be bypassed for chunked / unknown-length requests",
+            "Unvalidated JSX Tag Names that May Allow HTML Injection"
+          ],
+          "affectedVersions": "<=4.12.17",
+          "fixAvailable": true
+        },
+        {
+          "name": "ip-address",
+          "severity": "MODERATE",
+          "isDirect": false,
+          "issue": "XSS in Address6 HTML-emitting methods",
+          "affectedVersions": "<=10.1.0"
+        }
+      ]
+    },
+    "fixAvailableCount": 3,
+    "recommendations": [
+      "Update nodemailer to >=6.9.17 (HIGH severity - direct dependency)",
+      "Update fast-uri to >3.1.1 (HIGH severity - transitive dependency)",
+      "Update hono to >4.12.17 (MODERATE severity - multiple CVEs)",
+      "Update ip-address to >10.1.0 (MODERATE severity)",
+      "Run 'npm audit fix --audit-level=moderate' to auto-patch available fixes"
+    ]
+  },
+  "dependencyAudit": {
+    "status": "NEEDS_ATTENTION",
+    "duplicatePackages": 0,
+    "outdatedPackages": {
+      "total": 87,
+      "byLevel": {
+        "majorVersionBehind": 12,
+        "minorVersionBehind": 40,
+        "patchVersionBehind": 35
+      },
+      "criticalUpdates": [
+        {
+          "package": "@h4shed/mcp-core",
+          "current": "1.0.4",
+          "wanted": "1.0.15",
+          "latest": "1.0.15",
+          "affectedPackages": 30
+        },
+        {
+          "package": "@types/node",
+          "current": "20.19.39",
+          "wanted": "20.19.41",
+          "latest": "25.8.0",
+          "affectedPackages": 32
+        },
+        {
+          "package": "@types/jest",
+          "current": "29.5.14",
+          "wanted": "29.5.14",
+          "latest": "30.0.0",
+          "affectedPackages": 3
+        },
+        {
+          "package": "typescript",
+          "current": "5.4.5",
+          "wanted": "5.4.5",
+          "latest": "5.7.2",
+          "affectedPackages": "root + 30"
+        },
+        {
+          "package": "eslint",
+          "current": "10.2.1",
+          "wanted": "10.4.0",
+          "latest": "10.4.0",
+          "affectedPackages": "root"
+        }
+      ]
+    }
+  },
+  "publishReadiness": {
+    "overall": "CONDITIONAL",
+    "readinessChecks": {
+      "buildPasses": true,
+      "typecheckPasses": true,
+      "lintPasses": false,
+      "testsPasses": true,
+      "securityAuditPasses": false,
+      "dependenciesHealthy": false,
+      "versionMetadata": true
+    },
+    "blockers": [
+      {
+        "category": "LINT",
+        "severity": "MEDIUM",
+        "count": 5,
+        "description": "5 lint errors must be fixed before publication",
+        "affectedFiles": [
+          "packages/skills/project-status-tool/src/tools/create-project.ts",
+          "packages/web/app/api/auth/change-password/route.ts",
+          "packages/web/app/sales/page.tsx",
+          "packages/web/middleware.ts"
+        ]
+      },
+      {
+        "category": "SECURITY",
+        "severity": "HIGH",
+        "count": 2,
+        "description": "2 HIGH severity vulnerabilities in production dependencies",
+        "affectedPackages": [
+          "nodemailer (direct dependency)",
+          "fast-uri (transitive dependency)"
+        ]
+      },
+      {
+        "category": "SECURITY",
+        "severity": "MODERATE",
+        "count": 3,
+        "description": "3 MODERATE severity vulnerabilities",
+        "affectedPackages": [
+          "hono",
+          "ip-address",
+          "express-rate-limit"
+        ]
+      },
+      {
+        "category": "DEPENDENCIES",
+        "severity": "MEDIUM",
+        "count": 87,
+        "description": "87 outdated dependencies with available updates"
+      }
+    ],
+    "warnings": [
+      {
+        "category": "LINT",
+        "severity": "LOW",
+        "count": 14,
+        "description": "14 lint warnings (mostly @typescript-eslint/no-explicit-any)"
+      }
+    ]
+  },
+  "metrics": {
+    "totalBuildTime": "39.944s",
+    "packagesInWorkspace": 32,
+    "totalDependencies": 609,
+    "codeCoverage": "Not measured - placeholder test scripts only"
+  },
+  "actionItems": {
+    "beforePublication": [
+      {
+        "priority": 1,
+        "task": "Fix 5 lint errors",
+        "effort": "LOW",
+        "files": [
+          "packages/skills/project-status-tool/src/tools/create-project.ts:56",
+          "packages/web/app/api/auth/change-password/route.ts:47",
+          "packages/web/app/sales/page.tsx:4",
+          "packages/web/middleware.ts:36,80"
+        ],
+        "command": "npm run lint -- --fix"
+      },
+      {
+        "priority": 2,
+        "task": "Resolve HIGH severity vulnerabilities",
+        "effort": "MEDIUM",
+        "action": "Update nodemailer and fast-uri to latest secure versions"
+      },
+      {
+        "priority": 3,
+        "task": "Resolve MODERATE severity vulnerabilities",
+        "effort": "MEDIUM",
+        "action": "Run 'npm audit fix --audit-level=moderate' or update dependencies selectively"
+      },
+      {
+        "priority": 4,
+        "task": "Address 14 lint warnings",
+        "effort": "MEDIUM",
+        "action": "Type 'any' usage in syncpulse-hub and related packages"
+      },
+      {
+        "priority": 5,
+        "task": "Update core dependencies",
+        "effort": "HIGH",
+        "action": "Update @h4shed/mcp-core (1.0.4 -> 1.0.15), @types/node, and other outdated packages"
+      }
+    ],
+    "afterFixes": [
+      "Re-run npm run lint to confirm errors are resolved",
+      "Re-run npm audit to verify vulnerability patches",
+      "Re-run npm run build to ensure no regressions",
+      "Re-run npm test to confirm test suite stability",
+      "Update CHANGELOG.md with security fixes",
+      "Create git commit with fixes before tagging release"
+    ]
+  },
+  "summary": {
+    "readyForPublication": false,
+    "estimatedTimeToFix": "2-4 hours",
+    "recommendation": "DO NOT PUBLISH - Address lint errors, security vulnerabilities, and dependency updates before v1.1.1 release",
+    "nextSteps": [
+      "1. Fix 5 lint errors (npm run lint --fix)",
+      "2. Update nodemailer and security dependencies",
+      "3. Re-validate build pipeline",
+      "4. Update CHANGELOG.md",
+      "5. Create and test release tag in staging environment"
+    ]
+  }
+}

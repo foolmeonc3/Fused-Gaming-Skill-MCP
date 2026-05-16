@@ -1,128 +1,175 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { SessionStore } from '@/lib/session-store';
 import crypto from 'crypto';
 
-interface ChangePasswordRequest {
-  newPassword: string;
-  confirmPassword: string;
+// JWT secret for verifying tokens
+const JWT_SECRET = process.env.JWT_SECRET || 'dev-secret-change-in-production';
+
+/**
+ * Base64URL decodes a string (for JWT)
+ */
+function base64UrlDecode(str: string): string {
+  let base64 = str.replace(/-/g, '+').replace(/_/g, '/');
+  const padding = 4 - (base64.length % 4);
+  if (padding !== 4) {
+    base64 += '='.repeat(padding);
+  }
+  return Buffer.from(base64, 'base64').toString('utf-8');
 }
 
-interface StoredPassword {
-  hash: string;
-  salt: string;
-  timestamp: number;
+/**
+ * Verifies a JWT token
+ */
+function verifyJWT(token: string): { email: string; userId: string } | null {
+  try {
+    const parts = token.split('.');
+    if (parts.length !== 3) return null;
+
+    const [encodedHeader, encodedPayload, signature] = parts;
+    const message = `${encodedHeader}.${encodedPayload}`;
+
+    const expectedSignature = crypto
+      .createHmac('sha256', JWT_SECRET)
+      .update(message)
+      .digest()
+      .toString('base64')
+      .replace(/\+/g, '-')
+      .replace(/\//g, '_')
+      .replace(/=/g, '');
+
+    if (signature !== expectedSignature) return null;
+
+    const payload = JSON.parse(base64UrlDecode(encodedPayload));
+    const now = Math.floor(Date.now() / 1000);
+    if (payload.exp && now > payload.exp) return null;
+
+    return { email: payload.email, userId: payload.sub };
+  } catch {
+    return null;
+  }
 }
 
-const PASSWORDS_MAP = new Map<string, StoredPassword>();
-const SESSION_TOKENS = new Map<string, { authenticated: boolean; passwordChanged: boolean; timestamp: number }>();
-
-function hashPassword(password: string): { hash: string; salt: string } {
-  const salt = crypto.randomBytes(16).toString('hex');
-  const hash = crypto
-    .pbkdf2Sync(password, salt, 10000, 64, 'sha512')
-    .toString('hex');
-  return { hash, salt };
-}
-
-function validatePasswordStrength(password: string): { valid: boolean; errors: string[] } {
-  const errors: string[] = [];
-
-  if (password.length < 16) {
-    errors.push('Password must be at least 16 characters');
-  }
-  if (!/[A-Z]/.test(password)) {
-    errors.push('Password must contain at least one uppercase letter');
-  }
-  if (!/[a-z]/.test(password)) {
-    errors.push('Password must contain at least one lowercase letter');
-  }
-  if (!/[0-9]/.test(password)) {
-    errors.push('Password must contain at least one number');
-  }
-  if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) {
-    errors.push('Password must contain at least one special character');
-  }
-  if (/(.)\1{2,}/.test(password)) {
-    errors.push('Password cannot contain repeated characters (e.g., aaa)');
-  }
-  if (/123|456|789|qwerty|password|abc/i.test(password)) {
-    errors.push('Password contains common patterns that are not allowed');
-  }
-
-  return {
-    valid: errors.length === 0,
-    errors
-  };
-}
-
+/**
+ * POST /api/auth/change-password
+ * Allows users to change their password
+ * Accepts JWT from either cookie or Authorization bearer header
+ */
 export async function POST(request: NextRequest) {
   try {
-    const authHeader = request.headers.get('authorization');
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    let sessionToken = request.cookies.get('sessionToken')?.value;
+
+    // Also check Authorization header for bearer token
+    if (!sessionToken) {
+      const authHeader = request.headers.get('Authorization');
+      if (authHeader?.startsWith('Bearer ')) {
+        sessionToken = authHeader.slice(7);
+      }
+    }
+
+    // Validate session
+    if (!sessionToken) {
       return NextResponse.json(
-        { message: 'Missing or invalid authorization header' },
+        { error: 'Authentication required' },
         { status: 401 }
       );
     }
 
-    const sessionToken = authHeader.substring(7);
-    const sessionInfo = SESSION_TOKENS.get(sessionToken);
-
-    if (!sessionInfo || !sessionInfo.authenticated || sessionInfo.passwordChanged) {
+    const decoded = verifyJWT(sessionToken);
+    if (!decoded) {
       return NextResponse.json(
-        { message: 'Invalid or expired session' },
+        { error: 'Invalid or expired session' },
         { status: 401 }
       );
     }
 
-    const body = await request.json() as ChangePasswordRequest;
-    const { newPassword, confirmPassword } = body;
-
-    if (!newPassword || !confirmPassword) {
+    // Create session object for compatibility
+    const session = SessionStore.getSession(sessionToken);
+    if (!session) {
       return NextResponse.json(
-        { message: 'Both password fields are required' },
+        { error: 'Invalid or expired session' },
+        { status: 401 }
+      );
+    }
+
+    // Parse request body
+    const body = await request.json();
+    const { currentPassword, newPassword, confirmPassword } = body;
+
+    // Validate inputs
+    if (!currentPassword || !newPassword || !confirmPassword) {
+      return NextResponse.json(
+        { error: 'All password fields are required' },
         { status: 400 }
       );
     }
 
+    // Validate new password matches confirmation
     if (newPassword !== confirmPassword) {
       return NextResponse.json(
-        { message: 'Passwords do not match' },
+        { error: 'New passwords do not match' },
         { status: 400 }
       );
     }
 
-    const validation = validatePasswordStrength(newPassword);
-    if (!validation.valid) {
+    // Validate new password strength (basic validation)
+    if (newPassword.length < 6) {
       return NextResponse.json(
-        { message: 'Password does not meet strength requirements', errors: validation.errors },
+        { error: 'Password must be at least 6 characters' },
         { status: 400 }
       );
     }
 
-    // Hash and store password
-    const { hash, salt } = hashPassword(newPassword);
-    PASSWORDS_MAP.set('admin-password', {
-      hash,
-      salt,
-      timestamp: Date.now()
-    });
+    // Verify current password
+    if (!SessionStore.validatePassword(session.email, currentPassword)) {
+      return NextResponse.json(
+        { error: 'Current password is incorrect' },
+        { status: 401 }
+      );
+    }
 
-    // Mark session as having changed password
-    const updatedSession = { ...sessionInfo, passwordChanged: true };
-    SESSION_TOKENS.set(sessionToken, updatedSession);
+    // Update password in session store
+    const updated = SessionStore.updatePassword(session.email, newPassword);
+    if (!updated) {
+      return NextResponse.json(
+        { error: 'Failed to update password' },
+        { status: 500 }
+      );
+    }
+
+    // Mark session password as changed
+    SessionStore.markPasswordChanged(sessionToken);
 
     return NextResponse.json(
       {
+        success: true,
         message: 'Password changed successfully',
-        success: true
+        user: {
+          id: session.userId,
+          email: session.email,
+        },
       },
       { status: 200 }
     );
   } catch (error) {
-    console.error('Password change error:', error);
+    console.error('Change password error:', error);
     return NextResponse.json(
-      { message: 'Internal server error' },
+      { error: 'Internal server error' },
       { status: 500 }
     );
   }
+}
+
+/**
+ * OPTIONS /api/auth/change-password
+ * CORS preflight handler
+ */
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    },
+  });
 }

@@ -53,7 +53,7 @@ export function createProject(input: CreateProjectInput): Project {
 export function updateProjectStatus(
   project: Project,
   newStatus: ProjectStatus,
-  notes?: string
+  _notes?: string
 ): Project {
   return {
     ...project,
