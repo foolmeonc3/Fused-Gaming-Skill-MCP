@@ -1,3 +1,8 @@
+---
+name: SyncPulse Sales Enhancement Task Orchestrator
+description: 4-phase task breakdown for design system enhancement swarm. Defines concrete tasks for Design System Architect, Component Specialist, Animation Specialist, and Sales Optimizer agents with memory coordination, blocking gates, and dependency sequencing.
+---
+
 # SyncPulse Sales Experience Enhancement - Agent Tasks
 
 ## Swarm Overview

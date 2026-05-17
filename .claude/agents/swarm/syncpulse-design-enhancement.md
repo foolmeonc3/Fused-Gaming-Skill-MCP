@@ -1,3 +1,8 @@
+---
+name: SyncPulse Design Enhancement Swarm Coordinator
+description: 4-agent hierarchical swarm orchestrating design system enhancement and glassmorphism integration for SyncPulse sales pages. Coordinates Design System Architect, Component Enhancement Specialist, Animation Effects Specialist, and Sales Page Optimizer through shared memory namespace.
+---
+
 # SyncPulse Sales Experience Enhancement - Agent Swarm Configuration
 **Initialized**: 2026-05-17 | **Memory Namespace**: `coordination/syncpulse-design-enhancement`
 
