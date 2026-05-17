@@ -33,14 +33,18 @@ export const designTokens = {
       cyberBlue: "#38BDF8",   // Cyan accent
       secureGreen: "#22C55E", // Success state
       warningPink: "#EC4899", // Warning state
+      quantumIndigo: "#667eea",      // Quantum indigo primary
+      quantumIndigoLight: "#8ea5f8", // Quantum indigo light variant
+      quantumIndigoDark: "#4c3fa8",  // Quantum indigo dark variant
+      quantumIndigoGlow: "rgba(102, 126, 234, 0.3)", // Quantum indigo glow effect
     },
 
     // Deep space background gradients
     background: {
-      base: "#05010D",                          // Pure black base
-      elevated: "#0B0618",                      // Slightly elevated
-      card: "#120A24",                          // Card background (16% alpha)
-      panel: "#160F2E",                         // Panel background (22% alpha)
+      base: "#050508",                          // Cool digital black base
+      elevated: "#0a0a0f",                      // Slightly elevated
+      card: "#121218",                          // Card background
+      panel: "#1a1a22",                         // Panel background
       overlay: "rgba(10, 5, 25, 0.82)",        // Modal overlay
       radialGradient: "radial-gradient(circle at 70% 40%, rgba(168,85,247,.22), transparent 34%), radial-gradient(circle at 20% 20%, rgba(192,38,211,.16), transparent 30%)",
     },
@@ -64,14 +68,14 @@ export const designTokens = {
       lightTop: "rgba(255, 255, 255, 0.18)", // Lighter top
     },
 
-    // Text hierarchy
+    // Text hierarchy - Opacity-based system
     text: {
-      primary: "#F5F3FF",    // Main text
-      secondary: "#D8B4FE",  // Secondary text
-      muted: "#A78BFA",      // Muted text
-      disabled: "#6B7280",   // Disabled text
-      inverse: "#05010D",    // Inverse (on light)
-      accent: "#E9D5FF",     // Accent text
+      primary: "rgba(255, 255, 255, 0.9)",    // Main text
+      secondary: "rgba(255, 255, 255, 0.7)",  // Secondary text
+      muted: "rgba(255, 255, 255, 0.6)",      // Muted text
+      disabled: "rgba(255, 255, 255, 0.4)",   // Disabled text
+      inverse: "#050508",                      // Inverse (on light)
+      accent: "rgba(255, 255, 255, 0.95)",    // Accent text
     },
 
     // Semantic colors
@@ -182,9 +186,9 @@ export const designTokens = {
   effects: {
     // Premium glassmorphism from concept design
     glassmorphism: {
-      background: "linear-gradient(145deg, rgba(255,255,255,0.075), rgba(255,255,255,0.015))",
+      background: "linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01))",
       blur: "22px",
-      border: "1px solid rgba(168,85,247,0.25)",
+      border: "1px solid rgba(255,255,255,0.08)",
       borderTop: "rgba(255,255,255,0.18)",
       borderLeft: "rgba(255,255,255,0.15)",
       saturate: "130%",
@@ -236,12 +240,18 @@ export const designTokens = {
       normal: "280ms",
       slow: "420ms",
       cinematic: "900ms",
+      quantumSlow: "1200ms",
+      quantumExtended: "2000ms",
     },
 
     easing: {
       default: "cubic-bezier(0.4, 0, 0.2, 1)",
       smooth: "cubic-bezier(0.22, 1, 0.36, 1)",
       pulse: "ease-in-out",
+      // Quantum-inspired easing functions
+      quantum: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",        // smooth, elegant
+      fastQuantum: "cubic-bezier(0.4, 0.0, 0.2, 1)",          // snappy
+      slowQuantum: "cubic-bezier(0.25, 0.1, 0.25, 1)",        // deliberate
     },
 
     keyframes: {
@@ -285,6 +295,113 @@ export const designTokens = {
           }
           50% {
             text-shadow: 0 0 40px rgba(168, 85, 247, 0.8);
+          }
+        }
+      `,
+
+      // Quantum-inspired animations
+      pulseQuantum: `
+        @keyframes pulseQuantum {
+          0% {
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.2);
+            transform: scale(1);
+          }
+          50% {
+            box-shadow: 0 0 30px rgba(102, 126, 234, 0.6);
+            transform: scale(1.05);
+          }
+          100% {
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.2);
+            transform: scale(1);
+          }
+        }
+      `,
+
+      quantumNodeActivate: `
+        @keyframes quantumNodeActivate {
+          0% {
+            opacity: 0.4;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+            transform: scale(0.8);
+          }
+          50% {
+            opacity: 1;
+            box-shadow: 0 0 35px rgba(102, 126, 234, 0.7);
+          }
+          100% {
+            opacity: 1;
+            box-shadow: 0 0 25px rgba(102, 126, 234, 0.5);
+            transform: scale(1.1);
+          }
+        }
+      `,
+
+      networkFlow: `
+        @keyframes networkFlow {
+          0% {
+            stroke-dashoffset: 1000;
+            opacity: 0;
+          }
+          10% {
+            opacity: 1;
+          }
+          90% {
+            opacity: 1;
+          }
+          100% {
+            stroke-dashoffset: 0;
+            opacity: 0;
+          }
+        }
+      `,
+
+      agentActive: `
+        @keyframes agentActive {
+          0%, 100% {
+            box-shadow: 0 0 15px rgba(102, 126, 234, 0.3), inset 0 0 10px rgba(102, 126, 234, 0.1);
+          }
+          50% {
+            box-shadow: 0 0 35px rgba(102, 126, 234, 0.7), inset 0 0 20px rgba(102, 126, 234, 0.2);
+          }
+        }
+      `,
+
+      swarmCoordinating: `
+        @keyframes swarmCoordinating {
+          0% {
+            transform: rotate(0deg) translateX(40px);
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.8;
+          }
+          100% {
+            transform: rotate(360deg) translateX(40px);
+            opacity: 1;
+          }
+        }
+      `,
+
+      taskProcessing: `
+        @keyframes taskProcessing {
+          0% {
+            background-position: 0 0;
+          }
+          100% {
+            background-position: 200px 0;
+          }
+        }
+      `,
+
+      idleBreathing: `
+        @keyframes idleBreathing {
+          0%, 100% {
+            opacity: 0.5;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(1.02);
           }
         }
       `,
