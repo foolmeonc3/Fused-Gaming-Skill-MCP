@@ -27,7 +27,8 @@ export const iconPaths: Record<string, string> = {
 export type IconName = keyof typeof iconPaths;
 
 // Icons that should be rendered as strokes (line-based) instead of fills
-const strokeIcons = new Set<IconName>(['pulse', 'check', 'code', 'brush']);
+// Only include actual line-based icons (open paths), not filled Material Design glyphs
+const strokeIcons = new Set<IconName>(['pulse', 'check']);
 
 export function getIconPath(name: IconName): string {
   return iconPaths[name] || '';
