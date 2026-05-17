@@ -1,6 +1,18 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import {
+  CheckCircle,
+  Clock,
+  AlertCircle,
+  Zap,
+  Target,
+  Code,
+  GitBranch,
+  BarChart3,
+  Users,
+  Network
+} from 'lucide-react';
 
 interface StatusResponse {
   status: string;
@@ -78,6 +90,32 @@ interface StatusResponse {
     blockers: string[];
     nextActions: string[];
   };
+  sessionGoals?: {
+    sessionId: string;
+    timestamp: string;
+    branch: string;
+    goals: Array<{
+      id: string;
+      title: string;
+      status: string;
+      priority: string;
+    }>;
+    mergeChecklist: {
+      [key: string]: {
+        [key: string]: boolean;
+      };
+    };
+    progress: {
+      goalsCompleted: number;
+      checklistItemsCompleted: number;
+      overallProgress: number;
+    };
+    commits: Array<{
+      timestamp: string;
+      message: string;
+      filesChanged: string[];
+    }>;
+  };
 }
 
 export default function StatusPage() {
@@ -138,12 +176,18 @@ export default function StatusPage() {
 
         {/* Guidance Section */}
         <div className="mb-8 bg-blue-900 bg-opacity-30 border border-blue-700 rounded-lg p-6">
-          <h2 className="text-2xl font-bold mb-4">📋 Current Phase: {status.guidance.currentPhase}</h2>
+          <div className="flex items-center gap-2 mb-4">
+            <Target className="w-6 h-6 text-blue-400" />
+            <h2 className="text-2xl font-bold">Current Phase: {status.guidance.currentPhase}</h2>
+          </div>
           <p className="text-slate-300 mb-4">{status.guidance.recommendation}</p>
 
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <h3 className="font-semibold text-red-400 mb-2">⚠️ Blockers</h3>
+              <div className="flex items-center gap-2 mb-2">
+                <AlertCircle className="w-5 h-5 text-red-400" />
+                <h3 className="font-semibold text-red-400">Blockers</h3>
+              </div>
               <ul className="space-y-1 text-sm">
                 {status.guidance.blockers.map((blocker, i) => (
                   <li key={i} className="text-slate-300">
@@ -153,7 +197,10 @@ export default function StatusPage() {
               </ul>
             </div>
             <div>
-              <h3 className="font-semibold text-green-400 mb-2">🎯 Next Actions</h3>
+              <div className="flex items-center gap-2 mb-2">
+                <Zap className="w-5 h-5 text-green-400" />
+                <h3 className="font-semibold text-green-400">Next Actions</h3>
+              </div>
               <ul className="space-y-1 text-sm">
                 {status.guidance.nextActions.map((action, i) => (
                   <li key={i} className="text-slate-300">
@@ -165,9 +212,101 @@ export default function StatusPage() {
           </div>
         </div>
 
+        {/* Session Goals & Merge Checklist */}
+        {status.sessionGoals && status.sessionGoals.sessionId !== 'not-initialized' && (
+          <div className="mb-8 bg-purple-900 bg-opacity-30 border border-purple-700 rounded-lg p-6">
+            <div className="flex justify-between items-start mb-6">
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <Target className="w-6 h-6 text-purple-400" />
+                  <h2 className="text-2xl font-bold">Session Goals ({status.sessionGoals.branch})</h2>
+                </div>
+                <p className="text-slate-400 text-sm">Session ID: {status.sessionGoals.sessionId}</p>
+              </div>
+              <div className="text-right">
+                <div className="text-3xl font-bold text-purple-400">{status.sessionGoals.progress.overallProgress}%</div>
+                <div className="text-xs text-slate-400">Overall Progress</div>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <Code className="w-5 h-5 text-purple-300" />
+                  <h3 className="font-semibold text-purple-300">Session Objectives</h3>
+                </div>
+                <ul className="space-y-2 text-sm">
+                  {status.sessionGoals.goals.map((goal) => (
+                    <li key={goal.id} className="flex items-start gap-2">
+                      {goal.status === 'completed' ? (
+                        <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                      ) : goal.status === 'in-progress' ? (
+                        <Clock className="w-4 h-4 text-yellow-400 mt-0.5 flex-shrink-0" />
+                      ) : (
+                        <AlertCircle className="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0" />
+                      )}
+                      <div>
+                        <div className="text-slate-300">{goal.title}</div>
+                        <div className="text-xs text-slate-500">{goal.priority} priority</div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <CheckCircle className="w-5 h-5 text-purple-300" />
+                  <h3 className="font-semibold text-purple-300">Merge Checklist</h3>
+                </div>
+                <div className="space-y-3 text-sm">
+                  {Object.entries(status.sessionGoals.mergeChecklist).map(([section, items]) => {
+                    const checkedCount = Object.values(items as any).filter(Boolean).length;
+                    const totalCount = Object.keys(items).length;
+                    return (
+                      <div key={section}>
+                        <div className="flex justify-between mb-1">
+                          <span className="text-slate-300 capitalize">{section.replace(/([A-Z])/g, ' $1').trim()}</span>
+                          <span className="text-xs text-slate-400">{checkedCount}/{totalCount}</span>
+                        </div>
+                        <div className="w-full bg-slate-700 rounded-full h-1.5">
+                          <div
+                            className="h-1.5 rounded-full bg-purple-400"
+                            style={{ width: `${(checkedCount / totalCount) * 100}%` }}
+                          />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            {status.sessionGoals.commits.length > 0 && (
+              <div className="mt-6 border-t border-purple-700 pt-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <Code className="w-5 h-5 text-purple-300" />
+                  <h3 className="font-semibold text-purple-300">Session Commits ({status.sessionGoals.commits.length})</h3>
+                </div>
+                <ul className="space-y-2 text-xs">
+                  {status.sessionGoals.commits.slice(-5).map((commit, i) => (
+                    <li key={i} className="text-slate-400">
+                      <div className="font-mono text-slate-500">{commit.message.split('\n')[0]}</div>
+                      <div className="text-slate-600">{commit.filesChanged.length} files changed</div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        )}
+
         {/* Branches */}
         <div className="mb-8">
-          <h2 className="text-3xl font-bold mb-6">🌳 Release Branches (v1.2.0)</h2>
+          <div className="flex items-center gap-2 mb-6">
+            <GitBranch className="w-7 h-7 text-blue-400" />
+            <h2 className="text-3xl font-bold">Release Branches (v1.2.0)</h2>
+          </div>
           <div className="grid md:grid-cols-3 gap-6">
             {Object.entries(status.branches).map(([key, branch]) => (
               <div
@@ -202,18 +341,21 @@ export default function StatusPage() {
                   </div>
                 </div>
 
-                <div className="mb-4 text-sm">
-                  <div className="mb-2">
-                    <span className="text-green-400 font-semibold">✓ {branch.deliverables.completed.length}</span>
-                    <span className="text-slate-400"> completed</span>
+                <div className="mb-4 text-sm space-y-2">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-400" />
+                    <span className="text-green-400 font-semibold">{branch.deliverables.completed.length}</span>
+                    <span className="text-slate-400">completed</span>
                   </div>
-                  <div className="mb-2">
-                    <span className="text-yellow-400 font-semibold">⚙️  {branch.deliverables.inProgress.length}</span>
-                    <span className="text-slate-400"> in progress</span>
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-4 h-4 text-yellow-400" />
+                    <span className="text-yellow-400 font-semibold">{branch.deliverables.inProgress.length}</span>
+                    <span className="text-slate-400">in progress</span>
                   </div>
-                  <div>
-                    <span className="text-slate-400 font-semibold">📋 {branch.deliverables.planned.length}</span>
-                    <span className="text-slate-400"> planned</span>
+                  <div className="flex items-center gap-2">
+                    <Code className="w-4 h-4 text-slate-400" />
+                    <span className="text-slate-400 font-semibold">{branch.deliverables.planned.length}</span>
+                    <span className="text-slate-400">planned</span>
                   </div>
                 </div>
 
@@ -234,7 +376,10 @@ export default function StatusPage() {
 
         {/* Swarm Status */}
         <div className="mb-8">
-          <h2 className="text-3xl font-bold mb-6">🤖 Swarm Orchestration</h2>
+          <div className="flex items-center gap-2 mb-6">
+            <Users className="w-7 h-7 text-cyan-400" />
+            <h2 className="text-3xl font-bold">Swarm Orchestration</h2>
+          </div>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-slate-800 rounded-lg p-6 border border-slate-700">
               <h3 className="font-bold text-lg mb-4">Agents ({status.swarm.agents.count})</h3>
@@ -292,7 +437,10 @@ export default function StatusPage() {
 
         {/* Metrics */}
         <div className="mb-8">
-          <h2 className="text-3xl font-bold mb-6">📊 Project Metrics</h2>
+          <div className="flex items-center gap-2 mb-6">
+            <BarChart3 className="w-7 h-7 text-orange-400" />
+            <h2 className="text-3xl font-bold">Project Metrics</h2>
+          </div>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             <div className="bg-slate-800 rounded-lg p-4 border border-slate-700 text-center">
               <div className="text-slate-400 text-sm mb-2">Total Commits</div>
