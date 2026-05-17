@@ -7,6 +7,20 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.join(__dirname, '..');
 
+// Check if running in a published package context (development-only feature)
+const claudeFlowDir = path.join(projectRoot, '.claude-flow');
+if (!fs.existsSync(claudeFlowDir)) {
+  console.error('❌ Error: Swarm initialization is only available in development mode.');
+  console.error('   The "npm run swarm" command requires .claude-flow/ directory.');
+  console.error('   This feature is not available in published packages.');
+  console.error('');
+  console.error('ℹ️  To use swarm features:');
+  console.error('   1. Clone the repository: git clone https://github.com/fused-gaming/fused-gaming-skill-mcp.git');
+  console.error('   2. Install dependencies: npm install');
+  console.error('   3. Run swarm: npm run swarm');
+  process.exit(1);
+}
+
 console.log('🚀 Initializing Fused Gaming Swarm Session...\n');
 
 // Load swarm configuration
@@ -19,6 +33,69 @@ console.log(`   - Config: ${path.relative(projectRoot, configPath)}`);
 console.log(`   - Swarm State: ${path.relative(projectRoot, swarmStatePath)}`);
 console.log(`   - Agents Store: ${path.relative(projectRoot, agentsStorePath)}`);
 
+// Validate and reinitialize swarm state if needed
+function validateOrCreateSwarmState() {
+  let swarmState = null;
+  let isValid = false;
+
+  try {
+    // Try to load existing state
+    if (fs.existsSync(swarmStatePath)) {
+      const stateData = JSON.parse(fs.readFileSync(swarmStatePath, 'utf-8'));
+      // Validate state structure
+      if (stateData.swarms && Object.keys(stateData.swarms).length > 0) {
+        const swarmId = Object.keys(stateData.swarms)[0];
+        const swarm = stateData.swarms[swarmId];
+        // Check if swarm has valid metadata
+        if (swarm && swarm.topology && swarm.status) {
+          isValid = true;
+          swarmState = stateData;
+        }
+      }
+    }
+  } catch (e) {
+    // State file corrupted or missing
+  }
+
+  // If state is invalid or missing, recreate it
+  if (!isValid) {
+    console.log('⚠️  Existing swarm state invalid or missing, reinitializing...');
+    const timestamp = Date.now();
+    const swarmId = `swarm-${timestamp}-${Math.random().toString(36).slice(2, 8)}`;
+
+    swarmState = {
+      version: '3.0.0',
+      timestamp: new Date().toISOString(),
+      swarms: {
+        [swarmId]: {
+          id: swarmId,
+          topology: 'hierarchical-mesh',
+          maxAgents: 15,
+          status: 'running',
+          config: {
+            strategy: 'specialized',
+            communicationProtocol: 'message-bus'
+          }
+        }
+      }
+    };
+
+    // Ensure swarm directory exists
+    const swarmDir = path.dirname(swarmStatePath);
+    if (!fs.existsSync(swarmDir)) {
+      fs.mkdirSync(swarmDir, { recursive: true });
+    }
+
+    // Write new state
+    fs.writeFileSync(swarmStatePath, JSON.stringify(swarmState, null, 2));
+    console.log(`✓ Swarm state recreated: ${swarmId}`);
+  } else {
+    console.log(`✓ Existing swarm state validated`);
+  }
+
+  return swarmState;
+}
+
 // Load agents configuration
 const agentsStore = JSON.parse(fs.readFileSync(agentsStorePath, 'utf-8'));
 const agents = Object.values(agentsStore.agents);
@@ -30,8 +107,8 @@ agents.forEach((agent, index) => {
   console.log(`      Role: ${agent.config.role} | Branch: ${agent.config.branch}`);
 });
 
-// Load swarm state
-const swarmState = JSON.parse(fs.readFileSync(swarmStatePath, 'utf-8'));
+// Validate and initialize swarm state
+const swarmState = validateOrCreateSwarmState();
 const swarmId = Object.keys(swarmState.swarms)[0];
 const swarm = swarmState.swarms[swarmId];
 
