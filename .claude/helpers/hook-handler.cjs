@@ -297,7 +297,7 @@ if (command && handlers[command]) {
   } else if (command) {
     console.log('[OK] Hook: ' + command);
   } else {
-    console.log('Usage: hook-handler.cjs <route|pre-bash|post-edit|session-restore|session-end|pre-task|post-task|compact-manual|compact-auto|status|stats|swarm-init>');
+    console.log('Usage: hook-handler.cjs <route|pre-bash|post-edit|session-restore|session-end|pre-task|post-task|compact-manual|compact-auto|status|stats|swarm-init|goals-init>');
   }
 }
 
