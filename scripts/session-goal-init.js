@@ -9,7 +9,7 @@ const projectRoot = path.join(__dirname, '..');
 
 // Session goal initialization
 export async function initializeSessionGoals() {
-  const sessionGoalFile = path.join(projectRoot, '.claude-flow', 'session', 'goals.json');
+  const sessionGoalFile = path.join(projectRoot, '.claude-flow', 'cache', 'session-goals.json');
   const sessionDir = path.dirname(sessionGoalFile);
 
   // Ensure session directory exists
@@ -121,7 +121,7 @@ export async function initializeSessionGoals() {
 
 // Update session progress
 export function updateSessionProgress(goalsCompleted, checklistItemsCompleted) {
-  const sessionGoalFile = path.join(projectRoot, '.claude-flow', 'session', 'goals.json');
+  const sessionGoalFile = path.join(projectRoot, '.claude-flow', 'cache', 'session-goals.json');
 
   if (fs.existsSync(sessionGoalFile)) {
     const sessionGoals = JSON.parse(fs.readFileSync(sessionGoalFile, 'utf-8'));
@@ -145,7 +145,7 @@ export function updateSessionProgress(goalsCompleted, checklistItemsCompleted) {
 
 // Record commit to session
 export function recordCommitToSession(commitMessage, changedFiles = []) {
-  const sessionGoalFile = path.join(projectRoot, '.claude-flow', 'session', 'goals.json');
+  const sessionGoalFile = path.join(projectRoot, '.claude-flow', 'cache', 'session-goals.json');
 
   if (fs.existsSync(sessionGoalFile)) {
     const sessionGoals = JSON.parse(fs.readFileSync(sessionGoalFile, 'utf-8'));
