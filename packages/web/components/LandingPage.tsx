@@ -39,23 +39,23 @@ export default function LandingPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-swarm-dark via-slate-900 to-swarm-dark flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-[#050508] via-slate-900 to-[#050508] flex items-center justify-center">
         <div className="text-center">
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
             className="mb-4"
           >
-            <Icon name="pulse" size={48} color="#A855F7" />
+            <Icon name="pulse" size={48} color="#667eea" />
           </motion.div>
-          <p className="text-swarm-tertiary">Loading...</p>
+          <p className="text-white/60">Loading...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-swarm-dark via-slate-900 to-swarm-dark flex flex-col">
+    <main className="min-h-screen bg-gradient-to-br from-[#050508] via-slate-900 to-[#050508] flex flex-col">
       {/* Hero Section */}
       <section className="flex-1 flex items-center justify-center px-6 py-20">
         <div className="max-w-4xl w-full">
@@ -73,10 +73,10 @@ export default function LandingPage() {
               className="mb-8"
             >
               <div className="flex items-center justify-center gap-3 mb-4">
-                <Icon name="pulse" size={56} color="#A855F7" />
+                <Icon name="pulse" size={56} color="#667eea" />
                 <div className="text-6xl font-bold glow-accent">SyncPulse</div>
               </div>
-              <p className="text-2xl text-swarm-tertiary font-light">
+              <p className="text-2xl text-white/60 font-light">
                 Agent Swarm Intelligence Platform
               </p>
             </motion.div>
@@ -86,7 +86,7 @@ export default function LandingPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-lg text-slate-300 mb-12 leading-relaxed max-w-2xl mx-auto"
+              className="text-lg text-white/70 mb-12 leading-relaxed max-w-2xl mx-auto"
             >
               Orchestrate, monitor, and control distributed agent swarms with unprecedented
               visibility and control. SyncPulse gives you the tools to build and manage
@@ -105,7 +105,7 @@ export default function LandingPage() {
                   <Icon name="zap" size={32} color="#A855F7" />
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">Real-time Control</h3>
-                <p className="text-swarm-tertiary">
+                <p className="text-white/60">
                   Monitor and control your agent swarms with live dashboards
                 </p>
               </GlassmorphCard>
@@ -115,7 +115,7 @@ export default function LandingPage() {
                   <Icon name="chart" size={32} color="#A855F7" />
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">Advanced Analytics</h3>
-                <p className="text-swarm-tertiary">
+                <p className="text-white/60">
                   Track performance metrics and swarm behavior in real-time
                 </p>
               </GlassmorphCard>
@@ -125,7 +125,7 @@ export default function LandingPage() {
                   <Icon name="shield" size={32} color="#A855F7" />
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">Secure & Scalable</h3>
-                <p className="text-swarm-tertiary">
+                <p className="text-white/60">
                   Enterprise-grade security for managing distributed systems
                 </p>
               </GlassmorphCard>
@@ -158,7 +158,7 @@ export default function LandingPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-6 border-t border-swarm-accent/10">
+      <section className="py-20 px-6 border-t border-white/10">
         <div className="max-w-6xl mx-auto">
           <motion.h2
             initial={{ opacity: 0 }}
@@ -198,7 +198,7 @@ export default function LandingPage() {
                   <h3 className="text-2xl font-semibold text-white mb-3">
                     {feature.title}
                   </h3>
-                  <p className="text-slate-400">
+                  <p className="text-white/60">
                     {feature.description}
                   </p>
                 </GlassmorphCard>
