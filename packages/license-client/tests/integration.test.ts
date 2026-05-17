@@ -20,7 +20,26 @@ import { LicenseGenerator } from '../src/generator.js';
 import { LicenseValidator } from '../src/validator.js';
 
 describe('License Client Integration', () => {
+  let testStorageDir: string;
+
   beforeEach(() => {
+    // Create a temporary directory for testing
+    testStorageDir = fs.mkdtempSync(path.join(os.tmpdir(), 'license-test-'));
+    LicenseStorage.setStoragePath(testStorageDir);
+
+    // Set correct public key for validator
+    const correctPublicKey = `-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvN1WpUDdId7wXn3X/anH
+ulk2OYfK2n0WyBvilpmhvWweQ+dMpiwRV0csdhK7sZ6dPH9VSAQ/OnWdHHrwEulS
+91B56QrTRW3yByVE4Pv1B1wevAhRUgbtt8wS4JsdVK9EHBIpB8JtjUdehd9jmzQT
+DoJXlkBavn+l9FJoFjU9cCEpAmz22u4lHoSsoYdLhYR4iDWhIBDc/8NOX3iDiIxj
+qKCodCY9Id+KErkGkf3APwXY1enZjTlW9UumXNFJzpbZWrLjT1MvXqkwDGX5L188
+OE/sfVrGK4GDJvusr/M3X+BWVXfXkUqVUJob7jUQufpDuht42jWARoGZLB5sR6Lv
+EwIDAQAB
+-----END PUBLIC KEY-----`;
+
+    LicenseValidator.setPublicKey(correctPublicKey);
+
     // Clean up any existing licenses
     clearStoredLicense();
   });
@@ -28,6 +47,12 @@ describe('License Client Integration', () => {
   afterEach(() => {
     // Clean up after tests
     clearStoredLicense();
+    // Reset to default storage path
+    LicenseStorage.setStoragePath(null);
+    // Clean up temporary directory
+    if (fs.existsSync(testStorageDir)) {
+      fs.rmSync(testStorageDir, { recursive: true, force: true });
+    }
   });
 
   describe('Trial License Flow', () => {
@@ -126,11 +151,10 @@ describe('License Client Integration', () => {
   describe('License Expiration & Grace Period', () => {
     it('should detect expired license with valid grace period', () => {
       // Generate an expired license (technically expired but within grace period)
-      const now = new Date();
-      const expiresAt = new Date(now.getTime() - 1 * 24 * 60 * 60 * 1000); // 1 day ago
-
       const expiredToken = LicenseGenerator.generateTrialLicense({ days: -1 });
       LicenseStorage.saveLicense(expiredToken);
+      // Validate to populate cache
+      LicenseValidator.validateLicense(expiredToken);
 
       const offlineResult = validateOffline();
       // Should be in grace period

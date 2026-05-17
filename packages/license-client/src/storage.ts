@@ -9,17 +9,35 @@ import os from 'os';
 import { LicensePayload } from './types.js';
 import crypto from 'crypto';
 
-const STORAGE_DIR = path.join(os.homedir(), '.syncpulse');
-const LICENSE_FILE = path.join(STORAGE_DIR, 'license.jwt');
-const LICENSE_CACHE_FILE = path.join(STORAGE_DIR, 'license.json');
-const MACHINE_ID_FILE = path.join(STORAGE_DIR, 'machine-id');
+const DEFAULT_STORAGE_DIR = path.join(os.homedir(), '.syncpulse');
 
 export class LicenseStorage {
+  private static customStorageDir: string | null = null;
+
+  /**
+   * Set a custom storage directory (for testing)
+   */
+  static setStoragePath(dir: string | null): void {
+    this.customStorageDir = dir;
+  }
+
   /**
    * Get the storage directory path
    */
   static getStoragePath(): string {
-    return STORAGE_DIR;
+    return this.customStorageDir || DEFAULT_STORAGE_DIR;
+  }
+
+  private static getLicenseFile(): string {
+    return path.join(this.getStoragePath(), 'license.jwt');
+  }
+
+  private static getLicenseCacheFile(): string {
+    return path.join(this.getStoragePath(), 'license.json');
+  }
+
+  private static getMachineIdFile(): string {
+    return path.join(this.getStoragePath(), 'machine-id');
   }
 
   /**
@@ -27,12 +45,13 @@ export class LicenseStorage {
    */
   static ensureStorageDirectory(): void {
     try {
-      if (!fs.existsSync(STORAGE_DIR)) {
-        fs.mkdirSync(STORAGE_DIR, { recursive: true, mode: 0o700 });
+      const storageDir = this.getStoragePath();
+      if (!fs.existsSync(storageDir)) {
+        fs.mkdirSync(storageDir, { recursive: true, mode: 0o700 });
       }
 
       // Ensure directory has restrictive permissions (0700 = rwx------)
-      fs.chmodSync(STORAGE_DIR, 0o700);
+      fs.chmodSync(storageDir, 0o700);
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : String(err);
       throw new Error(`Failed to create license storage directory: ${errorMessage}`);
@@ -47,7 +66,7 @@ export class LicenseStorage {
       this.ensureStorageDirectory();
 
       // Write with restrictive permissions (0600 = rw-------)
-      fs.writeFileSync(LICENSE_FILE, token, {
+      fs.writeFileSync(this.getLicenseFile(), token, {
         mode: 0o600,
         encoding: 'utf-8'
       });
@@ -62,11 +81,12 @@ export class LicenseStorage {
    */
   static loadLicense(): string | null {
     try {
-      if (!fs.existsSync(LICENSE_FILE)) {
+      const licenseFile = this.getLicenseFile();
+      if (!fs.existsSync(licenseFile)) {
         return null;
       }
 
-      const token = fs.readFileSync(LICENSE_FILE, 'utf-8').trim();
+      const token = fs.readFileSync(licenseFile, 'utf-8').trim();
       return token || null;
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : String(err);
@@ -87,7 +107,7 @@ export class LicenseStorage {
         cache_version: 1
       };
 
-      fs.writeFileSync(LICENSE_CACHE_FILE, JSON.stringify(cacheData, null, 2), {
+      fs.writeFileSync(this.getLicenseCacheFile(), JSON.stringify(cacheData, null, 2), {
         mode: 0o600,
         encoding: 'utf-8'
       });
@@ -102,11 +122,12 @@ export class LicenseStorage {
    */
   static loadLicenseCache(): LicensePayload | null {
     try {
-      if (!fs.existsSync(LICENSE_CACHE_FILE)) {
+      const licenseCacheFile = this.getLicenseCacheFile();
+      if (!fs.existsSync(licenseCacheFile)) {
         return null;
       }
 
-      const data = fs.readFileSync(LICENSE_CACHE_FILE, 'utf-8');
+      const data = fs.readFileSync(licenseCacheFile, 'utf-8');
       const parsed = JSON.parse(data);
 
       if (parsed.payload) {
@@ -124,12 +145,15 @@ export class LicenseStorage {
    */
   static clearLicense(): void {
     try {
-      if (fs.existsSync(LICENSE_FILE)) {
-        fs.unlinkSync(LICENSE_FILE);
+      const licenseFile = this.getLicenseFile();
+      const licenseCacheFile = this.getLicenseCacheFile();
+
+      if (fs.existsSync(licenseFile)) {
+        fs.unlinkSync(licenseFile);
       }
 
-      if (fs.existsSync(LICENSE_CACHE_FILE)) {
-        fs.unlinkSync(LICENSE_CACHE_FILE);
+      if (fs.existsSync(licenseCacheFile)) {
+        fs.unlinkSync(licenseCacheFile);
       }
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : String(err);
@@ -142,9 +166,10 @@ export class LicenseStorage {
    */
   static getMachineId(): string {
     try {
+      const machineIdFile = this.getMachineIdFile();
       // Try to load existing machine ID
-      if (fs.existsSync(MACHINE_ID_FILE)) {
-        const machineId = fs.readFileSync(MACHINE_ID_FILE, 'utf-8').trim();
+      if (fs.existsSync(machineIdFile)) {
+        const machineId = fs.readFileSync(machineIdFile, 'utf-8').trim();
         if (machineId) {
           return machineId;
         }
@@ -155,7 +180,7 @@ export class LicenseStorage {
 
       // Save it for future use
       this.ensureStorageDirectory();
-      fs.writeFileSync(MACHINE_ID_FILE, machineId, {
+      fs.writeFileSync(machineIdFile, machineId, {
         mode: 0o600,
         encoding: 'utf-8'
       });
@@ -198,7 +223,7 @@ export class LicenseStorage {
    * Check if license file exists
    */
   static hasLicense(): boolean {
-    return fs.existsSync(LICENSE_FILE);
+    return fs.existsSync(this.getLicenseFile());
   }
 
   /**
@@ -206,8 +231,9 @@ export class LicenseStorage {
    */
   static getLicenseModificationTime(): Date | null {
     try {
-      if (fs.existsSync(LICENSE_FILE)) {
-        const stats = fs.statSync(LICENSE_FILE);
+      const licenseFile = this.getLicenseFile();
+      if (fs.existsSync(licenseFile)) {
+        const stats = fs.statSync(licenseFile);
         return stats.mtime;
       }
       return null;

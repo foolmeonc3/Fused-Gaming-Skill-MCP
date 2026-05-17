@@ -61,6 +61,8 @@ export function initializeLicense(): string {
   LicenseStorage.ensureStorageDirectory();
   const trialLicense = LicenseGenerator.generateTrialLicense({ days: 14 });
   LicenseStorage.saveLicense(trialLicense);
+  // Validate to populate cache
+  LicenseValidator.validateLicense(trialLicense);
   return trialLicense;
 }
 

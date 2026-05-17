@@ -2,26 +2,44 @@
  * License Validator Tests
  */
 
+import fs from 'fs';
+import path from 'path';
+import os from 'os';
 import { LicenseValidator } from '../src/validator.js';
 import { LicenseGenerator } from '../src/generator.js';
 import { LicensePayload } from '../src/types.js';
 import { LicenseStorage } from '../src/storage.js';
 
 describe('LicenseValidator', () => {
+  let testStorageDir: string;
+
   beforeEach(() => {
-    // Reset to default keys
-    const defaultPublicKey = `-----BEGIN PUBLIC KEY-----
-MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2Z3qX2BTLS39R3wvUL3p
-+ZnwvXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3
-qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3
-qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3
-qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3
-qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3qXL3
-QIDAQAB
+    // Create a temporary directory for testing
+    testStorageDir = fs.mkdtempSync(path.join(os.tmpdir(), 'license-test-'));
+    LicenseStorage.setStoragePath(testStorageDir);
+
+    // Set correct public key for validator
+    const correctPublicKey = `-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvN1WpUDdId7wXn3X/anH
+ulk2OYfK2n0WyBvilpmhvWweQ+dMpiwRV0csdhK7sZ6dPH9VSAQ/OnWdHHrwEulS
+91B56QrTRW3yByVE4Pv1B1wevAhRUgbtt8wS4JsdVK9EHBIpB8JtjUdehd9jmzQT
+DoJXlkBavn+l9FJoFjU9cCEpAmz22u4lHoSsoYdLhYR4iDWhIBDc/8NOX3iDiIxj
+qKCodCY9Id+KErkGkf3APwXY1enZjTlW9UumXNFJzpbZWrLjT1MvXqkwDGX5L188
+OE/sfVrGK4GDJvusr/M3X+BWVXfXkUqVUJob7jUQufpDuht42jWARoGZLB5sR6Lv
+EwIDAQAB
 -----END PUBLIC KEY-----`;
 
-    LicenseValidator.setPublicKey(defaultPublicKey);
+    LicenseValidator.setPublicKey(correctPublicKey);
     LicenseStorage.clearLicense();
+  });
+
+  afterEach(() => {
+    // Reset to default storage path
+    LicenseStorage.setStoragePath(null);
+    // Clean up temporary directory
+    if (fs.existsSync(testStorageDir)) {
+      fs.rmSync(testStorageDir, { recursive: true, force: true });
+    }
   });
 
   describe('validateLicense', () => {
@@ -35,7 +53,7 @@ QIDAQAB
     });
 
     it('should reject an expired license', () => {
-      const token = LicenseGenerator.generateTrialLicense({ days: -1 });
+      const token = LicenseGenerator.generateTrialLicense({ days: -8 });
       const result = LicenseValidator.validateLicense(token);
 
       expect(result.valid).toBe(false);
@@ -304,7 +322,7 @@ QIDAQAB
 
   describe('getExpirationWarning', () => {
     it('should return null for valid license', () => {
-      const token = LicenseGenerator.generateTrialLicense({ days: 14 });
+      const token = LicenseGenerator.generateTrialLicense({ days: 60 });
       const result = LicenseValidator.validateLicense(token);
 
       const warning = LicenseValidator.getExpirationWarning(result.payload!);
@@ -323,8 +341,8 @@ QIDAQAB
       const now = new Date();
       const payload: LicensePayload = {
         type: 'trial',
-        issued_at: new Date(now.getTime() - 20 * 24 * 60 * 60 * 1000).toISOString(),
-        expires_at: new Date(now.getTime() - 1000).toISOString(),
+        issued_at: new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000).toISOString(),
+        expires_at: new Date(now.getTime() - 10 * 24 * 60 * 60 * 1000).toISOString(),
         product: 'syncpulse-cli',
         version: '1.0.0',
         features: {

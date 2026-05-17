@@ -2,15 +2,34 @@
  * License Generator Tests
  */
 
+import fs from 'fs';
+import path from 'path';
+import os from 'os';
 import jwt from 'jsonwebtoken';
 import { LicenseGenerator } from '../src/generator.js';
 import { LicenseValidator } from '../src/validator.js';
 import { LicensePayload } from '../src/types.js';
+import { LicenseStorage } from '../src/storage.js';
 
 describe('LicenseGenerator', () => {
+  let testStorageDir: string;
+
   beforeEach(() => {
+    // Create a temporary directory for testing
+    testStorageDir = fs.mkdtempSync(path.join(os.tmpdir(), 'license-test-'));
+    LicenseStorage.setStoragePath(testStorageDir);
+
     // Reset to defaults
     LicenseGenerator.setProductMetadata('syncpulse-cli', '1.0.0');
+  });
+
+  afterEach(() => {
+    // Reset to default storage path
+    LicenseStorage.setStoragePath(null);
+    // Clean up temporary directory
+    if (fs.existsSync(testStorageDir)) {
+      fs.rmSync(testStorageDir, { recursive: true, force: true });
+    }
   });
 
   describe('generateTrialLicense', () => {
