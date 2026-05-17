@@ -33,6 +33,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed CONTRIBUTING.md SKILLS_GUIDE reference path from `docs/guides/SKILLS_GUIDE.md` to `docs/SKILLS_GUIDE.md`
 - Updated Node.js version requirement from 18+ to 20.x (tested on 20.x and 22.x LTS) in documentation
 
+## [1.1.2] - 2026-05-16
+
+### Performance
+- **SyncPulse v0.2.2 Benchmark Results** — Comprehensive performance validation across all critical operations
+  - **Cache Operations**: 0.002ms average (447k ops/sec) — Target: <1ms ✓
+  - **Vector Search (1K entries)**: 4.5ms average (220 ops/sec) — Target: <10ms ✓
+  - **Vector Search (10K entries)**: 45.7ms average (22 ops/sec) — Target: <50ms ✓
+  - **Swarm Task Assignment (5 agents)**: 0.0018ms average (559k ops/sec) — Target: <1ms ✓
+  - **Memory Usage**: 617.72MB heap (stable) with 1.81MB external resources
+  - **Status**: 4 of 4 primary targets passing; Ready for production deployment
+
+### Changed
+- **Design System Integration** — SyncPulse v2.0 glassmorphism design system with SVG icons
+  - Integrated purple neon theme (#A855F7) across all web pages
+  - Replaced emoji with configurable SVG icon system (20+ icons)
+  - Added breadcrumb navigation with dynamic version/status badges
+  - Implemented PageFooter component for consistent footer/nav structure
+  - All pages now use consistent design tokens from version manifest
+
+### Security
+- No new vulnerabilities introduced; maintained security baseline from v1.1.1
+
 ## [1.1.1] - 2026-05-16
 
 ### Fixed
