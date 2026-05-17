@@ -63,7 +63,7 @@ export default function Navigation({
       {/* Glass morphism background */}
       <div
         className={`absolute inset-0 transition-all duration-300 -z-10 ${
-          isScrolled ? 'glass border-b border-swarm-accent/10' : 'bg-transparent'
+          isScrolled ? 'glass border-b border-white/10' : 'bg-transparent'
         }`}
       />
 
@@ -77,11 +77,11 @@ export default function Navigation({
             className="flex cursor-pointer items-center gap-2"
             onClick={() => router.push('/')}
           >
-            <Icon name="pulse" size={28} color="#A855F7" />
+            <Icon name="pulse" size={28} color="#667eea" />
             <div>
               <div className="text-lg font-bold text-white">SyncPulse</div>
               {isDashboard && (
-                <div className="text-xs text-swarm-tertiary">Dashboard</div>
+                <div className="text-xs text-white/60">Dashboard</div>
               )}
             </div>
           </motion.div>
@@ -96,7 +96,7 @@ export default function Navigation({
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.05 * index }}
-                  className="text-sm font-medium text-slate-300 transition-colors hover:text-swarm-accent"
+                  className="text-sm font-medium text-white/70 transition-colors hover:text-[#667eea]"
                 >
                   {link.label}
                 </motion.a>
@@ -115,7 +115,7 @@ export default function Navigation({
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2 }}
                   onClick={onLogin}
-                  className="text-sm font-medium text-slate-300 transition-colors hover:text-swarm-accent"
+                  className="text-sm font-medium text-white/70 transition-colors hover:text-[#667eea]"
                 >
                   Login
                 </motion.button>
@@ -124,7 +124,7 @@ export default function Navigation({
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.25 }}
                   onClick={onMagicLink}
-                  className="rounded-lg border border-swarm-accent/50 bg-swarm-accent/10 px-4 py-2 text-sm font-medium text-swarm-accent transition-all hover:bg-swarm-accent/20 hover:shadow-lg hover:shadow-swarm-accent/20"
+                  className="rounded-lg border border-[#667eea]/50 bg-[#667eea]/10 px-4 py-2 text-sm font-medium text-[#667eea] transition-all hover:bg-[#667eea]/20 hover:shadow-lg hover:shadow-[#667eea]/20"
                 >
                   Magic Link
                 </motion.button>
@@ -136,7 +136,7 @@ export default function Navigation({
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2 }}
                   onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                  className="flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-800/50 px-4 py-2 text-sm font-medium text-white transition-all hover:border-swarm-accent/30 hover:bg-slate-700/50"
+                  className="flex items-center gap-2 rounded-lg border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-all hover:border-[#667eea]/30 hover:bg-white/10"
                 >
                   {userName}
                   <ChevronDown
@@ -153,11 +153,11 @@ export default function Navigation({
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute right-0 mt-2 w-48 overflow-hidden rounded-lg border border-slate-700/50 shadow-xl glass"
+                      className="absolute right-0 mt-2 w-48 overflow-hidden rounded-lg border border-white/15 shadow-xl glass"
                     >
                       <a
                         href="/dashboard"
-                        className="flex items-center gap-3 border-b border-slate-700/30 px-4 py-3 text-sm text-slate-300 transition-all hover:bg-slate-800/50 hover:text-swarm-accent"
+                        className="flex items-center gap-3 border-b border-white/10 px-4 py-3 text-sm text-white/70 transition-all hover:bg-white/5 hover:text-[#667eea]"
                         onClick={() => setIsUserMenuOpen(false)}
                       >
                         <LayoutDashboard size={16} />
@@ -165,7 +165,7 @@ export default function Navigation({
                       </a>
                       <button
                         onClick={handleLogoutClick}
-                        className="w-full px-4 py-3 text-left text-sm text-slate-300 transition-all hover:bg-slate-800/50 hover:text-swarm-secondary flex items-center gap-3"
+                        className="w-full px-4 py-3 text-left text-sm text-white/70 transition-all hover:bg-white/5 hover:text-red-400 flex items-center gap-3"
                       >
                         <LogOut size={16} />
                         Logout
@@ -183,7 +183,7 @@ export default function Navigation({
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
             onClick={toggleMenu}
-            className="text-swarm-accent transition-colors hover:text-swarm-secondary md:hidden"
+            className="text-[#667eea] transition-colors hover:text-[#8ea5f8] md:hidden"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </motion.button>
@@ -207,14 +207,14 @@ export default function Navigation({
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     onClick={closeMenu}
-                    className="block rounded-lg px-4 py-2 text-sm text-slate-300 transition-all hover:bg-slate-800/30 hover:text-swarm-accent"
+                    className="block rounded-lg px-4 py-2 text-sm text-white/70 transition-all hover:bg-white/5 hover:text-[#667eea]"
                   >
                     {link.label}
                   </motion.a>
                 ))}
 
               {/* Mobile Auth Buttons */}
-              <div className="border-t border-slate-700/30 pt-4 mt-4 space-y-2">
+              <div className="border-t border-white/10 pt-4 mt-4 space-y-2">
                 {!isAuthenticated ? (
                   <>
                     <button
@@ -222,7 +222,7 @@ export default function Navigation({
                         onLogin();
                         closeMenu();
                       }}
-                      className="block w-full px-4 py-2 text-left text-sm text-slate-300 transition-colors hover:text-swarm-accent"
+                      className="block w-full px-4 py-2 text-left text-sm text-white/70 transition-colors hover:text-[#667eea]"
                     >
                       Login
                     </button>
@@ -231,7 +231,7 @@ export default function Navigation({
                         onMagicLink();
                         closeMenu();
                       }}
-                      className="w-full rounded-lg border border-swarm-accent/50 bg-swarm-accent/10 px-4 py-2 text-sm font-medium text-swarm-accent transition-all hover:bg-swarm-accent/20"
+                      className="w-full rounded-lg border border-[#667eea]/50 bg-[#667eea]/10 px-4 py-2 text-sm font-medium text-[#667eea] transition-all hover:bg-[#667eea]/20"
                     >
                       Magic Link
                     </button>
@@ -241,7 +241,7 @@ export default function Navigation({
                     <a
                       href="/dashboard"
                       onClick={closeMenu}
-                      className="flex items-center gap-3 px-4 py-2 text-sm text-slate-300 transition-colors hover:text-swarm-accent"
+                      className="flex items-center gap-3 px-4 py-2 text-sm text-white/70 transition-colors hover:text-[#667eea]"
                     >
                       <LayoutDashboard size={16} />
                       Dashboard
@@ -251,7 +251,7 @@ export default function Navigation({
                         handleLogoutClick();
                         closeMenu();
                       }}
-                      className="flex items-center gap-3 px-4 py-2 text-sm text-slate-300 transition-colors hover:text-swarm-secondary"
+                      className="flex items-center gap-3 px-4 py-2 text-sm text-white/70 transition-colors hover:text-red-400"
                     >
                       <LogOut size={16} />
                       Logout
@@ -261,7 +261,7 @@ export default function Navigation({
               </div>
 
               {/* Mobile Version Badge */}
-              <div className="border-t border-slate-700/30 pt-4 mt-4">
+              <div className="border-t border-white/10 pt-4 mt-4">
                 <div className="px-4">
                   <VersionBadge variant="small" />
                 </div>

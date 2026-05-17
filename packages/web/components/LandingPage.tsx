@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Icon from './Icon';
 import GlassmorphCard from './GlassmorphCard';
+import Button from './Button';
 import PageFooter from './PageFooter';
 
 export default function LandingPage() {
@@ -137,18 +138,20 @@ export default function LandingPage() {
               transition={{ delay: 0.8, duration: 0.8 }}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <button
+              <Button
+                variant="primary"
+                size="lg"
                 onClick={() => router.push('/auth/signup')}
-                className="px-8 py-3 rounded-lg bg-swarm-accent/20 hover:bg-swarm-accent/30 text-swarm-accent hover:text-white transition-all duration-300 font-semibold border border-swarm-accent/50 hover:border-swarm-accent text-lg"
               >
                 Get Started Free
-              </button>
-              <button
+              </Button>
+              <Button
+                variant="ghost"
+                size="lg"
                 onClick={() => router.push('/auth/login')}
-                className="px-8 py-3 rounded-lg bg-transparent hover:bg-white/5 text-white transition-colors duration-300 font-semibold border border-white/20 hover:border-white/40 text-lg"
               >
                 Sign In
-              </button>
+              </Button>
             </motion.div>
           </motion.div>
         </div>
@@ -217,16 +220,17 @@ export default function LandingPage() {
             <h2 className="text-4xl font-bold mb-6 glow-accent">
               Ready to Control Your Swarms?
             </h2>
-            <p className="text-xl text-slate-300 mb-8">
+            <p className="text-xl text-white/70 mb-8">
               Join the revolution in distributed agent intelligence. Start building powerful
               swarm applications today.
             </p>
-            <button
+            <Button
+              variant="primary"
+              size="lg"
               onClick={() => router.push('/auth/signup')}
-              className="px-12 py-4 rounded-lg bg-swarm-accent/20 hover:bg-swarm-accent/30 text-swarm-accent hover:text-white transition-all duration-300 font-semibold border border-swarm-accent/50 hover:border-swarm-accent text-lg"
             >
               Start Your Free Trial
-            </button>
+            </Button>
           </GlassmorphCard>
         </motion.div>
       </section>
