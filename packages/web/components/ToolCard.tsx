@@ -36,7 +36,7 @@ export default function ToolCard({
       whileHover={{ y: -4, scale: 1.02 }}
       className="group block h-full"
     >
-      <div className="h-full bg-gradient-to-br from-[#050508] to-[#0a0a0f] border border-white/8 rounded-lg p-6 hover:border-white/15 transition-all duration-300 glass backdrop-blur-[22px]">
+      <div className="h-full bg-gradient-to-br from-[#050508] to-[#0a0a0f] border border-white/[0.08] rounded-lg p-6 hover:border-white/[0.15] transition-all duration-300 glass backdrop-blur-[22px]">
         {/* Icon and Header */}
         <div className="flex items-start justify-between mb-4">
           {hasValidIcon ? (
@@ -74,7 +74,7 @@ export default function ToolCard({
             {tags.map((tag) => (
               <span
                 key={tag}
-                className="px-2 py-1 text-xs bg-white/5 text-white/70 rounded border border-white/10"
+                className="px-2 py-1 text-xs bg-white/5 text-white/70 rounded border border-white/[0.1]"
               >
                 {tag}
               </span>

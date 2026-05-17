@@ -158,7 +158,7 @@ export default function LandingPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-6 border-t border-white/10">
+      <section className="py-20 px-6 border-t border-white/[0.1]">
         <div className="max-w-6xl mx-auto">
           <motion.h2
             initial={{ opacity: 0 }}

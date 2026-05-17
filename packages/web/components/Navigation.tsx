@@ -67,7 +67,7 @@ export default function Navigation({
       {/* Glass morphism background */}
       <div
         className={`absolute inset-0 transition-all duration-300 -z-10 ${
-          isScrolled ? 'glass border-b border-white/10' : 'bg-transparent'
+          isScrolled ? 'glass border-b border-white/[0.1]' : 'bg-transparent'
         }`}
       />
 
@@ -140,7 +140,7 @@ export default function Navigation({
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2 }}
                   onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                  className="flex items-center gap-2 rounded-lg border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-all hover:border-[#667eea]/30 hover:bg-white/10"
+                  className="flex items-center gap-2 rounded-lg border border-white/[0.15] bg-white/5 px-4 py-2 text-sm font-medium text-white transition-all hover:border-[#667eea]/30 hover:bg-white/10"
                 >
                   {userName}
                   <ChevronDown
@@ -157,11 +157,11 @@ export default function Navigation({
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute right-0 mt-2 w-48 overflow-hidden rounded-lg border border-white/15 shadow-xl glass"
+                      className="absolute right-0 mt-2 w-48 overflow-hidden rounded-lg border border-white/[0.15] shadow-xl glass"
                     >
                       <a
                         href="/dashboard"
-                        className="flex items-center gap-3 border-b border-white/10 px-4 py-3 text-sm text-white/70 transition-all hover:bg-white/5 hover:text-[#667eea]"
+                        className="flex items-center gap-3 border-b border-white/[0.1] px-4 py-3 text-sm text-white/70 transition-all hover:bg-white/5 hover:text-[#667eea]"
                         onClick={() => setIsUserMenuOpen(false)}
                       >
                         <LayoutDashboard size={16} />
@@ -218,7 +218,7 @@ export default function Navigation({
                 ))}
 
               {/* Mobile Auth Buttons */}
-              <div className="border-t border-white/10 pt-4 mt-4 space-y-2">
+              <div className="border-t border-white/[0.1] pt-4 mt-4 space-y-2">
                 {!isAuthenticated ? (
                   <>
                     <button
@@ -265,7 +265,7 @@ export default function Navigation({
               </div>
 
               {/* Mobile Version Badge */}
-              <div className="border-t border-white/10 pt-4 mt-4">
+              <div className="border-t border-white/[0.1] pt-4 mt-4">
                 <div className="px-4">
                   <VersionBadge variant="small" />
                 </div>
