@@ -16,7 +16,6 @@ import {
 } from '../src/index.js';
 import { LicenseStorage } from '../src/storage.js';
 import { LicenseGenerator } from '../src/generator.js';
-import { LicenseValidator } from '../src/validator.js';
 
 describe('License Client Integration', () => {
   beforeEach(() => {

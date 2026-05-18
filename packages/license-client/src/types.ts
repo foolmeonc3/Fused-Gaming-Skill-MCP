@@ -77,7 +77,7 @@ export interface OfflineValidationResult {
 
 export enum GracePeriodDays {
   TRIAL_GRACE = 7,
-  COMMERCIAL_GRACE = 7,
-  TEAM_GRACE = 7,
+  COMMERCIAL_GRACE = 14,
+  TEAM_GRACE = 21,
   ENTERPRISE_GRACE = 30,
 }
