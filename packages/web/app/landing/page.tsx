@@ -269,7 +269,7 @@ export default function LandingPage() {
 
                 {/* Code */}
                 <pre className="font-mono text-sm text-slate-200 mb-6 overflow-x-auto">
-                  <code>{`npm install -g @h4shed/syncpulse\n\n# Start your first swarm\nsyncpulse init\n\n# View license status\nsyncpulse license:status`}</code>
+                  <code>{`npm install -g @h4shed/mcp-cli\n\n# Start your first swarm\nmcp-cli swarm:init\n\n# View license status\nmcp-cli license:status`}</code>
                 </pre>
 
                 {/* Copy Button */}
@@ -278,7 +278,7 @@ export default function LandingPage() {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => {
-                      const code = 'npm install -g @h4shed/syncpulse';
+                      const code = 'npm install -g @h4shed/mcp-cli';
                       navigator.clipboard.writeText(code);
                     }}
                     className="group/btn flex-1 px-6 py-3 bg-gradient-to-r from-swarm-accent to-swarm-accent/80 text-black font-semibold rounded-lg hover:shadow-lg hover:shadow-swarm-accent/50 transition-all duration-300 flex items-center justify-center gap-2"
