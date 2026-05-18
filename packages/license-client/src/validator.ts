@@ -56,7 +56,16 @@ export class LicenseValidator {
         };
       }
 
-      // Cache the validated license
+      // Verify machine binding
+      if (!this.verifyMachineBinding(payload)) {
+        return {
+          valid: false,
+          error: `License is bound to a different machine. Current: ${this.getMachineId()}`,
+          payload
+        };
+      }
+
+      // Cache the validated license after all validations pass
       LicenseStorage.saveLicenseCache(payload as unknown as Record<string, unknown>);
 
       return {
@@ -66,17 +75,14 @@ export class LicenseValidator {
         inGracePeriod: expirationStatus.inGracePeriod
       };
     } catch (err: unknown) {
-      let errorMessage = 'Invalid license format';
-
-      if (err instanceof jwt.TokenExpiredError) {
-        errorMessage = 'License token expired';
-      } else if (err instanceof jwt.JsonWebTokenError) {
-        errorMessage = `Invalid JWT: ${err.message}`;
-      } else if (err instanceof Error) {
-        errorMessage = err.message;
-      } else {
-        errorMessage = String(err);
-      }
+      const errorMessage =
+        err instanceof jwt.TokenExpiredError
+          ? 'License token expired'
+          : err instanceof jwt.JsonWebTokenError
+            ? `Invalid JWT: ${err.message}`
+            : err instanceof Error
+              ? err.message
+              : String(err);
 
       return {
         valid: false,
@@ -92,10 +98,15 @@ export class LicenseValidator {
     const now = new Date();
     const expiresAt = new Date(payload.expires_at);
 
-    let gracePeriodDays = GracePeriodDays.COMMERCIAL_GRACE;
-    if (payload.type === 'trial') {
-      gracePeriodDays = GracePeriodDays.TRIAL_GRACE;
+    if (isNaN(expiresAt.getTime())) {
+      throw new Error(`Invalid expiration date: ${payload.expires_at}`);
     }
+
+    const gracePeriodDays =
+      payload.type === 'trial' ? GracePeriodDays.TRIAL_GRACE :
+      payload.type === 'team' ? GracePeriodDays.TEAM_GRACE :
+      payload.type === 'enterprise' ? GracePeriodDays.ENTERPRISE_GRACE :
+      GracePeriodDays.COMMERCIAL_GRACE;
 
     const gracePeriodEndsAt = new Date(expiresAt.getTime() + gracePeriodDays * 24 * 60 * 60 * 1000);
 
@@ -114,7 +125,7 @@ export class LicenseValidator {
 
   /**
    * Validate offline using cached license
-   * Does not verify signature, but checks expiration with grace period
+   * Does not verify signature, but checks expiration with grace period and machine binding
    */
   static isOfflineValid(): OfflineValidationResult {
     const cachedData = LicenseStorage.loadLicenseCache();
@@ -128,6 +139,17 @@ export class LicenseValidator {
     }
 
     const cachedPayload = cachedData as unknown as LicensePayload;
+
+    // Check machine binding
+    if (!this.verifyMachineBinding(cachedPayload)) {
+      return {
+        valid: false,
+        cacheValid: false,
+        cachedPayload,
+        error: `License is bound to a different machine. Current: ${this.getMachineId()}`
+      };
+    }
+
     const expirationStatus = this.checkExpiration(cachedPayload);
 
     // Allow offline validation during grace period
@@ -227,16 +249,19 @@ export class LicenseValidator {
       return result;
     }
 
-    // If expectedMachineId is provided, check against it; otherwise use current machine
-    if (expectedMachineId && result.payload.activation?.machine_id) {
-      if (result.payload.activation.machine_id !== expectedMachineId) {
+    const licenseMachineId = result.payload.activation?.machine_id;
+
+    // If expectedMachineId is provided, check against it
+    if (expectedMachineId) {
+      if (!licenseMachineId || licenseMachineId !== expectedMachineId) {
         return {
           valid: false,
-          error: `License is bound to machine ${result.payload.activation.machine_id}, expected ${expectedMachineId}`,
+          error: `License is bound to machine ${licenseMachineId || 'unbound'}, expected ${expectedMachineId}`,
           payload: result.payload
         };
       }
-    } else if (!this.verifyMachineBinding(result.payload)) {
+    } else if (licenseMachineId && !this.verifyMachineBinding(result.payload)) {
+      // If no expectedMachineId but license has machine binding, verify against current machine
       return {
         valid: false,
         error: `License is bound to a different machine. Current: ${this.getMachineId()}`,
