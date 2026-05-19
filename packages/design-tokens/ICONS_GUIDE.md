@@ -232,7 +232,7 @@ Always include proper ARIA labels:
 Full TypeScript support with type checking:
 
 ```typescript
-import type { IconName, IconSize, IconColor } from '@syncpulse/design-tokens';
+import type { IconName, IconSize, IconColor } from '@h4shed/design-tokens/icons';
 
 const iconName: IconName = 'home'; // Type-safe
 const size: IconSize = 'lg';
@@ -244,7 +244,7 @@ const color: IconColor = 'primary';
 Access icons programmatically:
 
 ```typescript
-import { iconRegistry, getAllIconNames, getIconsByCategory } from '@syncpulse/design-tokens';
+import { iconRegistry, getAllIconNames, getIconsByCategory } from '@h4shed/design-tokens/icons';
 
 // Get all icon names
 const allIcons = getAllIconNames();
