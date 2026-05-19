@@ -57,6 +57,9 @@
     "eslint": "^10.1.0",
     "typescript": "^5.3.2"
   },
+  "overrides": {
+    "typescript": "^5.3.2"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
