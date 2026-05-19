@@ -73,10 +73,11 @@ Use the monitoring script to watch status updates in real-time:
 ./scripts/monitor-status.sh http://localhost:3000 2
 ```
 
-Or export metrics:
+Or export metrics to a timestamped file:
 
 ```bash
-node scripts/export-metrics.cjs json > status-snapshot.json
+node scripts/export-metrics.cjs json
+# Output: status-metrics-YYYY-MM-DD-HHmmss.json
 ```
 
 ## Integration

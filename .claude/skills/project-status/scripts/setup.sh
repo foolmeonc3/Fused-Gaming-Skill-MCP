@@ -23,14 +23,11 @@ if ! command -v npm &> /dev/null; then
 fi
 echo "✓ npm $(npm -v) detected"
 
-# Install dependencies if needed
-if [ ! -d "node_modules" ]; then
-  echo "📦 Installing dependencies..."
-  npm install
-  echo "✓ Dependencies installed"
-else
-  echo "✓ node_modules already exists"
-fi
+# Note: This is a template skill framework with no dependencies in the skill directory itself.
+# Users will copy resources/templates/basic-status.cjs into their own project and install there.
+echo "ℹ️  Note: This is a template skill—no dependencies to install here"
+echo "     Users should copy resources/templates/basic-status.cjs into their project"
+echo "     and install dependencies in their project directory instead."
 
 # Create configuration template if missing
 if [ ! -f "config.json" ]; then
