@@ -4,16 +4,20 @@ Basic implementation of Project Status API for PeraltaCC RFP proposal.
 
 ## Quick Start
 
+This example includes configuration for PeraltaCC. To run a status server:
+
 ```bash
-# Install dependencies
-npm install
+# Option 1: Use the basic template from this skill
+cd ../..  # Navigate to skill root
+node templates/basic-status.cjs
 
-# Copy configuration
-cp config.json ../../config.json
-
-# Run status server
-npm start
+# Option 2: Create your own server using this config
+# Copy config to your project and create a server.js (see template for example)
+cp examples/basic-peraltacc/config.json ./
+node your-server.js
 ```
+
+For a complete working implementation, use the `basic-status.cjs` template in `resources/templates/` as a starting point.
 
 ## Configuration
 
@@ -72,7 +76,7 @@ Use the monitoring script to watch status updates in real-time:
 Or export metrics:
 
 ```bash
-node scripts/export-metrics.js json > status-snapshot.json
+node scripts/export-metrics.cjs json > status-snapshot.json
 ```
 
 ## Integration
@@ -95,8 +99,11 @@ To integrate with existing PeraltaCC systems:
 
 3. Set up webhooks for status notifications (optional)
 
-## Files
+## Files in This Example
 
-- `config.json` - PeraltaCC configuration
-- `status.js` - Express server setup
-- Template: `../../../templates/basic-status.cjs`
+- `config.json` - PeraltaCC-specific configuration with 8-agent swarm, 6 gates, RFP tracking
+
+## Server Implementation
+
+For the server implementation, use the template:
+- `../../../templates/basic-status.cjs` - Copy this and adapt for your project
