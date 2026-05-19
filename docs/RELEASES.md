@@ -1,7 +1,7 @@
 # Release Planning & Versioned Skills Inventory
 
-**Last Updated:** May 16, 2026  
-**Current Product Version:** 1.1.1  
+**Last Updated:** May 19, 2026  
+**Current Product Version:** 1.1.5  
 **Release Cadence:** Monthly minor versions, patch/hotfixes as needed
 
 ---
