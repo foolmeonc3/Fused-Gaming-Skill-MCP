@@ -23,6 +23,10 @@
     "automationAgents": {
       "count": 6,
       "roles": ["github-automation", "workflow-manager", "release-coordinator"]
+    },
+    "securityAgents": {
+      "count": 3,
+      "roles": ["security-auditor", "access-controller", "compliance-monitor"]
     }
   },
   "consensusProtocol": {
