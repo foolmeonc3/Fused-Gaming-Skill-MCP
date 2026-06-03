@@ -56,42 +56,41 @@ Before starting any task:
 
 ## ⚠️ Critical: Package Scope Configuration
 
-**IMPORTANT**: There are THREE distinct scopes in this monorepo. Confusion between them causes npm publish failures.
+**IMPORTANT**: Monorepo scope must match the npm account's owned scopes. Mismatches cause npm publish 404 errors.
 
-### Scope Configuration
-| Location | Scope | Purpose | Example |
-|----------|-------|---------|---------|
-| **VERSION.json** `.packageInfo.scope` | `fused-gaming` | Internal organization identifier | Config only, not used in publishing |
-| **VERSION.json** `.packageInfo.publishedScope` | `fused-gaming` | **npm publish scope** — must match npm account scope | Used to determine `@scope` in npm |
-| **package.json** `.name` | `@fused-gaming/...` | **Actual package name** — must match publishedScope | Published as `@fused-gaming/mcp-core` |
+### Scope Configuration (Correct for this project)
+| Location | Scope | Purpose | Note |
+|----------|-------|---------|------|
+| **VERSION.json** `.packageInfo.scope` | `h4shed` | Internal organization identifier | Config only, not used in publishing |
+| **VERSION.json** `.packageInfo.publishedScope` | `h4shed` | **npm publish scope** — MUST match npm account owned scope | This account owns `@h4shed` scope |
+| **package.json** `.name` | `@h4shed/...` | **Actual package name** — MUST match publishedScope | Published as `@h4shed/mcp-core` |
 
 ### Validation Rules
-1. **ALWAYS ensure** `VERSION.json.packageInfo.publishedScope` equals the scope in all `package.json` names
-2. **ALWAYS ensure** workspace package names use `@{publishedScope}` prefix
-3. **NEVER use** different scopes in VERSION.json vs package.json (e.g., `@h4shed` in package.json but `publishedScope: "fused-gaming"` in VERSION.json)
+1. **ALWAYS ensure** `VERSION.json.packageInfo.publishedScope` matches an npm scope the account owns
+2. **ALWAYS ensure** all workspace package names use `@{publishedScope}` prefix
+3. **NEVER use** different scopes in VERSION.json vs package.json (prevents silent publish failures)
 
 ### Example: Version Bump Automation
 When running `npm version` or publish workflows:
-1. ✓ Check: `VERSION.json.publishedScope` is `fused-gaming`
-2. ✓ Verify: All `packages/*/package.json` have `"name": "@fused-gaming/..."`
+1. ✓ Check: `VERSION.json.publishedScope` is `h4shed`
+2. ✓ Verify: All `packages/*/package.json` have `"name": "@h4shed/..."`
 3. ✓ Validate: `scripts/preflight-publish-check.js` confirms scope consistency
 
-### What Broke (v1.2.0 Incident)
-- ❌ `VERSION.json` had `publishedScope: "h4shed"`
-- ❌ `package.json` files used `"name": "@h4shed/..."`
-- ❌ npm account doesn't own `@h4shed` scope
-- ✓ **Fix**: Changed all to `@fused-gaming` (matching npm account)
+### What Almost Broke (v1.2.0 Lesson)
+- ❌ Attempted to change scope from `@h4shed` to `@fused-gaming` without owning that scope
+- ❌ This caused npm publish 404 errors (scope doesn't exist in account)
+- ✓ **Prevention**: Verify npm account owns the target scope before changing VERSION.json
 
 ### Prevention Checklist
 Before ANY version bump or release:
 ```bash
-# 1. Verify VERSION.json scope
+# 1. Verify VERSION.json scope matches account
 jq '.packageInfo.publishedScope' VERSION.json
-# Should output: "fused-gaming"
+# Should output: "h4shed" (the account's owned scope)
 
 # 2. Check all package scopes
 grep -r '"name": "@' packages/*/package.json | head -5
-# Should all show: "@fused-gaming/"
+# Should all show: "@h4shed/"
 
 # 3. Match them
 # VERSION.json.publishedScope must equal scope in package.json names
