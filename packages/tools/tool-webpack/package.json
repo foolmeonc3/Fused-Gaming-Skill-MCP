@@ -1,5 +1,5 @@
 {
-  "name": "@h4shed/tool-webpack",
+  "name": "@fused-gaming/tool-webpack",
   "version": "1.0.0",
   "description": "Webpack bundler tool wrapper for @h4shed ecosystem",
   "type": "module",

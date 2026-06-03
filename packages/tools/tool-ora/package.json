@@ -1,5 +1,5 @@
 {
-  "name": "@h4shed/tool-ora",
+  "name": "@fused-gaming/tool-ora",
   "version": "7.0.0",
   "description": "Terminal spinners and progress indicators integration for @h4shed ecosystem",
   "type": "module",

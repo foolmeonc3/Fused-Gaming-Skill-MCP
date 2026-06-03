@@ -1,5 +1,5 @@
 {
-  "name": "@h4shed/tool-vitepress",
+  "name": "@fused-gaming/tool-vitepress",
   "version": "1.0.0",
   "description": "Lightweight documentation site generator integration for @h4shed ecosystem",
   "type": "module",

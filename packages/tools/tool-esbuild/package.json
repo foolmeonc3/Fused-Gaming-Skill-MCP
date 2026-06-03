@@ -1,5 +1,5 @@
 {
-  "name": "@h4shed/tool-esbuild",
+  "name": "@fused-gaming/tool-esbuild",
   "version": "1.0.0",
   "description": "JavaScript bundler tool wrapper for @h4shed ecosystem",
   "type": "module",

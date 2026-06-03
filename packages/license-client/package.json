@@ -1,5 +1,5 @@
 {
-  "name": "@h4shed/license-client",
+  "name": "@fused-gaming/license-client",
   "version": "1.0.0",
   "description": "License validation & management library for SyncPulse CLI",
   "type": "module",

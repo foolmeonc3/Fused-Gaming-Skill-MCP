@@ -54,6 +54,91 @@ Before starting any task:
 
 ---
 
+## ⚠️ Critical: Package Scope Configuration
+
+**IMPORTANT**: There are THREE distinct scopes in this monorepo. Confusion between them causes npm publish failures.
+
+### Scope Configuration
+| Location | Scope | Purpose | Example |
+|----------|-------|---------|---------|
+| **VERSION.json** `.packageInfo.scope` | `fused-gaming` | Internal organization identifier | Config only, not used in publishing |
+| **VERSION.json** `.packageInfo.publishedScope` | `fused-gaming` | **npm publish scope** — must match npm account scope | Used to determine `@scope` in npm |
+| **package.json** `.name` | `@fused-gaming/...` | **Actual package name** — must match publishedScope | Published as `@fused-gaming/mcp-core` |
+
+### Validation Rules
+1. **ALWAYS ensure** `VERSION.json.packageInfo.publishedScope` equals the scope in all `package.json` names
+2. **ALWAYS ensure** workspace package names use `@{publishedScope}` prefix
+3. **NEVER use** different scopes in VERSION.json vs package.json (e.g., `@h4shed` in package.json but `publishedScope: "fused-gaming"` in VERSION.json)
+
+### Example: Version Bump Automation
+When running `npm version` or publish workflows:
+1. ✓ Check: `VERSION.json.publishedScope` is `fused-gaming`
+2. ✓ Verify: All `packages/*/package.json` have `"name": "@fused-gaming/..."`
+3. ✓ Validate: `scripts/preflight-publish-check.js` confirms scope consistency
+
+### What Broke (v1.2.0 Incident)
+- ❌ `VERSION.json` had `publishedScope: "h4shed"`
+- ❌ `package.json` files used `"name": "@h4shed/..."`
+- ❌ npm account doesn't own `@h4shed` scope
+- ✓ **Fix**: Changed all to `@fused-gaming` (matching npm account)
+
+### Prevention Checklist
+Before ANY version bump or release:
+```bash
+# 1. Verify VERSION.json scope
+jq '.packageInfo.publishedScope' VERSION.json
+# Should output: "fused-gaming"
+
+# 2. Check all package scopes
+grep -r '"name": "@' packages/*/package.json | head -5
+# Should all show: "@fused-gaming/"
+
+# 3. Match them
+# VERSION.json.publishedScope must equal scope in package.json names
+```
+
+---
+
+## Agent Notes (2026-05-26, NPM Publish Investigation + Auth Endpoint Protection)
+
+### What Was Completed
+1. **Authentication Endpoint Protection** (Commits: 6943afa, dc9b72e, 99936a7, 47c24a3)
+   - Implemented JWT-based auth middleware with role-based access control
+   - Protected `/api/tasks`, `/api/swarms`, `/api/roadmap` endpoints
+   - Created comprehensive authentication documentation and examples
+   - Added security audit documentation for OWASP compliance
+
+2. **AdminJS Evaluation** (Commits: 9f1a04b, ae4f8bf)
+   - Evaluated AdminJS as potential dashboard solution
+   - Created integration guide with 6-8 week phased implementation plan
+   - Produced production-ready POC code with full TypeScript support
+   - Recommendation: Partial Adoption (phased approach)
+
+3. **NPM Publish Failure Investigation** (In progress)
+   - Identified workspace package structure with file: protocol references
+   - Documented 35+ UNMET DEPENDENCY warnings from eslint/Next.js peer dependencies
+   - Created comprehensive troubleshooting guide: `docs/NPM_PUBLISH_TROUBLESHOOTING.md`
+   - Root cause: Normal monorepo state (file: references show as unmet but don't block publish)
+
+### Current Status
+- **Branch**: `claude/keen-wright-1pNGa` (1 commit ahead of remote)
+- **Tests**: No critical blocking issues identified
+- **CI/CD Ready**: Workflow configurations are correct
+- **Next Action**: Create PR #229 to merge authentication protection + documentation
+
+### Known Constraints
+1. Workspace UNMET DEPENDENCY warnings are expected with npm file: protocol
+2. ESLint configuration dependencies are optional peer deps (non-blocking)
+3. Publish workflow may require specific npm auth token configuration
+
+### Recommended Next Steps
+1. Create PR #229 with current branch
+2. Monitor CI checks for any regressions
+3. After merge, validate publish workflow with next tag push
+4. If publish still fails, check npm registry auth and package version conflicts
+
+---
+
 ## Agent Notes (2026-04-21, README roadmap + open PR/milestone reindex)
 
 ### What Was Updated

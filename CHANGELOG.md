@@ -7,6 +7,59 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-06-03
+
+### Added
+- **24-Agent Swarm Orchestration with Raft Consensus** — Enterprise-scale distributed coordination
+  - Expanded from 3-agent baseline to configurable 24-agent hierarchical-mesh topology
+  - Implemented Raft 3.0.0 consensus protocol for fault-tolerant agent coordination
+  - Added auto-scaling capabilities with 15-agent maximum capacity
+  - Dynamic agent spawning and task distribution system
+  - Real-time agent health monitoring and status reporting
+  - Message-bus communication protocol with consensus-based coordination
+
+- **License System with Machine Binding** — Comprehensive license management and validation
+  - Hardware-based machine binding using immutable host properties (hostname + platform + MAC address)
+  - Support for commercial, team, and enterprise license tiers
+  - Type-safe API signatures with machine validation and expiration checking
+  - Automatic machine ID computation based on hardware identifiers
+  - License lifecycle management and renewal workflows
+
+- **Design System Orchestration** — Unified glassmorphism visual language
+  - Purple neon theme (#A855F7) integrated across all web interfaces
+  - Configurable SVG icon system with 25+ design tokens
+  - Breadcrumb navigation with dynamic version/status badges
+  - PageFooter component for consistent footer/navigation structure
+  - Design tokens documentation and component library
+
+### Security
+- **JWT-Based Endpoint Protection** — PR #229 introduces comprehensive authentication for sensitive API endpoints
+  - Implemented JWT-based Bearer token authentication with role-based access control (admin/user roles)
+  - Protected `/api/tasks`, `/api/swarms`, and `/api/roadmap` endpoints from unauthorized access
+  - Added `SessionStore` for in-memory JWT token management with automatic expiration cleanup
+  - Implemented `AuthenticationMiddleware` with role validation and optional auth flows
+  - Created comprehensive authentication documentation and security audit guidance
+  - Added type-safe API example implementations showing protected endpoint patterns
+
+### Changed
+- **AdminJS Dashboard Evaluation** — Comprehensive assessment of AdminJS as potential admin solution
+  - Evaluated AdminJS 7.3.x for admin panel replacement with production-ready POC code
+  - Created 6-8 week phased implementation plan with 9 granular permissions and RBAC setup
+  - Documented complete resource configurations (Tasks, Agents, Swarms, AdminUsers, AuditLogs)
+  - Recommendation: Partial adoption for phased enhancement of admin capabilities
+  - Full integration guide and example code published in `docs/ADMINJS_INTEGRATION_GUIDE.md`
+
+### Fixed
+- **TypeScript 7.0 Compatibility** — Added `ignoreDeprecations: "5.0"` to handle baseUrl deprecation warnings
+- **NPM Publish Investigation** — Documented expected UNMET DEPENDENCY warnings with file: protocol references
+  - Created comprehensive troubleshooting guide: `docs/NPM_PUBLISH_TROUBLESHOOTING.md`
+  - Verified monorepo dependency resolution follows npm workspace standards
+  - Provided pre-publish validation checklist and mitigation strategies
+- **Skills Page Type System** — Fixed TypeScript type mismatch in icon rendering
+  - Corrected icon property type from React.ReactNode to IconName string type
+  - Removed unnecessary icon mapping layer that conflicted with Icon component design
+  - Ensured design-tokens-driven icon rendering for consistency
+
 ## [1.1.4] - 2026-05-19
 
 ### Fixed
@@ -148,17 +201,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Full TypeScript support with MCP tool definitions
   - Comprehensive documentation: SECURE_EMAIL_SETUP.md, AGENT_INTEGRATION.md, EMAIL_WORKFLOWS.md
 - **9 New Scaffolded Development Tool Skills** — Complete package structure and Skill interface implementations
-  - Vite Module Bundler (`@h4shed/skill-vite-module-bundler`)
-  - TypeScript Toolchain (`@h4shed/skill-typescript-toolchain`)
-  - Tailwind CSS Style Builder (`@h4shed/skill-tailwindcss-style-builder`)
-  - Storybook Component Library (`@h4shed/skill-storybook-component-library`)
-  - Playwright Test Automation (`@h4shed/skill-playwright-test-automation`)
-  - Vercel Next.js Deployment (`@h4shed/skill-vercel-nextjs-deployment`)
-  - Style Dictionary System (`@h4shed/skill-style-dictionary-system`)
-  - NFT Generative Art (`@h4shed/skill-nft-generative-art`)
-  - Smart Contract Tools (`@h4shed/skill-smart-contract-tools`)
+  - Vite Module Bundler (`@fused-gaming/skill-vite-module-bundler`)
+  - TypeScript Toolchain (`@fused-gaming/skill-typescript-toolchain`)
+  - Tailwind CSS Style Builder (`@fused-gaming/skill-tailwindcss-style-builder`)
+  - Storybook Component Library (`@fused-gaming/skill-storybook-component-library`)
+  - Playwright Test Automation (`@fused-gaming/skill-playwright-test-automation`)
+  - Vercel Next.js Deployment (`@fused-gaming/skill-vercel-nextjs-deployment`)
+  - Style Dictionary System (`@fused-gaming/skill-style-dictionary-system`)
+  - NFT Generative Art (`@fused-gaming/skill-nft-generative-art`)
+  - Smart Contract Tools (`@fused-gaming/skill-smart-contract-tools`)
   - Each implements the Skill interface with proper name, version, description, and initialize method
-- **27 Tool Wrapper Packages** — Scaffolding for open-source tool integrations under `@h4shed/tool-*` namespace
+- **27 Tool Wrapper Packages** — Scaffolding for open-source tool integrations under `@fused-gaming/tool-*` namespace
   - Design & Style Systems (6): Style Dictionary, Tailwind CSS, PostCSS, cssnano, Sass, Less
   - Component Systems (5): Storybook, TypeDoc, Docusaurus, VitePress, Markdown-it
   - Testing & Quality (8): Axe Core, Pa11y, Jest, Cypress, Playwright, Vitest, Istanbul, Husky

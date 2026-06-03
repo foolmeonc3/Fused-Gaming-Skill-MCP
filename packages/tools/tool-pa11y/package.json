@@ -1,5 +1,5 @@
 {
-  "name": "@h4shed/tool-pa11y",
+  "name": "@fused-gaming/tool-pa11y",
   "version": "6.0.0",
   "description": "Web accessibility testing CLI integration for @h4shed ecosystem",
   "type": "module",

@@ -1,5 +1,5 @@
 {
-  "name": "@h4shed/tool-less",
+  "name": "@fused-gaming/tool-less",
   "version": "1.0.0",
   "description": "LESS CSS preprocessor tool wrapper for @h4shed ecosystem",
   "type": "module",

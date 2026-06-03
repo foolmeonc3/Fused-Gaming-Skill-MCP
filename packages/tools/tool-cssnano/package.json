@@ -1,5 +1,5 @@
 {
-  "name": "@h4shed/tool-cssnano",
+  "name": "@fused-gaming/tool-cssnano",
   "version": "1.0.0",
   "description": "CSS minification and optimization tool wrapper for @h4shed ecosystem",
   "type": "module",

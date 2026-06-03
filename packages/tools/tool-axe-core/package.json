@@ -1,5 +1,5 @@
 {
-  "name": "@h4shed/tool-axe-core",
+  "name": "@fused-gaming/tool-axe-core",
   "version": "4.0.0",
   "description": "Accessibility testing engine integration for @h4shed ecosystem",
   "type": "module",

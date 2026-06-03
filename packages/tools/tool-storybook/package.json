@@ -1,5 +1,5 @@
 {
-  "name": "@h4shed/tool-storybook",
+  "name": "@fused-gaming/tool-storybook",
   "version": "7.0.0",
   "description": "Component library and interactive documentation integration for @h4shed ecosystem",
   "type": "module",

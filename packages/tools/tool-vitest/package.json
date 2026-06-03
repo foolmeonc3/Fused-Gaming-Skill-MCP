@@ -1,5 +1,5 @@
 {
-  "name": "@h4shed/tool-vitest",
+  "name": "@fused-gaming/tool-vitest",
   "version": "1.0.0",
   "description": "Vitest test runner wrapper for @h4shed ecosystem",
   "type": "module",

@@ -1,5 +1,5 @@
 {
-  "name": "@h4shed/tool-rollup",
+  "name": "@fused-gaming/tool-rollup",
   "version": "1.0.0",
   "description": "JavaScript bundler tool wrapper for @h4shed ecosystem",
   "type": "module",
