@@ -1,5 +1,5 @@
 {
-  "name": "@fused-gaming/tool-tailwindcss",
+  "name": "@h4shed/tool-tailwindcss",
   "version": "3.0.0",
   "description": "Utility-first CSS framework integration for @h4shed ecosystem",
   "type": "module",

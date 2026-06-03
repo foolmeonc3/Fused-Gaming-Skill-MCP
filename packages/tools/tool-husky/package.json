@@ -1,5 +1,5 @@
 {
-  "name": "@fused-gaming/tool-husky",
+  "name": "@h4shed/tool-husky",
   "version": "1.0.0",
   "description": "Git hooks tool wrapper for @h4shed ecosystem",
   "type": "module",

@@ -1,5 +1,5 @@
 {
-  "name": "@fused-gaming/skill-storybook-component-library",
+  "name": "@h4shed/skill-storybook-component-library",
   "version": "1.0.1",
   "description": "Component library documentation and visual testing with Storybook integration",
   "type": "module",
@@ -13,7 +13,7 @@
     "test": "echo \"Tests coming soon\""
   },
   "dependencies": {
-    "@fused-gaming/mcp-core": "^1.0.24"
+    "@h4shed/mcp-core": "^1.0.24"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",

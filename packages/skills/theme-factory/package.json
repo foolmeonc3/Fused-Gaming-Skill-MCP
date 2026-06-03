@@ -1,5 +1,5 @@
 {
-  "name": "@fused-gaming/skill-theme-factory",
+  "name": "@h4shed/skill-theme-factory",
   "version": "1.0.24",
   "description": "Design system and theme generation for consistent UI/UX across applications",
   "type": "module",
@@ -13,7 +13,7 @@
     "test": "echo \"No tests yet\""
   },
   "dependencies": {
-    "@fused-gaming/mcp-core": "^1.0.24"
+    "@h4shed/mcp-core": "^1.0.24"
   },
   "devDependencies": {
     "@types/node": "^20.12.0",

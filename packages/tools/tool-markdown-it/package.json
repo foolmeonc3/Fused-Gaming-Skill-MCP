@@ -1,5 +1,5 @@
 {
-  "name": "@fused-gaming/tool-markdown-it",
+  "name": "@h4shed/tool-markdown-it",
   "version": "1.0.0",
   "description": "Markdown parser tool wrapper for @h4shed ecosystem",
   "type": "module",

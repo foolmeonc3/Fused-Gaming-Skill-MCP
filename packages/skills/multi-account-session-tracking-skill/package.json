@@ -1,5 +1,5 @@
 {
-  "name": "@fused-gaming/skill-multi-account-session-tracking",
+  "name": "@h4shed/skill-multi-account-session-tracking",
   "version": "1.0.23",
   "description": "Extended framework for tracking Claude sessions across multiple accounts with unified metrics",
   "type": "module",
@@ -13,7 +13,7 @@
     "test": "echo \"Tests coming soon\""
   },
   "dependencies": {
-    "@fused-gaming/mcp-core": "^1.0.24"
+    "@h4shed/mcp-core": "^1.0.24"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",

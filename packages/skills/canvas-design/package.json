@@ -1,5 +1,5 @@
 {
-  "name": "@fused-gaming/skill-canvas-design",
+  "name": "@h4shed/skill-canvas-design",
   "version": "1.0.24",
   "description": "Visual design generation for web with SVG and canvas rendering",
   "type": "module",
@@ -13,7 +13,7 @@
     "test": "echo \"No tests yet\""
   },
   "dependencies": {
-    "@fused-gaming/mcp-core": "^1.0.24"
+    "@h4shed/mcp-core": "^1.0.24"
   },
   "devDependencies": {
     "@types/node": "^20.12.0",

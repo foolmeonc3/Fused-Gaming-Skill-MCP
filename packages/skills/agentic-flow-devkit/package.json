@@ -1,5 +1,5 @@
 {
-  "name": "@fused-gaming/skill-agentic-flow-devkit",
+  "name": "@h4shed/skill-agentic-flow-devkit",
   "version": "1.0.21",
   "description": "Design and visualize agentic orchestration flows with trailer A/B-roll planning support.",
   "type": "module",
@@ -13,7 +13,7 @@
     "test": "echo \"No tests yet\""
   },
   "dependencies": {
-    "@fused-gaming/mcp-core": "^1.0.24"
+    "@h4shed/mcp-core": "^1.0.24"
   },
   "devDependencies": {
     "@types/node": "^20.12.0",

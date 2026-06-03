@@ -1,5 +1,5 @@
 {
-  "name": "@fused-gaming/tool-inquirer",
+  "name": "@h4shed/tool-inquirer",
   "version": "8.0.0",
   "description": "Interactive CLI prompts integration for @h4shed ecosystem",
   "type": "module",

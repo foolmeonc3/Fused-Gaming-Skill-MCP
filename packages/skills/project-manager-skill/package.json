@@ -1,5 +1,5 @@
 {
-  "name": "@fused-gaming/skill-project-manager-skill",
+  "name": "@h4shed/skill-project-manager-skill",
   "version": "1.0.24",
   "description": "Task and project management skill for tracking work items and team collaboration",
   "type": "module",
@@ -13,7 +13,7 @@
     "test": "echo \"Tests coming soon\""
   },
   "dependencies": {
-    "@fused-gaming/mcp-core": "^1.0.24"
+    "@h4shed/mcp-core": "^1.0.24"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",

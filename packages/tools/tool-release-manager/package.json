@@ -1,5 +1,5 @@
 {
-  "name": "@fused-gaming/tool-release-manager",
+  "name": "@h4shed/tool-release-manager",
   "version": "1.0.0",
   "description": "Automated release management tool for monorepo contributions, version bumping, and GitHub release generation",
   "type": "module",

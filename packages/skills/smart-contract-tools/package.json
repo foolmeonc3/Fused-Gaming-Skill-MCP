@@ -1,5 +1,5 @@
 {
-  "name": "@fused-gaming/skill-smart-contract-tools",
+  "name": "@h4shed/skill-smart-contract-tools",
   "version": "1.0.1",
   "description": "Smart contract development tools for Hardhat, Truffle, and Foundry ecosystems",
   "type": "module",
@@ -13,7 +13,7 @@
     "test": "echo \"Tests coming soon\""
   },
   "dependencies": {
-    "@fused-gaming/mcp-core": "^1.0.24"
+    "@h4shed/mcp-core": "^1.0.24"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",

@@ -1,5 +1,5 @@
 {
-  "name": "@fused-gaming/tool-sass",
+  "name": "@h4shed/tool-sass",
   "version": "1.0.0",
   "description": "Sass CSS preprocessor tool wrapper for @h4shed ecosystem",
   "type": "module",

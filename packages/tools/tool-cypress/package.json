@@ -1,5 +1,5 @@
 {
-  "name": "@fused-gaming/tool-cypress",
+  "name": "@h4shed/tool-cypress",
   "version": "13.0.0",
   "description": "End-to-end testing framework integration for @h4shed ecosystem",
   "type": "module",

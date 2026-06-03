@@ -1,5 +1,5 @@
 {
-  "name": "@fused-gaming/skill-playwright-test-automation",
+  "name": "@h4shed/skill-playwright-test-automation",
   "version": "1.0.1",
   "description": "End-to-end testing automation framework for web applications with cross-browser support",
   "type": "module",
@@ -13,7 +13,7 @@
     "test": "echo \"Tests coming soon\""
   },
   "dependencies": {
-    "@fused-gaming/mcp-core": "^1.0.24"
+    "@h4shed/mcp-core": "^1.0.24"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",

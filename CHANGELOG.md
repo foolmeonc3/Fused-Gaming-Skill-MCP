@@ -193,17 +193,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Full TypeScript support with MCP tool definitions
   - Comprehensive documentation: SECURE_EMAIL_SETUP.md, AGENT_INTEGRATION.md, EMAIL_WORKFLOWS.md
 - **9 New Scaffolded Development Tool Skills** — Complete package structure and Skill interface implementations
-  - Vite Module Bundler (`@fused-gaming/skill-vite-module-bundler`)
-  - TypeScript Toolchain (`@fused-gaming/skill-typescript-toolchain`)
-  - Tailwind CSS Style Builder (`@fused-gaming/skill-tailwindcss-style-builder`)
-  - Storybook Component Library (`@fused-gaming/skill-storybook-component-library`)
-  - Playwright Test Automation (`@fused-gaming/skill-playwright-test-automation`)
-  - Vercel Next.js Deployment (`@fused-gaming/skill-vercel-nextjs-deployment`)
-  - Style Dictionary System (`@fused-gaming/skill-style-dictionary-system`)
-  - NFT Generative Art (`@fused-gaming/skill-nft-generative-art`)
-  - Smart Contract Tools (`@fused-gaming/skill-smart-contract-tools`)
+  - Vite Module Bundler (`@h4shed/skill-vite-module-bundler`)
+  - TypeScript Toolchain (`@h4shed/skill-typescript-toolchain`)
+  - Tailwind CSS Style Builder (`@h4shed/skill-tailwindcss-style-builder`)
+  - Storybook Component Library (`@h4shed/skill-storybook-component-library`)
+  - Playwright Test Automation (`@h4shed/skill-playwright-test-automation`)
+  - Vercel Next.js Deployment (`@h4shed/skill-vercel-nextjs-deployment`)
+  - Style Dictionary System (`@h4shed/skill-style-dictionary-system`)
+  - NFT Generative Art (`@h4shed/skill-nft-generative-art`)
+  - Smart Contract Tools (`@h4shed/skill-smart-contract-tools`)
   - Each implements the Skill interface with proper name, version, description, and initialize method
-- **27 Tool Wrapper Packages** — Scaffolding for open-source tool integrations under `@fused-gaming/tool-*` namespace
+- **27 Tool Wrapper Packages** — Scaffolding for open-source tool integrations under `@h4shed/tool-*` namespace
   - Design & Style Systems (6): Style Dictionary, Tailwind CSS, PostCSS, cssnano, Sass, Less
   - Component Systems (5): Storybook, TypeDoc, Docusaurus, VitePress, Markdown-it
   - Testing & Quality (8): Axe Core, Pa11y, Jest, Cypress, Playwright, Vitest, Istanbul, Husky

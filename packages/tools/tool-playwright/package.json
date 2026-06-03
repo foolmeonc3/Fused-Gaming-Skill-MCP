@@ -1,5 +1,5 @@
 {
-  "name": "@fused-gaming/tool-playwright",
+  "name": "@h4shed/tool-playwright",
   "version": "1.0.0",
   "description": "Browser automation and E2E testing integration for @h4shed ecosystem",
   "type": "module",

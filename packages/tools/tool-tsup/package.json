@@ -1,5 +1,5 @@
 {
-  "name": "@fused-gaming/tool-tsup",
+  "name": "@h4shed/tool-tsup",
   "version": "1.0.0",
   "description": "TypeScript bundler tool wrapper for @h4shed ecosystem",
   "type": "module",

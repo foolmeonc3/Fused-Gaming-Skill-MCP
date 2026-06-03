@@ -1,5 +1,5 @@
 {
-  "name": "@fused-gaming/design-tokens",
+  "name": "@h4shed/design-tokens",
   "version": "1.0.0",
   "description": "SyncPulse Design System - Complete token system with colors, typography, spacing, shadows, animations, and component tokens",
   "type": "module",

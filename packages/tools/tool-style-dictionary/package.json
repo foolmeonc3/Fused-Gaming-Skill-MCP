@@ -1,5 +1,5 @@
 {
-  "name": "@fused-gaming/tool-style-dictionary",
+  "name": "@h4shed/tool-style-dictionary",
   "version": "3.0.0",
   "description": "Design token management and multi-format export integration for @h4shed ecosystem",
   "type": "module",

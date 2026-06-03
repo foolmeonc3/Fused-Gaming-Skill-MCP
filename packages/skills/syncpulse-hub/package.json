@@ -1,5 +1,5 @@
 {
-  "name": "@fused-gaming/syncpulse-hub",
+  "name": "@h4shed/syncpulse-hub",
   "version": "0.1.2",
   "description": "Centralized SyncPulse Hub - Unified orchestration and installation of all @h4shed packages",
   "type": "module",
@@ -20,9 +20,9 @@
     "check-updates": "node dist/updates/UpdateChecker.js"
   },
   "dependencies": {
-    "@fused-gaming/mcp-core": "^1.0.24",
-    "@fused-gaming/skill-syncpulse": "^0.2.3",
-    "@fused-gaming/skill-pre-deploy-validator": "^1.0.24"
+    "@h4shed/mcp-core": "^1.0.24",
+    "@h4shed/skill-syncpulse": "^0.2.3",
+    "@h4shed/skill-pre-deploy-validator": "^1.0.24"
   },
   "devDependencies": {
     "@types/node": "^20.12.0",
