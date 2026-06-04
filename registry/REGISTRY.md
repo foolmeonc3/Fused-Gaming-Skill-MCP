@@ -1,51 +1,15 @@
 # 🎮 Fused Gaming Skill Registry
 
-**Generated:** 5/29/2026, 4:04:09 AM
+**Generated:** 6/4/2026, 8:54:58 PM
 **Version:** 1.0.0
 
 ## 📊 Summary
 
-- **Total Skills:** 31
-- **Total Tools:** 62
+- **Total Skills:** 30
+- **Total Tools:** 60
 - **Categories:** 11
 
 ## 📑 Skills by Category
-
-
-### Session Management (2 skills)
-
-#### 📦 @fused-gaming/multi-account-session-tracking
-- **Package:** `@fused-gaming/skill-multi-account-session-tracking`
-- **Description:** Extended framework for tracking Claude sessions across multiple accounts with unified metrics
-- **Version:** 1.0.23
-- **Tools:** `session_aggregation.d`, `session_aggregation`
-
-#### 📦 multi-account-session-tracking
-- **Package:** `@h4shed/multi-account-session-tracking`
-- **Description:** Track session activity across multiple accounts and workstreams.
-- **Version:** 1.0.23
-- **Tools:** `track_session_activity.d`, `track_session_activity`
-
-
-### Project Management (3 skills)
-
-#### 📦 @fused-gaming/project-manager-skill
-- **Package:** `@fused-gaming/skill-project-manager-skill`
-- **Description:** Task and project management skill for tracking work items and team collaboration
-- **Version:** 1.0.23
-- **Tools:** `task_management.d`, `task_management`
-
-#### 📦 project-manager
-- **Package:** `@h4shed/skill-project-manager`
-- **Description:** Plan projects with milestones, dependencies, and delivery phases.
-- **Version:** 1.0.2
-- **Tools:** `plan_project.d`, `plan_project`
-
-#### 📦 project-status-tool
-- **Package:** `@h4shed/skill-project-status-tool`
-- **Description:** Summarize current project status, risks, and next actions.
-- **Version:** 1.0.23
-- **Tools:** `create_project.d`, `create_project`, `dashboard.d`, `dashboard`, `summarize_project_status.d`, `summarize_project_status`
 
 
 ### Design (7 skills)
@@ -53,25 +17,25 @@
 #### 📦 agentic-flow-devkit
 - **Package:** `@h4shed/skill-agentic-flow-devkit`
 - **Description:** Design and visualize agentic orchestration flows with trailer A/B-roll planning support.
-- **Version:** 1.0.1
+- **Version:** 1.0.21
 - **Tools:** `plan_trailer_rolls.d`, `plan_trailer_rolls`, `visualize_agentic_flow.d`, `visualize_agentic_flow`
 
 #### 📦 canvas-design
 - **Package:** `@h4shed/skill-canvas-design`
 - **Description:** Visual design generation for web with SVG and canvas rendering
-- **Version:** 1.0.4
+- **Version:** 1.0.24
 - **Tools:** `generate_svg.d`, `generate_svg`
 
 #### 📦 frontend-design
 - **Package:** `@h4shed/skill-frontend-design`
 - **Description:** Frontend component design and HTML/CSS generation for modern web applications
-- **Version:** 1.0.4
+- **Version:** 1.0.24
 - **Tools:** `generate_component.d`, `generate_component`
 
 #### 📦 style-dictionary-system
 - **Package:** `@h4shed/skill-style-dictionary-system`
 - **Description:** Design tokens and style dictionary generation for cross-platform design system management
-- **Version:** 1.0.0
+- **Version:** 1.0.15
 
 #### 📦 svg-generator
 - **Package:** `@h4shed/skill-svg-generator`
@@ -82,12 +46,12 @@
 #### 📦 tailwindcss-style-builder
 - **Package:** `@h4shed/skill-tailwindcss-style-builder`
 - **Description:** Tailwind CSS utility-first styling and design system builder for rapid UI development
-- **Version:** 1.0.0
+- **Version:** 1.0.15
 
 #### 📦 theme-factory
 - **Package:** `@h4shed/skill-theme-factory`
 - **Description:** Design system and theme generation for consistent UI/UX across applications
-- **Version:** 1.0.4
+- **Version:** 1.0.24
 - **Tools:** `generate_theme.d`, `generate_theme`
 
 
@@ -96,18 +60,18 @@
 #### 📦 algorithmic-art
 - **Package:** `@h4shed/skill-algorithmic-art`
 - **Description:** Generative art using p5.js with seeded randomness, flow fields, and particle systems
-- **Version:** 1.0.4
+- **Version:** 1.0.24
 - **Tools:** `flow_field.d`, `flow_field`, `generate_art.d`, `generate_art`
 
 #### 📦 nft-generative-art
 - **Package:** `@h4shed/skill-nft-generative-art`
 - **Description:** NFT artwork generation, metadata creation, and blockchain-ready asset creation
-- **Version:** 1.0.0
+- **Version:** 1.0.15
 
 #### 📦 smart-contract-tools
 - **Package:** `@h4shed/skill-smart-contract-tools`
 - **Description:** Smart contract development tools for Hardhat, Truffle, and Foundry ecosystems
-- **Version:** 1.0.0
+- **Version:** 1.0.15
 
 
 ### General (7 skills)
@@ -115,53 +79,53 @@
 #### 📦 ascii-mockup
 - **Package:** `@h4shed/skill-ascii-mockup`
 - **Description:** Mobile-first ASCII wireframe mockup generator for rapid UI prototyping
-- **Version:** 1.0.4
+- **Version:** 1.0.24
 - **Tools:** `generate_mockup.d`, `generate_mockup`
 
 #### 📦 playwright-test-automation
 - **Package:** `@h4shed/skill-playwright-test-automation`
 - **Description:** End-to-end testing automation framework for web applications with cross-browser support
-- **Version:** 1.0.0
+- **Version:** 1.0.15
 
 #### 📦 storybook-component-library
 - **Package:** `@h4shed/skill-storybook-component-library`
 - **Description:** Component library documentation and visual testing with Storybook integration
-- **Version:** 1.0.0
+- **Version:** 1.0.15
 
 #### 📦 syncpulse
 - **Package:** `@h4shed/skill-syncpulse`
 - **Description:** SyncPulse - intelligent project state caching, multi-agent coordination, and secure email automation with 9 production-ready templated workflows
-- **Version:** 0.2.2
+- **Version:** 0.2.13
 - **Tools:** `email_tools.d`, `email_tools`, `email_workflows.d`, `email_workflows`, `index.d`, `index`
 
 #### 📦 syncpulse-hub
 - **Package:** `@h4shed/syncpulse-hub`
 - **Description:** Centralized SyncPulse Hub - Unified orchestration and installation of all @h4shed packages
-- **Version:** 0.1.1
+- **Version:** 0.1.12
 
 #### 📦 typescript-toolchain
 - **Package:** `@h4shed/skill-typescript-toolchain`
 - **Description:** Advanced TypeScript configuration, type generation, and static analysis tooling
-- **Version:** 1.0.0
+- **Version:** 1.0.15
 
 #### 📦 vite-module-bundler
 - **Package:** `@h4shed/skill-vite-module-bundler`
 - **Description:** Next-generation JavaScript module bundler for lightning-fast development and optimized production builds
-- **Version:** 1.0.0
+- **Version:** 1.0.15
 
 
 ### Mcp Tools (2 skills)
 
 #### 📦 creator
-- **Package:** `@h4shed/skill-skill-creator`
+- **Package:** `@h4shed/skill-creator`
 - **Description:** Create custom skills and tools for the Fused Gaming MCP ecosystem
-- **Version:** 1.0.4
+- **Version:** 1.0.24
 - **Tools:** `create_skill.d`, `create_skill`
 
 #### 📦 mcp-builder
 - **Package:** `@h4shed/skill-mcp-builder`
 - **Description:** Build and scaffold MCP servers and skills with best practices
-- **Version:** 1.0.4
+- **Version:** 1.0.24
 - **Tools:** `scaffold_skill.d`, `scaffold_skill`
 
 
@@ -185,7 +149,7 @@
 #### 📦 underworld-writer
 - **Package:** `@h4shed/skill-underworld-writer`
 - **Description:** Create detailed character profiles, mythologies, and narrative worlds for underworld-themed stories
-- **Version:** 1.0.4
+- **Version:** 1.0.24
 
 
 ### Visualization (1 skills)
@@ -197,18 +161,48 @@
 - **Tools:** `generate_mermaid_diagram.d`, `generate_mermaid_diagram`
 
 
+### Session Management (1 skills)
+
+#### 📦 multi-account-session-tracking
+- **Package:** `@h4shed/skill-multi-account-session-tracking`
+- **Description:** Extended framework for tracking Claude sessions across multiple accounts with unified metrics
+- **Version:** 1.0.23
+- **Tools:** `session_aggregation.d`, `session_aggregation`
+
+
 ### Development (2 skills)
 
 #### 📦 pre-deploy-validator
 - **Package:** `@h4shed/skill-pre-deploy-validator`
 - **Description:** Pre-deployment validation and quality checks for production readiness
-- **Version:** 1.0.4
+- **Version:** 1.0.24
 - **Tools:** `validate_deployment.d`, `validate_deployment`
 
 #### 📦 vercel-nextjs-deployment
 - **Package:** `@h4shed/skill-vercel-nextjs-deployment`
 - **Description:** Vercel deployment optimization and Next.js framework integration for serverless applications
-- **Version:** 1.0.0
+- **Version:** 1.0.15
+
+
+### Project Management (3 skills)
+
+#### 📦 project-manager
+- **Package:** `@h4shed/skill-project-manager`
+- **Description:** Plan projects with milestones, dependencies, and delivery phases.
+- **Version:** 1.0.23
+- **Tools:** `plan_project.d`, `plan_project`
+
+#### 📦 project-manager-skill
+- **Package:** `@h4shed/skill-project-manager-skill`
+- **Description:** Task and project management skill for tracking work items and team collaboration
+- **Version:** 1.0.24
+- **Tools:** `task_management.d`, `task_management`
+
+#### 📦 project-status-tool
+- **Package:** `@h4shed/skill-project-status-tool`
+- **Description:** Summarize current project status, risks, and next actions.
+- **Version:** 1.0.23
+- **Tools:** `create_project.d`, `create_project`, `dashboard.d`, `dashboard`, `summarize_project_status.d`, `summarize_project_status`
 
 
 ### User Experience (1 skills)
@@ -224,10 +218,6 @@
 
 | Skill | Tool | File |
 |-------|------|------|
-| `@fused-gaming/multi-account-session-tracking` | `session_aggregation.d` | `session-aggregation.d.ts` |
-| `@fused-gaming/multi-account-session-tracking` | `session_aggregation` | `session-aggregation.ts` |
-| `@fused-gaming/project-manager-skill` | `task_management.d` | `task-management.d.ts` |
-| `@fused-gaming/project-manager-skill` | `task_management` | `task-management.ts` |
 | `agentic-flow-devkit` | `plan_trailer_rolls.d` | `plan-trailer-rolls.d.ts` |
 | `agentic-flow-devkit` | `plan_trailer_rolls` | `plan-trailer-rolls.ts` |
 | `agentic-flow-devkit` | `visualize_agentic_flow.d` | `visualize-agentic-flow.d.ts` |
@@ -262,12 +252,14 @@
 | `mcp-builder` | `scaffold_skill` | `scaffold-skill.ts` |
 | `mermaid-terminal` | `generate_mermaid_diagram.d` | `generate-mermaid-diagram.d.ts` |
 | `mermaid-terminal` | `generate_mermaid_diagram` | `generate-mermaid-diagram.ts` |
-| `multi-account-session-tracking` | `track_session_activity.d` | `track-session-activity.d.ts` |
-| `multi-account-session-tracking` | `track_session_activity` | `track-session-activity.ts` |
+| `multi-account-session-tracking` | `session_aggregation.d` | `session-aggregation.d.ts` |
+| `multi-account-session-tracking` | `session_aggregation` | `session-aggregation.ts` |
 | `pre-deploy-validator` | `validate_deployment.d` | `validate-deployment.d.ts` |
 | `pre-deploy-validator` | `validate_deployment` | `validate-deployment.ts` |
 | `project-manager` | `plan_project.d` | `plan-project.d.ts` |
 | `project-manager` | `plan_project` | `plan-project.ts` |
+| `project-manager-skill` | `task_management.d` | `task-management.d.ts` |
+| `project-manager-skill` | `task_management` | `task-management.ts` |
 | `project-status-tool` | `create_project.d` | `create-project.d.ts` |
 | `project-status-tool` | `create_project` | `create-project.ts` |
 | `project-status-tool` | `dashboard.d` | `dashboard.d.ts` |

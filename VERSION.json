@@ -14,7 +14,7 @@
   },
   "packageInfo": {
     "name": "@h4shed/mcp",
-    "scope": "fused-gaming",
+    "scope": "h4shed",
     "publishedScope": "h4shed",
     "description": "Modular MCP server with scalable Claude skills",
     "repository": "https://github.com/fused-gaming/fused-gaming-skill-mcp",
