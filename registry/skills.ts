@@ -30,75 +30,13 @@ export interface SkillRegistry {
 
 export const registry: SkillRegistry = {
   "version": "1.0.0",
-  "timestamp": "2026-05-29T04:04:09.101Z",
+  "timestamp": "2026-06-04T20:52:47.520Z",
   "skills": [
-    {
-      "name": "@fused-gaming/multi-account-session-tracking",
-      "id": "@fused-gaming/multi-account-session-tracking",
-      "description": "Extended framework for tracking Claude sessions across multiple accounts with unified metrics",
-      "version": "1.0.23",
-      "package": "@fused-gaming/skill-multi-account-session-tracking",
-      "tools": [
-        {
-          "name": "session_aggregation.d",
-          "file": "session-aggregation.d.ts",
-          "description": "session_aggregation.d from multi-account-session-tracking-skill"
-        },
-        {
-          "name": "session_aggregation",
-          "file": "session-aggregation.ts",
-          "description": "session_aggregation from multi-account-session-tracking-skill"
-        }
-      ],
-      "enabled": true,
-      "category": "session-management",
-      "author": "Fused Gaming",
-      "keywords": [
-        "mcp",
-        "skill",
-        "session-tracking",
-        "multi-account",
-        "productivity"
-      ],
-      "repository": "",
-      "license": "Apache-2.0"
-    },
-    {
-      "name": "@fused-gaming/project-manager-skill",
-      "id": "@fused-gaming/project-manager-skill",
-      "description": "Task and project management skill for tracking work items and team collaboration",
-      "version": "1.0.23",
-      "package": "@fused-gaming/skill-project-manager-skill",
-      "tools": [
-        {
-          "name": "task_management.d",
-          "file": "task-management.d.ts",
-          "description": "task_management.d from project-manager-skill"
-        },
-        {
-          "name": "task_management",
-          "file": "task-management.ts",
-          "description": "task_management from project-manager-skill"
-        }
-      ],
-      "enabled": true,
-      "category": "project-management",
-      "author": "Fused Gaming",
-      "keywords": [
-        "mcp",
-        "skill",
-        "project-manager",
-        "task",
-        "tracking"
-      ],
-      "repository": "",
-      "license": "Apache-2.0"
-    },
     {
       "name": "agentic-flow-devkit",
       "id": "agentic-flow-devkit",
       "description": "Design and visualize agentic orchestration flows with trailer A/B-roll planning support.",
-      "version": "1.0.1",
+      "version": "1.0.21",
       "package": "@h4shed/skill-agentic-flow-devkit",
       "tools": [
         {
@@ -139,7 +77,7 @@ export const registry: SkillRegistry = {
       "name": "algorithmic-art",
       "id": "algorithmic-art",
       "description": "Generative art using p5.js with seeded randomness, flow fields, and particle systems",
-      "version": "1.0.4",
+      "version": "1.0.24",
       "package": "@h4shed/skill-algorithmic-art",
       "tools": [
         {
@@ -181,7 +119,7 @@ export const registry: SkillRegistry = {
       "name": "ascii-mockup",
       "id": "ascii-mockup",
       "description": "Mobile-first ASCII wireframe mockup generator for rapid UI prototyping",
-      "version": "1.0.4",
+      "version": "1.0.24",
       "package": "@h4shed/skill-ascii-mockup",
       "tools": [
         {
@@ -214,7 +152,7 @@ export const registry: SkillRegistry = {
       "name": "canvas-design",
       "id": "canvas-design",
       "description": "Visual design generation for web with SVG and canvas rendering",
-      "version": "1.0.4",
+      "version": "1.0.24",
       "package": "@h4shed/skill-canvas-design",
       "tools": [
         {
@@ -247,8 +185,8 @@ export const registry: SkillRegistry = {
       "name": "creator",
       "id": "creator",
       "description": "Create custom skills and tools for the Fused Gaming MCP ecosystem",
-      "version": "1.0.4",
-      "package": "@h4shed/skill-skill-creator",
+      "version": "1.0.24",
+      "package": "@h4shed/skill-creator",
       "tools": [
         {
           "name": "create_skill.d",
@@ -331,7 +269,7 @@ export const registry: SkillRegistry = {
       "name": "frontend-design",
       "id": "frontend-design",
       "description": "Frontend component design and HTML/CSS generation for modern web applications",
-      "version": "1.0.4",
+      "version": "1.0.24",
       "package": "@h4shed/skill-frontend-design",
       "tools": [
         {
@@ -424,7 +362,7 @@ export const registry: SkillRegistry = {
       "name": "mcp-builder",
       "id": "mcp-builder",
       "description": "Build and scaffold MCP servers and skills with best practices",
-      "version": "1.0.4",
+      "version": "1.0.24",
       "package": "@h4shed/skill-mcp-builder",
       "tools": [
         {
@@ -484,19 +422,19 @@ export const registry: SkillRegistry = {
     {
       "name": "multi-account-session-tracking",
       "id": "multi-account-session-tracking",
-      "description": "Track session activity across multiple accounts and workstreams.",
+      "description": "Extended framework for tracking Claude sessions across multiple accounts with unified metrics",
       "version": "1.0.23",
-      "package": "@h4shed/multi-account-session-tracking",
+      "package": "@h4shed/skill-multi-account-session-tracking",
       "tools": [
         {
-          "name": "track_session_activity.d",
-          "file": "track-session-activity.d.ts",
-          "description": "track_session_activity.d from multi-account-session-tracking"
+          "name": "session_aggregation.d",
+          "file": "session-aggregation.d.ts",
+          "description": "session_aggregation.d from multi-account-session-tracking-skill"
         },
         {
-          "name": "track_session_activity",
-          "file": "track-session-activity.ts",
-          "description": "track_session_activity from multi-account-session-tracking"
+          "name": "session_aggregation",
+          "file": "session-aggregation.ts",
+          "description": "session_aggregation from multi-account-session-tracking-skill"
         }
       ],
       "enabled": true,
@@ -505,8 +443,9 @@ export const registry: SkillRegistry = {
       "keywords": [
         "mcp",
         "skill",
-        "planning",
-        "automation"
+        "session-tracking",
+        "multi-account",
+        "productivity"
       ],
       "repository": "",
       "license": "Apache-2.0"
@@ -515,7 +454,7 @@ export const registry: SkillRegistry = {
       "name": "nft-generative-art",
       "id": "nft-generative-art",
       "description": "NFT artwork generation, metadata creation, and blockchain-ready asset creation",
-      "version": "1.0.0",
+      "version": "1.0.15",
       "package": "@h4shed/skill-nft-generative-art",
       "tools": [],
       "enabled": true,
@@ -536,7 +475,7 @@ export const registry: SkillRegistry = {
       "name": "playwright-test-automation",
       "id": "playwright-test-automation",
       "description": "End-to-end testing automation framework for web applications with cross-browser support",
-      "version": "1.0.0",
+      "version": "1.0.15",
       "package": "@h4shed/skill-playwright-test-automation",
       "tools": [],
       "enabled": true,
@@ -557,7 +496,7 @@ export const registry: SkillRegistry = {
       "name": "pre-deploy-validator",
       "id": "pre-deploy-validator",
       "description": "Pre-deployment validation and quality checks for production readiness",
-      "version": "1.0.4",
+      "version": "1.0.24",
       "package": "@h4shed/skill-pre-deploy-validator",
       "tools": [
         {
@@ -589,7 +528,7 @@ export const registry: SkillRegistry = {
       "name": "project-manager",
       "id": "project-manager",
       "description": "Plan projects with milestones, dependencies, and delivery phases.",
-      "version": "1.0.2",
+      "version": "1.0.23",
       "package": "@h4shed/skill-project-manager",
       "tools": [
         {
@@ -611,6 +550,37 @@ export const registry: SkillRegistry = {
         "skill",
         "planning",
         "automation"
+      ],
+      "repository": "",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "project-manager-skill",
+      "id": "project-manager-skill",
+      "description": "Task and project management skill for tracking work items and team collaboration",
+      "version": "1.0.24",
+      "package": "@h4shed/skill-project-manager-skill",
+      "tools": [
+        {
+          "name": "task_management.d",
+          "file": "task-management.d.ts",
+          "description": "task_management.d from project-manager-skill"
+        },
+        {
+          "name": "task_management",
+          "file": "task-management.ts",
+          "description": "task_management from project-manager-skill"
+        }
+      ],
+      "enabled": true,
+      "category": "project-management",
+      "author": "Fused Gaming",
+      "keywords": [
+        "mcp",
+        "skill",
+        "project-manager",
+        "task",
+        "tracking"
       ],
       "repository": "",
       "license": "Apache-2.0"
@@ -669,7 +639,7 @@ export const registry: SkillRegistry = {
       "name": "smart-contract-tools",
       "id": "smart-contract-tools",
       "description": "Smart contract development tools for Hardhat, Truffle, and Foundry ecosystems",
-      "version": "1.0.0",
+      "version": "1.0.15",
       "package": "@h4shed/skill-smart-contract-tools",
       "tools": [],
       "enabled": true,
@@ -692,7 +662,7 @@ export const registry: SkillRegistry = {
       "name": "storybook-component-library",
       "id": "storybook-component-library",
       "description": "Component library documentation and visual testing with Storybook integration",
-      "version": "1.0.0",
+      "version": "1.0.15",
       "package": "@h4shed/skill-storybook-component-library",
       "tools": [],
       "enabled": true,
@@ -713,7 +683,7 @@ export const registry: SkillRegistry = {
       "name": "style-dictionary-system",
       "id": "style-dictionary-system",
       "description": "Design tokens and style dictionary generation for cross-platform design system management",
-      "version": "1.0.0",
+      "version": "1.0.15",
       "package": "@h4shed/skill-style-dictionary-system",
       "tools": [],
       "enabled": true,
@@ -764,7 +734,7 @@ export const registry: SkillRegistry = {
       "name": "syncpulse",
       "id": "syncpulse",
       "description": "SyncPulse - intelligent project state caching, multi-agent coordination, and secure email automation with 9 production-ready templated workflows",
-      "version": "0.2.2",
+      "version": "0.2.13",
       "package": "@h4shed/skill-syncpulse",
       "tools": [
         {
@@ -809,7 +779,7 @@ export const registry: SkillRegistry = {
       "name": "syncpulse-hub",
       "id": "syncpulse-hub",
       "description": "Centralized SyncPulse Hub - Unified orchestration and installation of all @h4shed packages",
-      "version": "0.1.1",
+      "version": "0.1.12",
       "package": "@h4shed/syncpulse-hub",
       "tools": [],
       "enabled": true,
@@ -830,7 +800,7 @@ export const registry: SkillRegistry = {
       "name": "tailwindcss-style-builder",
       "id": "tailwindcss-style-builder",
       "description": "Tailwind CSS utility-first styling and design system builder for rapid UI development",
-      "version": "1.0.0",
+      "version": "1.0.15",
       "package": "@h4shed/skill-tailwindcss-style-builder",
       "tools": [],
       "enabled": true,
@@ -851,7 +821,7 @@ export const registry: SkillRegistry = {
       "name": "theme-factory",
       "id": "theme-factory",
       "description": "Design system and theme generation for consistent UI/UX across applications",
-      "version": "1.0.4",
+      "version": "1.0.24",
       "package": "@h4shed/skill-theme-factory",
       "tools": [
         {
@@ -883,7 +853,7 @@ export const registry: SkillRegistry = {
       "name": "typescript-toolchain",
       "id": "typescript-toolchain",
       "description": "Advanced TypeScript configuration, type generation, and static analysis tooling",
-      "version": "1.0.0",
+      "version": "1.0.15",
       "package": "@h4shed/skill-typescript-toolchain",
       "tools": [],
       "enabled": true,
@@ -904,7 +874,7 @@ export const registry: SkillRegistry = {
       "name": "underworld-writer",
       "id": "underworld-writer",
       "description": "Create detailed character profiles, mythologies, and narrative worlds for underworld-themed stories",
-      "version": "1.0.4",
+      "version": "1.0.24",
       "package": "@h4shed/skill-underworld-writer",
       "tools": [],
       "enabled": true,
@@ -955,7 +925,7 @@ export const registry: SkillRegistry = {
       "name": "vercel-nextjs-deployment",
       "id": "vercel-nextjs-deployment",
       "description": "Vercel deployment optimization and Next.js framework integration for serverless applications",
-      "version": "1.0.0",
+      "version": "1.0.15",
       "package": "@h4shed/skill-vercel-nextjs-deployment",
       "tools": [],
       "enabled": true,
@@ -976,7 +946,7 @@ export const registry: SkillRegistry = {
       "name": "vite-module-bundler",
       "id": "vite-module-bundler",
       "description": "Next-generation JavaScript module bundler for lightning-fast development and optimized production builds",
-      "version": "1.0.0",
+      "version": "1.0.15",
       "package": "@h4shed/skill-vite-module-bundler",
       "tools": [],
       "enabled": true,
@@ -994,8 +964,8 @@ export const registry: SkillRegistry = {
       "license": "Apache-2.0"
     }
   ],
-  "totalSkills": 31,
-  "totalTools": 62,
+  "totalSkills": 30,
+  "totalTools": 60,
   "categories": {
     "design": 7,
     "generative-art": 3,
@@ -1004,7 +974,7 @@ export const registry: SkillRegistry = {
     "content-creation": 2,
     "mcp-tools": 2,
     "visualization": 1,
-    "session-management": 2,
+    "session-management": 1,
     "development": 2,
     "project-management": 3,
     "user-experience": 1
